@@ -1,0 +1,21 @@
+# IntelliJ settings
+.idea/
+*.iml
+
+# Java build output
+target/
+*.class
+
+# Frontend dependencies and build output
+node_modules/
+dist/
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+
+# Logs and Windows files
+*.log
+Thumbs.db
+Desktop.ini
