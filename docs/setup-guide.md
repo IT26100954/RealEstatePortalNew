@@ -144,3 +144,45 @@ The project currently contains the backend foundation only.
 
 Database integration and the React frontend are not ready yet.
 
+
+
+
+
+\## Local Maven workaround on the leader's computer
+
+
+
+The Maven Wrapper was generated, but its initial download
+
+failed because of a network/certificate-revocation issue.
+
+
+
+IntelliJ's bundled Maven works. From the backend folder,
+
+the following Git Bash commands were verified:
+
+
+
+```bash
+
+export JAVA\_HOME="C:/Users/lapto/.jdks/ms-21.0.12.1"
+
+
+
+"/c/Program Files/JetBrains/IntelliJ IDEA 2026.1/plugins/maven/lib/maven3/bin/mvn.cmd" test
+
+```
+
+
+
+Result: BUILD SUCCESS.
+
+
+
+These installation paths are specific to this computer.
+
+Other members can use IntelliJ's bundled Maven through
+
+the Maven tool window.
+
