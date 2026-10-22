@@ -18,12 +18,14 @@ public class MovingCompanyService {
     private final References refs;
     private final JdbcTemplate jdbc;
 
+    //Parametrized Constructor
     public MovingCompanyService(MovingCompanyDAO dao, References refs, JdbcTemplate jdbc) {
         this.dao = dao;
         this.refs = refs;
         this.jdbc = jdbc;
     }
 
+    //Methods
     public List<MovingCompany> list(Actor a) {
         return dao.all().stream().filter(e -> readable(e, a)).toList();
     }
