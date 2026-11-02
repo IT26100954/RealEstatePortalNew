@@ -10,15 +10,7 @@ import java.util.*;
 @Repository
 public class MovingCompanyDAO {
     private final JdbcTemplate jdbc;
-
-    private final RowMapper<MovingCompany> mapper = (rs, n) -> new MovingCompany(
-            rs.getString("id"),
-            rs.getString("company_name"),
-            rs.getString("email"),
-            rs.getString("phone"),
-            rs.getString("service_areas"),
-            rs.getString("description"),
-            rs.getString("availability"));
+    private final RowMapper<MovingCompany> mapper = (rs, n) -> new MovingCompany(rs.getString("id"), rs.getString("company_name"), rs.getString("email"), rs.getString("phone"), rs.getString("service_areas"), rs.getString("description"), rs.getString("availability"));
 
     public MovingCompanyDAO(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
