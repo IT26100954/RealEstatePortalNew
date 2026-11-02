@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { api } from '../../shared/api.js';
-import { useSession } from '../../shared/Session.jsx';
-import { go } from '../../shared/usePath.js';
+import React, {useEffect, useState} from 'react';
+import {api} from '../../shared/api.js';
+import {useSession} from '../../shared/Session.jsx';
+import {go} from '../../shared/usePath.js';
 
 const BASE = 'moving-companies';
 const TITLE = 'Moving Services';
@@ -43,8 +43,8 @@ const fields = [
 ];
 const actorFields = [];
 
-export default function MovingCompanyPages({ path }) {
-  const { actor } = useSession();
+export default function MovingCompanyPages({path}) {
+  const {actor} = useSession();
   const [rows, setRows] = useState([]);
   const [record, setRecord] = useState(null);
   const [form, setForm] = useState({});
@@ -57,7 +57,10 @@ export default function MovingCompanyPages({ path }) {
 
   useEffect(() => {
     let active = true;
-    setError(''); setRecord(null); setBusy(true);
+    setError('');
+    setRecord(null);
+    setBusy(true);
+
     async function load() {
       if (mode === 'list') {
         const data = await api('/' + BASE);
@@ -68,34 +71,53 @@ export default function MovingCompanyPages({ path }) {
         if (active) setForm(initial);
       } else {
         const data = await api('/' + BASE + '/' + id);
-        if (active) { setRecord(data); setForm(data); }
+        if (active) {
+          setRecord(data);
+          setForm(data);
+        }
       }
     }
+
     load().catch(e => active && setError(e.message)).finally(() => active && setBusy(false));
-    return () => { active = false; };
+    return () => {
+      active = false;
+    };
   }, [path, actor?.id]);
 
   async function submit(event) {
-    event.preventDefault(); setError(''); setBusy(true);
+    event.preventDefault();
+    setError('');
+    setBusy(true);
     try {
-      const data = { ...form };
+      const data = {...form};
       if ('rating' in data) data.rating = Number(data.rating);
       // Monetary inputs remain decimal strings, as agreed in the API contract.
       const saved = await api('/' + BASE + (creating ? '' : '/' + id), creating ? 'POST' : 'PUT', data);
       go('/' + BASE + '/' + saved.id);
-    } catch (e) { setError(e.message); }
-    finally { setBusy(false); }
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function remove() {
     if (!confirm('Delete this eligible record?')) return;
-    setError(''); setBusy(true);
-    try { await api('/' + BASE + '/' + id, 'DELETE'); go('/' + BASE); }
-    catch (e) { setError(e.message); }
-    finally { setBusy(false); }
+    setError('');
+    setBusy(true);
+    try {
+      await api('/' + BASE + '/' + id, 'DELETE');
+      go('/' + BASE);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setBusy(false);
+    }
   }
 
-  function title(row) { return row.title || row.companyName || row.propertyId || row.id; }
+  function title(row) {
+    return row.title || row.companyName || row.propertyId || row.id;
+  }
 
   return <section>
     <h1>{TITLE}</h1>
@@ -112,7 +134,8 @@ export default function MovingCompanyPages({ path }) {
     {mode === 'detail' && record && <>
       <h2>Details</h2>
       <dl>{fields.map(f => <React.Fragment key={f.key}>
-        <dt>{f.label}</dt><dd>{String(record[f.key] ?? '')}</dd>
+        <dt>{f.label}</dt>
+        <dd>{String(record[f.key] ?? '')}</dd>
       </React.Fragment>)}</dl>
       {actor && <p><a href={'#/' + BASE + '/' + id + '/edit'}>Edit or manage</a></p>}
       {actor && <button disabled={busy} onClick={remove}>Delete eligible record</button>}
@@ -121,12 +144,13 @@ export default function MovingCompanyPages({ path }) {
       <h2>{creating ? 'Create' : 'Edit or manage'}</h2>
       {!actor ? <p><a href="#/login">Log in first</a></p> : <form onSubmit={submit}>
         {fields.map(f => <label key={f.key}>{f.label}
-          {f.options ? <select value={form[f.key] ?? ''} onChange={e => setForm({ ...form, [f.key]: e.target.value })}>
+          {f.options ? <select value={form[f.key] ?? ''} onChange={e => setForm({...form, [f.key]: e.target.value})}>
             {f.options.map(o => <option key={o} value={o}>{o}</option>)}
-          </select> : <input type={f.type} step={f.type === 'time' ? '1' : f.key === 'rating' ? '1' : f.type === 'number' ? '0.01' : undefined}
-            value={form[f.key] ?? ''}
-            readOnly={actorFields.includes(f.key) && !(BASE === 'properties' && actor.role === 'ADMIN' && creating)}
-            onChange={e => setForm({ ...form, [f.key]: e.target.value })} />}
+          </select> : <input type={f.type}
+                             step={f.type === 'time' ? '1' : f.key === 'rating' ? '1' : f.type === 'number' ? '0.01' : undefined}
+                             value={form[f.key] ?? ''}
+                             readOnly={actorFields.includes(f.key) && !(BASE === 'properties' && actor.role === 'ADMIN' && creating)}
+                             onChange={e => setForm({...form, [f.key]: e.target.value})}/>}
         </label>)}
         <button disabled={busy} type="submit">Save</button>
       </form>}
