@@ -18,14 +18,12 @@ public class MovingCompanyService {
     private final References refs;
     private final JdbcTemplate jdbc;
 
-    //Parametrized Constructor
     public MovingCompanyService(MovingCompanyDAO dao, References refs, JdbcTemplate jdbc) {
         this.dao = dao;
         this.refs = refs;
         this.jdbc = jdbc;
     }
 
-    //Methods
     public List<MovingCompany> list(Actor a) {
         return dao.all().stream().filter(e -> readable(e, a)).toList();
     }
@@ -46,9 +44,7 @@ public class MovingCompanyService {
 
     private MovingCompany prepare(String id, MovingCompany d, Actor a) {
         allow(a != null && a.admin());
-        return new MovingCompany(id, text(d.companyName(), "Company name", 150), email(d.email()), phone(d.phone()),
-                text(d.serviceAreas(), "Service areas", 500), text(d.description(), "Description", 10000),
-                choice(d.availability(), "AVAILABLE", "UNAVAILABLE"));
+        return new MovingCompany(id, text(d.companyName(), "Company name", 150), email(d.email()), phone(d.phone()), text(d.serviceAreas(), "Service areas", 500), text(d.description(), "Description", 10000), choice(d.availability(), "AVAILABLE", "UNAVAILABLE"));
     }
 
     public MovingCompany create(MovingCompany d, Actor a) {
@@ -68,4 +64,5 @@ public class MovingCompanyService {
         allow(editable(dao.find(id), a));
         dao.delete(id);
     }
+
 }
