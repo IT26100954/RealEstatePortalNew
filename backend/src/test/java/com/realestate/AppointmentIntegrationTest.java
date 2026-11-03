@@ -84,7 +84,7 @@ class AppointmentIntegrationTest {
         jdbc.update("INSERT INTO properties VALUES(?,?,?,?,?,?,?,?,?)",PROPERTY,SELLER,"Garden home","Quiet home","Colombo","Green Road",new java.math.BigDecimal("1000000.00"),"HOUSE","AVAILABLE");
         buyer=login(BUYER);seller=login(SELLER);admin=login(ADMIN);other=login(OTHER);guest=new Client();date=LocalDate.now(ZoneId.of("Asia/Colombo")).plusDays(3).toString();
     }
-    void addUser(String id,String name,String role) {jdbc.update("INSERT INTO users VALUES(?,?,?,?,?,?)",id,name,"not-a-real-password-hash",name+"@example.com","0771234567",role);}
+    void addUser(String id,String name,String role) {jdbc.update("INSERT INTO users (id,username,password_hash,email,phone,role) VALUES(?,?,?,?,?,?)",id,name,"not-a-real-password-hash",name+"@example.com","0771234567",role);}
     String propertyBody(String status){return "{\"title\":\"New home\",\"description\":\"Family home\",\"city\":\"Kandy\",\"address\":\"Lake Road\",\"price\":\"2500000.00\",\"propertyType\":\"HOUSE\",\"status\":\""+status+"\"}";}
     String appointmentBody(){return "{\"propertyId\":\""+PROPERTY+"\",\"viewingDate\":\""+date+"\",\"viewingTime\":\"10:00:00\",\"notes\":null}";}
     String offerBody(String amount){return "{\"propertyId\":\""+PROPERTY+"\",\"amount\":\""+amount+"\",\"message\":\"Offer\"}";}
