@@ -1,3 +1,5 @@
+USE real_estate_portal_new;
+
 CREATE TABLE properties (
     id CHAR(36) PRIMARY KEY,
     owner_id CHAR(36) NOT NULL,
