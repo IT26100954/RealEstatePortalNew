@@ -29,7 +29,7 @@ function canDelete(config, record, user) {
 function display(name, value, propertyNames) {
   if (name === 'propertyId') return propertyNames[value] || value;
   if (name === 'price' || name === 'amount') return 'LKR ' + String(value);
-  return value === null || value === undefined || value === '' ? 'â€”' : String(value);
+  return value === null || value === undefined || value === '' ? '—' : String(value);
 }
 export default function ModulePages({ config, segments, initialPropertyId = '' }) {
   const { user } = useSession();
@@ -75,7 +75,7 @@ export default function ModulePages({ config, segments, initialPropertyId = '' }
     return function () { abort.abort(); };
   }, [config.key, version, user]);
   const names = {};
-  properties.forEach(function (p) { names[p.id] = p.title + ' â€” ' + p.city; });
+  properties.forEach(function (p) { names[p.id] = p.title + ' — ' + p.city; });
   const [propertyOwner, setPropertyOwner] = useState(null);
   useEffect(function () {
     setPropertyOwner(null);
@@ -135,11 +135,11 @@ export default function ModulePages({ config, segments, initialPropertyId = '' }
       <div className="actions">{(id || mode === 'new') && <a className="button secondary" href={'#' + base}>Back to list</a>}
         {!id && mode !== 'new' && canCreate(config,user) && <a className="button" href={'#' + base + '/new'}>Add {config.singular}</a>}</div></div>
     {error && <Notice error>{error} <button className="text-button" onClick={function () { setVersion(function(v) { return v + 1; }); }}>Retry</button></Notice>}
-    {busy ? <p role="status">Loadingâ€¦</p> : mode === 'new' || editing ?
+    {busy ? <p role="status">Loading…</p> : mode === 'new' || editing ?
       (!canCreate(config,user) && !id) || (id && record && !canEdit(config,record,user)) ? <Notice error>You cannot edit this record.</Notice> :
       (!id || record) && <div className="panel form-panel">
         {lookupWarning && <Notice error>{lookupWarning}</Notice>}
-        {!id && properties.length > 0 && ['appointment','offer','review'].includes(config.key) && <div className="property-picker"><h2>Available properties</h2><p>Select a property to fill the form below.</p>{properties.filter(function(p) { return p.status === 'AVAILABLE' && !(config.key === 'review' && user && p.ownerId === user.id); }).map(function(p) { return <button className="secondary" key={p.id} onClick={function () { setRecord({ propertyId: p.id }); }}>{p.title} Â· {p.city}</button>; })}</div>}
+        {!id && properties.length > 0 && ['appointment','offer','review'].includes(config.key) && <div className="property-picker"><h2>Available properties</h2><p>Select a property to fill the form below.</p>{properties.filter(function(p) { return p.status === 'AVAILABLE' && !(config.key === 'review' && user && p.ownerId === user.id); }).map(function(p) { return <button className="secondary" key={p.id} onClick={function () { setRecord({ propertyId: p.id }); }}>{p.title} · {p.city}</button>; })}</div>}
         <RecordForm key={(id || 'new') + (record?.propertyId || '')} fields={fields()} initial={record || {}} submit={save} cancel={function () { navigate(id ? base + '/' + id : base); }} />
       </div> : id ? record && <div className="panel"><div className="detail-title"><h2>{record.title || record.companyName || config.singular}</h2>{record.status && <span className="badge">{record.status}</span>}</div>
         <dl>{Object.entries(record).filter(function ([key]) { return key !== 'passwordHash' && key !== 'password'; }).map(function ([key,value]) { return <div key={key}><dt>{human(key)}</dt><dd>{display(key,value,names)}</dd></div>; })}</dl>
@@ -151,7 +151,7 @@ export default function ModulePages({ config, segments, initialPropertyId = '' }
         </div><p className="muted">Actions are also checked by the server. Protected records cannot be deleted.</p></div> :
       <>{config.key === 'property' && <form className="search-bar" onSubmit={function(e) { e.preventDefault(); const params = new URLSearchParams(); if(query.trim()) params.set('q',query.trim()); if(city.trim()) params.set('city',city.trim()); setFilters(params.size ? '?' + params.toString() : ''); }}><label>Search<input value={query} onChange={function(e) { setQuery(e.target.value); }} placeholder="Title or description" /></label><label>City<input value={city} onChange={function(e) { setCity(e.target.value); }} /></label><button>Search</button></form>}
         {!error && records.length === 0 && <div className="panel empty"><h2>No records yet</h2><p>{canCreate(config,user) ? 'Add your first ' + config.singular + ' to get started.' : 'Records will appear here when available.'}</p></div>}
-        {records.length > 0 && <div className="table-wrap"><table><thead><tr>{config.columns.map(function(c) { return <th key={c}>{human(c)}</th>; })}<th>Action</th></tr></thead><tbody>{records.map(function(row) { return <tr key={row.id}>{config.columns.map(function(c) { return <td key={c}>{display(c,row[c],names)}</td>; })}<td><a href={'#' + base + '/' + row.id}>View details â†’</a></td></tr>; })}</tbody></table></div>}
+        {records.length > 0 && <div className="table-wrap"><table><thead><tr>{config.columns.map(function(c) { return <th key={c}>{human(c)}</th>; })}<th>Action</th></tr></thead><tbody>{records.map(function(row) { return <tr key={row.id}>{config.columns.map(function(c) { return <td key={c}>{display(c,row[c],names)}</td>; })}<td><a href={'#' + base + '/' + row.id}>View details →</a></td></tr>; })}</tbody></table></div>}
       </>}
   </section>;
 }
