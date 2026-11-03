@@ -1,8 +1,6 @@
 package com.realestate.moving;
-import java.math.BigDecimal;
-import java.time.*;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
+// The service validates this immutable stored-record representation.
 public record MovingCompany(
         String id,
         String companyName,
@@ -11,4 +9,4 @@ public record MovingCompany(
         String serviceAreas,
         String description,
         String availability
-) {}
+) { }

@@ -1,68 +1,55 @@
 package com.realestate.moving;
 
-import com.realestate.common.*;
-import com.realestate.user.Role;
+import java.util.List;
+import java.util.UUID;
+import com.realestate.common.CurrentAccount;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.jdbc.core.JdbcTemplate;
-
-import java.util.*;
-import java.time.*;
-
-import static com.realestate.common.Rules.*;
+import static com.realestate.common.InputRules.*;
 
 @Service
 @Transactional
 public class MovingCompanyService {
     private final MovingCompanyDAO dao;
-    private final References refs;
-    private final JdbcTemplate jdbc;
+    public MovingCompanyService(MovingCompanyDAO dao) { this.dao=dao; }
 
-    public MovingCompanyService(MovingCompanyDAO dao, References refs, JdbcTemplate jdbc) {
-        this.dao = dao;
-        this.refs = refs;
-        this.jdbc = jdbc;
+    @Transactional(readOnly=true)
+    public List<MovingCompany> list(CurrentAccount actor) {
+        return dao.all();
     }
-
-    public List<MovingCompany> list(Actor a) {
-        return dao.all().stream().filter(e -> readable(e, a)).toList();
+    @Transactional(readOnly=true)
+    public MovingCompany detail(String recordId,CurrentAccount actor) {
+        return dao.find(id(recordId));
     }
-
-    public MovingCompany detail(String id, Actor a) {
-        var e = dao.find(id);
-        allow(readable(e, a));
-        return e;
+    private void requireAdmin(CurrentAccount actor) {
+        allow(actor != null && actor.isAdmin());
     }
-
-    public boolean readable(MovingCompany e, Actor a) {
-        return true;
+    private MovingCompany prepare(String id,MovingCompanyRequest request) {
+        if (request==null) throw invalid("Request body is required.");
+        return new MovingCompany(id,
+            text(request.getCompanyName(),"Company name",150),email(request.getEmail()),
+            text(request.getPhone(),"Phone",20),text(request.getServiceAreas(),"Service areas",500),
+            text(request.getDescription(),"Description",10000),
+            choice(request.getAvailability(),"AVAILABLE","UNAVAILABLE"));
     }
-
-    public boolean editable(MovingCompany e, Actor a) {
-        return a != null && a.admin();
-    }
-
-    private MovingCompany prepare(String id, MovingCompany d, Actor a) {
-        allow(a != null && a.admin());
-        return new MovingCompany(id, text(d.companyName(), "Company name", 150), email(d.email()), phone(d.phone()), text(d.serviceAreas(), "Service areas", 500), text(d.description(), "Description", 10000), choice(d.availability(), "AVAILABLE", "UNAVAILABLE"));
-    }
-
-    public MovingCompany create(MovingCompany d, Actor a) {
-        var next = prepare(UUID.randomUUID().toString(), d, a);
+    public MovingCompany create(MovingCompanyRequest request,CurrentAccount actor) {
+        requireAdmin(actor);
+        MovingCompany next=prepare(UUID.randomUUID().toString(),request);
         dao.insert(next);
         return next;
     }
-
-    public MovingCompany update(String id, MovingCompany d, Actor a) {
-        dao.find(id);
-        var next = prepare(id, d, a);
+    public MovingCompany update(String recordId,MovingCompanyRequest request,CurrentAccount actor) {
+        requireAdmin(actor);
+        String validId=id(recordId);
+        dao.lock(validId);
+        MovingCompany next=prepare(validId,request);
         dao.update(next);
         return next;
     }
-
-    public void delete(String id, Actor a) {
-        allow(editable(dao.find(id), a));
-        dao.delete(id);
+    public void delete(String recordId,CurrentAccount actor) {
+        requireAdmin(actor);
+        String validId=id(recordId);
+        dao.lock(validId);
+        dao.delete(validId);
     }
-
 }
