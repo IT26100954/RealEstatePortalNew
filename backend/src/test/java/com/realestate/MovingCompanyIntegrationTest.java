@@ -69,7 +69,7 @@ class MovingCompanyIntegrationTest {
         jdbc.execute("CREATE TABLE IF NOT EXISTS users(id CHAR(36) PRIMARY KEY,role VARCHAR(20) NOT NULL)");
         jdbc.execute("CREATE TABLE IF NOT EXISTS moving_companies(id CHAR(36) PRIMARY KEY,company_name VARCHAR(150) NOT NULL,email VARCHAR(254) NOT NULL,phone VARCHAR(20) NOT NULL,service_areas VARCHAR(500) NOT NULL,description TEXT NOT NULL,availability VARCHAR(20) NOT NULL,CHECK (availability IN ('AVAILABLE','UNAVAILABLE')))");
         jdbc.update("DELETE FROM moving_companies");jdbc.update("DELETE FROM users");
-        jdbc.update("INSERT INTO users VALUES(?,?)",ADMIN,"ADMIN");jdbc.update("INSERT INTO users VALUES(?,?)",BUYER,"BUYER");
+        jdbc.update("INSERT INTO users (id,username,password_hash,email,phone,role) VALUES(?,?,?,?,?,?)",ADMIN,"admin","test-hash","admin@example.com","0700000000","ADMIN");jdbc.update("INSERT INTO users (id,username,password_hash,email,phone,role) VALUES(?,?,?,?,?,?)",BUYER,"buyer","test-hash","buyer@example.com","0700000000","BUYER");
         admin=login(ADMIN);buyer=login(BUYER);guest=new Client();
     }
     String body() {return "{\"companyName\":\"City Movers\",\"email\":\"move@example.com\",\"phone\":\"0771234567\",\"serviceAreas\":\"Colombo\",\"description\":\"Home relocation\",\"availability\":\"AVAILABLE\"}";}
