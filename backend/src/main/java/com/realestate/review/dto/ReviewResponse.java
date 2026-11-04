@@ -1,8 +1,5 @@
 package com.realestate.review.dto;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class ReviewResponse {
     private String id;

@@ -1,12 +1,10 @@
 package com.realestate.review.dto;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class CreateReviewRequest {
     private String propertyId;
-    private BigDecimal rating;
+    private Integer rating;
     private String comment;
 
     public CreateReviewRequest() {
@@ -20,12 +18,17 @@ public class CreateReviewRequest {
         this.propertyId = propertyId;
     }
 
-    public BigDecimal getRating() {
+    public Integer getRating() {
         return rating;
     }
 
     public void setRating(BigDecimal rating) {
-        this.rating = rating;
+        // Reject fractional JSON ratings instead of silently rounding them.
+        try {
+            this.rating = rating == null ? null : rating.intValueExact();
+        } catch (ArithmeticException exception) {
+            throw new IllegalArgumentException("Rating must be a whole number.");
+        }
     }
 
     public String getComment() {
