@@ -1,0 +1,16 @@
+{
+  "source_commit": "4aef4b56657c13fee5f19befe995195a378abe3a",
+  "date": "4 November 2026",
+  "production_top_level_types": 76,
+  "module_counts": {
+    "user": 23,
+    "property": 9,
+    "moving": 5,
+    "appointment": 10,
+    "offer": 10,
+    "review": 9
+  },
+  "routes": 38,
+  "files": 42,
+  "diagrams": 9
+}

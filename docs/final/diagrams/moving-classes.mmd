@@ -1,0 +1,70 @@
+classDiagram
+direction TB
+  class MovingCompany {
+    <<record>>
+    -String id
+    -String companyName
+    -String email
+    -String phone
+    -String serviceAreas
+    -String description
+    -String availability
+  }
+  class MovingCompanyController {
+    -MovingCompanyService service
+    -CurrentUser currentUser
+    +list(HttpSession) ListMovingCompany
+    +detail(String; HttpSession) MovingCompany
+    +create(MovingCompanyRequest; HttpSession) MovingCompany
+    +update(String; MovingCompanyRequest; HttpSession) MovingCompany
+    +delete(String; HttpSession) void
+  }
+  class MovingCompanyDAO {
+    -JdbcTemplate jdbc
+    +all() ListMovingCompany
+    +find(String) MovingCompany
+    +lock(String) MovingCompany
+    -read(String; boolean) MovingCompany
+    -missing() ModuleException
+    +insert(MovingCompany) void
+    +update(MovingCompany) void
+    +delete(String) void
+  }
+  class MovingCompanyRequest {
+    -String companyName
+    -String email
+    -String phone
+    -String serviceAreas
+    -String description
+    -String availability
+    +getCompanyName() String
+    +setCompanyName(String) void
+    +getEmail() String
+    +setEmail(String) void
+    +getPhone() String
+    +setPhone(String) void
+    +getServiceAreas() String
+    +setServiceAreas(String) void
+    +getDescription() String
+    +setDescription(String) void
+    +getAvailability() String
+    +setAvailability(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class MovingCompanyService {
+    -MovingCompanyDAO dao
+    +list(CurrentAccount) ListMovingCompany
+    +detail(String; CurrentAccount) MovingCompany
+    -requireAdmin(CurrentAccount) void
+    -prepare(String; MovingCompanyRequest) MovingCompany
+    +create(MovingCompanyRequest; CurrentAccount) MovingCompany
+    +update(String; MovingCompanyRequest; CurrentAccount) MovingCompany
+    +delete(String; CurrentAccount) void
+  }
+  MovingCompanyController --> MovingCompanyService : uses service
+  MovingCompanyController ..> MovingCompany : input/output
+  MovingCompanyController ..> MovingCompanyRequest : input/output
+  MovingCompanyDAO ..> MovingCompany : input/output
+  MovingCompanyService --> MovingCompanyDAO : uses dao
+  MovingCompanyService ..> MovingCompany : input/output
+  MovingCompanyService ..> MovingCompanyRequest : input/output

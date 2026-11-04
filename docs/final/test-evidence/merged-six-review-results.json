@@ -1,0 +1,25 @@
+{
+  "checks": [
+    "Guest can view reviews but has no create control",
+    "ADMIN has no review create control",
+    "Property link prefills review form",
+    "Browser review create persists correct author and integer rating",
+    "Guest can read review list and detail",
+    "Author edits rating and comment through browser",
+    "Unrelated buyer has no edit or delete controls",
+    "ADMIN can moderate deletion but cannot edit review",
+    "Direct edit URL rejects unrelated account",
+    "Property owner own listing excluded from review picker",
+    "Owner manually entering own property ID is blocked",
+    "Browser rejects fractional rating",
+    "Browser rejects out of range rating",
+    "Blank comment displays validation message",
+    "SELLER can review another owner property",
+    "Author deletes own review through browser",
+    "ADMIN deletes another user review through browser",
+    "Deleted review displays not found message",
+    "No browser JavaScript errors",
+    "All six tables restored; original users and real ADMIN unchanged"
+  ],
+  "error": null
+}

@@ -1,3 +1,5 @@
+> Historical setup snapshot. For the completed six-module project, use [the final setup guide](final/SETUP-AND-RUN.md) and [current progress](progress.md).
+
 # Shared frontend and MySQL setup
 
 ## What this setup contains

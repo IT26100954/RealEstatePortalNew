@@ -1,0 +1,31 @@
+{
+  "database": "MySQL",
+  "checks": [
+    "Moving directory publicly readable",
+    "Moving writes restricted to logged-in ADMIN",
+    "ADMIN company creation persists in MySQL",
+    "Company update and public detail work",
+    "Moving validation, spoofed fields and CSRF rejected",
+    "ADMIN deletes company; missing record returns 404",
+    "Appointments require login and BUYER creates",
+    "Past times, fractional seconds, buyer spoofing and CSRF blocked",
+    "Buyer identity derived from login and initial status PENDING",
+    "Appointment persisted in real MySQL",
+    "Unrelated account cannot read appointment",
+    "Property owner and ADMIN can read appointment",
+    "Only buyer edits own pending appointment",
+    "Seller confirms; confirmed deletion and future completion blocked",
+    "Buyer cancellation is final; cannot reopen",
+    "Buyer deletes own pending appointment",
+    "Seller rejection retained as history",
+    "ADMIN can cancel appointment",
+    "Past confirmed appointment can become COMPLETED",
+    "Concurrent confirmations: exactly one succeeds in MySQL",
+    "Only one confirmed appointment stored for same slot",
+    "User/Admin protects buyer referenced by appointments",
+    "Unavailable property cannot receive appointment",
+    "ADMIN demotion immediately removes moving write permission",
+    "All six tables restored; real ADMIN and original records unchanged"
+  ],
+  "error": null
+}

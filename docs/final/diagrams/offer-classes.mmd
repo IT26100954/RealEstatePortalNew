@@ -1,0 +1,138 @@
+classDiagram
+direction TB
+  class CreateOfferRequest {
+    -String propertyId
+    -String amount
+    -String message
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getAmount() String
+    +setAmount(String) void
+    +getMessage() String
+    +setMessage(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class OfferResponse {
+    -String id
+    -String buyerId
+    -String propertyId
+    -String amount
+    -String message
+    -String status
+    +getId() String
+    +setId(String) void
+    +getBuyerId() String
+    +setBuyerId(String) void
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getAmount() String
+    +setAmount(String) void
+    +getMessage() String
+    +setMessage(String) void
+    +getStatus() String
+    +setStatus(String) void
+  }
+  class OfferStatusRequest {
+    -String status
+    +getStatus() String
+    +setStatus(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class UpdateOfferRequest {
+    -String amount
+    -String message
+    +getAmount() String
+    +setAmount(String) void
+    +getMessage() String
+    +setMessage(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class Offer {
+    -String id
+    -String buyerId
+    -String propertyId
+    -BigDecimal amount
+    -String message
+    -String status
+    +getId() String
+    +setId(String) void
+    +getBuyerId() String
+    +setBuyerId(String) void
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getAmount() BigDecimal
+    +setAmount(BigDecimal) void
+    +getMessage() String
+    +setMessage(String) void
+    +getStatus() String
+    +setStatus(String) void
+  }
+  class OfferController {
+    -OfferService service
+    -CurrentUser currentUser
+    +detail(String; HttpSession) OfferResponse
+    +create(CreateOfferRequest; HttpSession) OfferResponse
+    +update(String; UpdateOfferRequest; HttpSession) OfferResponse
+    +delete(String; HttpSession) void
+    +status(String; OfferStatusRequest; HttpSession) OfferResponse
+  }
+  class OfferRepository {
+    <<interface>>
+    +findAll() ListOffer
+    +findById(String) Offer
+    +lockById(String) Offer
+    +insert(Offer) void
+    +update(Offer) void
+    +delete(String) void
+  }
+  class OfferRepositoryImpl {
+    -JdbcTemplate jdbc
+    +findAll() ListOffer
+    +findById(String) Offer
+    +lockById(String) Offer
+    -find(String; boolean) Offer
+    +insert(Offer) void
+    +update(Offer) void
+    +delete(String) void
+  }
+  class OfferService {
+    <<interface>>
+    +create(CreateOfferRequest; CurrentAccount) OfferResponse
+    +detail(String; CurrentAccount) OfferResponse
+    +list(CurrentAccount; String; String) ListOfferResponse
+    +update(String; UpdateOfferRequest; CurrentAccount) OfferResponse
+    +delete(String; CurrentAccount) void
+    +changeStatus(String; String; CurrentAccount) OfferResponse
+  }
+  class OfferServiceImpl {
+    -OfferRepository repository
+    -PropertyLookup properties
+    -owns(String; CurrentAccount) boolean
+    -response(Offer) OfferResponse
+    -readable(Offer; CurrentAccount) boolean
+    +detail(String; CurrentAccount) OfferResponse
+    +list(CurrentAccount; String; String) ListOfferResponse
+    +create(CreateOfferRequest; CurrentAccount) OfferResponse
+    -fill(Offer; CreateOfferRequest) void
+    -fill(Offer; UpdateOfferRequest) void
+    +update(String; UpdateOfferRequest; CurrentAccount) OfferResponse
+    +delete(String; CurrentAccount) void
+    +changeStatus(String; String; CurrentAccount) OfferResponse
+  }
+  OfferController --> OfferService : uses service
+  OfferController ..> OfferResponse : input/output
+  OfferController ..> CreateOfferRequest : input/output
+  OfferController ..> UpdateOfferRequest : input/output
+  OfferController ..> OfferStatusRequest : input/output
+  OfferRepository ..> Offer : input/output
+  OfferRepository <|.. OfferRepositoryImpl : implements
+  OfferRepositoryImpl ..> Offer : input/output
+  OfferService ..> CreateOfferRequest : input/output
+  OfferService ..> OfferResponse : input/output
+  OfferService ..> UpdateOfferRequest : input/output
+  OfferServiceImpl --> OfferRepository : uses repository
+  OfferService <|.. OfferServiceImpl : implements
+  OfferServiceImpl ..> Offer : input/output
+  OfferServiceImpl ..> OfferResponse : input/output
+  OfferServiceImpl ..> CreateOfferRequest : input/output
+  OfferServiceImpl ..> UpdateOfferRequest : input/output
