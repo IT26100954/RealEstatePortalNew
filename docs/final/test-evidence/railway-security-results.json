@@ -1,0 +1,9 @@
+{
+  "https": true,
+  "adminLogin": true,
+  "secureCookie": true,
+  "httpOnly": true,
+  "sameSite": "Lax",
+  "csrfEnforced": true,
+  "logout": true
+}

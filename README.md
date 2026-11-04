@@ -1,7 +1,11 @@
 # Real Estate Portal
 
 A six-member project built with Java 21, Spring Boot, Maven, MySQL and React.
-All six modules are integrated on `development` in this documentation snapshot.
+All six modules are integrated and deployed.
+
+Live demonstration: [https://real-estate-portal-production-3d7d.up.railway.app](https://real-estate-portal-production-3d7d.up.railway.app)
+
+[Hosted access instructions and free-credit limits](docs/final/HOSTED-DEPLOYMENT.md).
 
 ## Final documentation
 - [Final documentation index](docs/final/README.md)

@@ -12,11 +12,12 @@ Validation completed for this release:
 - The packaged app was exercised with a 256 MB Java heap.
 - Disposable test records removed; intentional demo records retained separately afterward.
 
-Hosting budget: $0. Recommended Render Free + Aiven MySQL Free, no payment method or paid trial.
-The free cloud service is not yet live: provider email verification, database provisioning,
-GitHub access authorization and online validation are pending.
-Local Docker is unavailable, so the Docker build must still be verified by the hosting builder.
-See DEPLOYMENT.md. Do not claim a deployed URL until the actual online checks pass.
+Hosting budget: $0. Live demonstration: https://real-estate-portal-production-3d7d.up.railway.app
+Railway Free and Aiven MySQL Free are configured without adding payment details.
+The actual Docker image was built and deployed by Railway. 43 additional public-website browser checks passed;
+production cookie, CSRF and hosted ADMIN login/logout checks also passed. Temporary accounts were cleaned up.
+Separate hosted demonstration records are retained. See final/HOSTED-DEPLOYMENT.md for private access-file locations,
+free-credit limits and the evaluation walkthrough. Render was not deployed because its account required card verification.
 
 Source class-diagram snapshot remains 4aef4b5 because deployment preparation added no production Java types.
 Private demo access details are saved only in ignored .local; they are not in GitHub or release assets.
