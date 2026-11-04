@@ -36,3 +36,6 @@ Main release promotion is a separate reviewed action. Local credentials and buil
 Preserve actual authorship and describe generated assistance accurately.
 The final documentation is based on source commit 4aef4b56657c13fee5f19befe995195a378abe3a.
 Deployment is pending; no public hosted link is claimed.
+
+## Release and hosting
+See [release status](docs/RELEASE-STATUS.md), [demo guide](docs/DEMO-GUIDE.md) and [free deployment](docs/DEPLOYMENT.md).

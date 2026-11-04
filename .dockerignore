@@ -1,0 +1,17 @@
+**/.git
+**/.idea
+**/*.iml
+**/node_modules
+**/target
+**/dist
+**/.env
+**/.env.*
+**/.mysql.local.cnf
+**/.local-setup.sql
+.local
+docs
+output
+outputs
+work
+tmp
+*.log
