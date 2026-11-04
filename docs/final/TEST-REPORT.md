@@ -35,3 +35,6 @@ Last-admin protection was checked in isolated tests, not by removing the real AD
 An early Offer API run reported a snapshot mismatch; disposable records were absent, and the repeat run matched all tables. Cause was not established.
 These counts are separate test groups/cases; do not combine earlier overlapping checks into an invented coverage percentage.
 Do not use the live QA automation against unrelated data without preserving its temporary-account isolation and cleanup.
+
+## Public hosted deployment verification - 4 November 2026
+43 public-website browser checks passed against Railway + real Aiven MySQL, plus production session-cookie, CSRF and hosted ADMIN login/logout verification. Evidence: test-evidence/railway-*-results.json. Temporary test rows were removed; deliberate demo rows were added separately afterward. See HOSTED-DEPLOYMENT.md.

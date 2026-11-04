@@ -1,0 +1,28 @@
+{
+  "checks": [
+    "Browser login works for temporary ADMIN SELLER and BUYER",
+    "User create and detail through browser",
+    "User browser update persists",
+    "User role change and delete through browser",
+    "Property browser create and read persist",
+    "Property browser update persists",
+    "Buyer sees viewing actions but no property edit",
+    "Moving browser create and read persist",
+    "Moving browser update persists",
+    "Moving browser delete persists",
+    "Appointment browser create and read persist",
+    "Appointment browser update persists",
+    "Appointment browser delete persists",
+    "Offer browser create and read persist",
+    "Offer browser update persists",
+    "Offer browser delete persists",
+    "Seller accepts offer through browser",
+    "Seller confirms viewing through browser",
+    "Frontend shows protected property deletion error",
+    "Property browser delete persists",
+    "Frontend rejects invalid money input",
+    "No browser JavaScript errors",
+    "All six tables restored; real ADMIN and original records unchanged"
+  ],
+  "error": null
+}

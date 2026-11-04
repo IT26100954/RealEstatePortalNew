@@ -24,3 +24,5 @@ No real passwords, user records or local credential files are included.
 No application code or database data was changed to prepare these documents.
 Documentation preparation used Codex assistance; retain accurate contribution history.
 Deployment has not been completed. `main` is not promoted by this documentation task.
+
+- [Hosted website, demonstration access and free-credit limits](HOSTED-DEPLOYMENT.md)
