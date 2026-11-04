@@ -1,4 +1,4 @@
-# Free deployment: Render + Aiven MySQL
+# Hosted deployment: Railway Free + Aiven MySQL Free
 
 Spending limit approved by owner: $0. Select Free plans only, do not add payment details or enable paid upgrades.
 Use Aiven MySQL Free, not a paid trial. Render Free sleeps after 15 idle minutes; open the site before the viva.
@@ -53,7 +53,7 @@ cookie.secure=false for that isolated local check only.
 - https://render.com/docs/blueprint-spec
 - https://aiven.io/docs/products/mysql/concepts/mysql-free-tier
 
-Current deployment status: account access and hosted provisioning pending. No hosted URL has yet been verified.
+Current deployment status: live and verified on Railway: https://real-estate-portal-production-3d7d.up.railway.app . See final/HOSTED-DEPLOYMENT.md. Render account setup was stopped at card verification.
 
 ## Card-free fallback: Railway Free
 The owner declined Render card verification. No card was added and no paid service was created.
@@ -64,7 +64,7 @@ Use the same Dockerfile and production variables, plus AIVEN_CA_PEM containing t
 The startup script writes that CA to a temporary file and imports it into the JVM trust store.
 Use /api/auth/me as the health check, leave PORT to Railway, and use one service/one replica.
 Keep the database runtime account restricted to data access; never send the database administrator credentials to hosting.
-The live URL remains pending until an actual Railway deployment and browser/API verification succeed.
+The live Railway deployment passed 43 browser checks and production session security checks. Idle sleeping and connection-pool cleanup conserve the limited free credits.
 References checked 4 November 2026:
 - https://docs.railway.com/pricing/free-trial
 - https://docs.railway.com/pricing/plans
