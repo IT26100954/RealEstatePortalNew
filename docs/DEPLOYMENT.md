@@ -54,3 +54,19 @@ cookie.secure=false for that isolated local check only.
 - https://aiven.io/docs/products/mysql/concepts/mysql-free-tier
 
 Current deployment status: account access and hosted provisioning pending. No hosted URL has yet been verified.
+
+## Card-free fallback: Railway Free
+The owner declined Render card verification. No card was added and no paid service was created.
+Railway Free advertises $5 of trial credit for up to 30 days, then $1 of free credit monthly.
+This is a limited evaluation deployment, not a guarantee of continuous free availability.
+Do not choose Hobby/Pro or add a payment method. GitHub account verification must allow outbound MySQL access.
+Use the same Dockerfile and production variables, plus AIVEN_CA_PEM containing the full public Aiven CA certificate.
+The startup script writes that CA to a temporary file and imports it into the JVM trust store.
+Use /api/auth/me as the health check, leave PORT to Railway, and use one service/one replica.
+Keep the database runtime account restricted to data access; never send the database administrator credentials to hosting.
+The live URL remains pending until an actual Railway deployment and browser/API verification succeed.
+References checked 4 November 2026:
+- https://docs.railway.com/pricing/free-trial
+- https://docs.railway.com/pricing/plans
+- https://docs.railway.com/builds/dockerfiles
+- https://docs.railway.com/deployments/healthchecks
