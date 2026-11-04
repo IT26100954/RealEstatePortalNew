@@ -23,3 +23,6 @@ Desktop.ini
 # Local MySQL provisioning files contain generated credentials.
 database/.local-setup.sql
 backend/.mysql.local.cnf
+
+# Private local demo and hosted credentials; never publish.
+.local/

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1100" height="780" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1100 780" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1100" height="780"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-780)" style="clip-path: url(#clip)">
+		<g transform="">
+			<text x="35" y="738" style="font-family: Helvetica; font-size: 24px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1476) scale(1,-1)">Logical domain / database associations</text>
+			<text x="35" y="718" style="font-family: Helvetica; font-size: 10px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,1436) scale(1,-1)">ID-based foreign keys; Java models do not declare ORM collections for these links.</text>
+			<rect x="60" y="500" width="270" height="115" rx="6" ry="6" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="72" y="591" style="font-family: Helvetica; font-size: 14px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1182) scale(1,-1)">User</text>
+			<text x="72" y="572" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1144) scale(1,-1)">id: String</text>
+			<text x="72" y="558" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1116) scale(1,-1)">username: String</text>
+			<text x="72" y="544" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1088) scale(1,-1)">passwordHash: String</text>
+			<text x="72" y="530" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1060) scale(1,-1)">email: String</text>
+			<rect x="650" y="500" width="270" height="115" rx="6" ry="6" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="662" y="591" style="font-family: Helvetica; font-size: 14px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1182) scale(1,-1)">Property</text>
+			<text x="662" y="572" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1144) scale(1,-1)">id: String</text>
+			<text x="662" y="558" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1116) scale(1,-1)">ownerId: String</text>
+			<text x="662" y="544" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1088) scale(1,-1)">title: String</text>
+			<text x="662" y="530" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1060) scale(1,-1)">description: String</text>
+			<rect x="80" y="260" width="270" height="115" rx="6" ry="6" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="92" y="351" style="font-family: Helvetica; font-size: 14px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,702) scale(1,-1)">Appointment</text>
+			<text x="92" y="332" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,664) scale(1,-1)">id: String</text>
+			<text x="92" y="318" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,636) scale(1,-1)">buyerId: String</text>
+			<text x="92" y="304" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,608) scale(1,-1)">propertyId: String</text>
+			<text x="92" y="290" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,580) scale(1,-1)">viewingDate: LocalDate</text>
+			<rect x="420" y="260" width="270" height="115" rx="6" ry="6" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="432" y="351" style="font-family: Helvetica; font-size: 14px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,702) scale(1,-1)">Offer</text>
+			<text x="432" y="332" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,664) scale(1,-1)">id: String</text>
+			<text x="432" y="318" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,636) scale(1,-1)">buyerId: String</text>
+			<text x="432" y="304" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,608) scale(1,-1)">propertyId: String</text>
+			<text x="432" y="290" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,580) scale(1,-1)">amount: BigDecimal</text>
+			<rect x="760" y="260" width="270" height="115" rx="6" ry="6" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="772" y="351" style="font-family: Helvetica; font-size: 14px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,702) scale(1,-1)">Review</text>
+			<text x="772" y="332" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,664) scale(1,-1)">id: String</text>
+			<text x="772" y="318" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,636) scale(1,-1)">reviewerId: String</text>
+			<text x="772" y="304" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,608) scale(1,-1)">propertyId: String</text>
+			<text x="772" y="290" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,580) scale(1,-1)">rating: Integer</text>
+			<rect x="400" y="65" width="270" height="115" rx="6" ry="6" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="412" y="156" style="font-family: Helvetica; font-size: 14px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,312) scale(1,-1)">MovingCompany</text>
+			<text x="412" y="137" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,274) scale(1,-1)">id: String</text>
+			<text x="412" y="123" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,246) scale(1,-1)">companyName: String</text>
+			<text x="412" y="109" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,218) scale(1,-1)">email: String</text>
+			<text x="412" y="95" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,190) scale(1,-1)">phone: String</text>
+			<path d="M 195,500 L 170,375 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 3, 2;"/>
+			<polygon points="170 375, 173.0156 378.9883, 168.7504 379.8413" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<path d="M 785,500 L 260,375 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 3, 2;"/>
+			<polygon points="260 375, 264.8835 373.9271, 263.8761 378.1585" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<text x="100" y="243" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,486) scale(1,-1)">0..* buyer_id / property_id</text>
+			<path d="M 195,500 L 510,375 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 3, 2;"/>
+			<polygon points="510 375, 506.6174 378.6821, 505.013 374.6391" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<path d="M 785,500 L 600,375 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 3, 2;"/>
+			<polygon points="600 375, 604.9481 375.7186, 602.5129 379.3226" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<text x="440" y="243" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,486) scale(1,-1)">0..* buyer_id / property_id</text>
+			<path d="M 195,500 L 850,375 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 3, 2;"/>
+			<polygon points="850 375, 845.9853 377.9802, 845.1699 373.7077" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<path d="M 785,500 L 940,375 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 3, 2;"/>
+			<polygon points="940 375, 937.8607 379.5192, 935.1301 376.1334" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<text x="780" y="243" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,486) scale(1,-1)">0..* reviewer_id / property_id</text>
+			<path d="M 330,560 L 650,560 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 3, 2;"/>
+			<polygon points="650 560, 645.4978 562.1748, 645.4978 557.8252" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<text x="380" y="575" style="font-family: Helvetica; font-size: 10px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1150) scale(1,-1)">1 owner -&gt; 0..* properties</text>
+			<text x="420" y="40" style="font-family: Helvetica; font-size: 10px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,80) scale(1,-1)">Moving directory has no business foreign keys.</text>
+		</g>
+	</g>
+</svg>

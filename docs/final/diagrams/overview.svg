@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1100" height="780" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1100 780" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1100" height="780"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-780)" style="clip-path: url(#clip)">
+		<g transform="">
+			<text x="35" y="738" style="font-family: Helvetica; font-size: 24px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1476) scale(1,-1)">Real Estate Portal | Six-module architecture</text>
+			<text x="35" y="718" style="font-family: Helvetica; font-size: 10px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,1436) scale(1,-1)">Source 4aef4b5 | 4 November 2026 | solid arrows: dependency/request flow</text>
+			<rect x="360" y="620" width="370" height="65" rx="6" ry="6" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="372" y="661" style="font-family: Helvetica; font-size: 14px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1322) scale(1,-1)">React frontend</text>
+			<text x="372" y="642" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1284) scale(1,-1)">Shared session, forms, routing, six module screens</text>
+			<rect x="360" y="510" width="370" height="70" rx="6" ry="6" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="372" y="556" style="font-family: Helvetica; font-size: 14px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1112) scale(1,-1)">Spring Web MVC / embedded Tomcat</text>
+			<text x="372" y="537" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1074) scale(1,-1)">REST controllers, session cookie, CSRF interceptor</text>
+			<path d="M 545,620 L 545,580 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="545 580, 547.1748 584.5022, 542.8252 584.5022" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<rect x="45" y="320" width="310" height="110" rx="6" ry="6" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="57" y="406" style="font-family: Helvetica; font-size: 14px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,812) scale(1,-1)">User and Access</text>
+			<text x="57" y="387" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,774) scale(1,-1)">com.realestate.user</text>
+			<text x="57" y="373" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,746) scale(1,-1)">JPA / Hibernate + UserRepository</text>
+			<path d="M 545,510 L 200,430 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="200 430, 204.8771 428.8984, 203.8946 433.1356" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<rect x="395" y="320" width="310" height="110" rx="6" ry="6" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="407" y="406" style="font-family: Helvetica; font-size: 14px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,812) scale(1,-1)">Property Listing</text>
+			<text x="407" y="387" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,774) scale(1,-1)">com.realestate.property</text>
+			<text x="407" y="373" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,746) scale(1,-1)">Service -&gt; JdbcTemplate repository/DAO</text>
+			<path d="M 545,510 L 550,430 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="550 430, 551.8898 434.6291, 547.5486 434.3578" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<rect x="745" y="320" width="310" height="110" rx="6" ry="6" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="757" y="406" style="font-family: Helvetica; font-size: 14px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,812) scale(1,-1)">Moving Service Directory</text>
+			<text x="757" y="387" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,774) scale(1,-1)">com.realestate.moving</text>
+			<text x="757" y="373" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,746) scale(1,-1)">Service -&gt; JdbcTemplate repository/DAO</text>
+			<path d="M 545,510 L 900,430 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="900 430, 896.086 433.1114, 895.1298 428.8681" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<rect x="45" y="175" width="310" height="110" rx="6" ry="6" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="57" y="261" style="font-family: Helvetica; font-size: 14px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,522) scale(1,-1)">Viewing Appointment</text>
+			<text x="57" y="242" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,484) scale(1,-1)">com.realestate.appointment</text>
+			<text x="57" y="228" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,456) scale(1,-1)">Service -&gt; JdbcTemplate repository/DAO</text>
+			<path d="M 545,510 L 200,285 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="200 285, 204.9592 285.6378, 202.5831 289.2811" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<rect x="395" y="175" width="310" height="110" rx="6" ry="6" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="407" y="261" style="font-family: Helvetica; font-size: 14px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,522) scale(1,-1)">Offer</text>
+			<text x="407" y="242" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,484) scale(1,-1)">com.realestate.offer</text>
+			<text x="407" y="228" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,456) scale(1,-1)">Service -&gt; JdbcTemplate repository/DAO</text>
+			<path d="M 545,510 L 550,285 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="550 285, 552.0743 289.5494, 547.7257 289.4528" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<rect x="745" y="175" width="310" height="110" rx="6" ry="6" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="757" y="261" style="font-family: Helvetica; font-size: 14px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,522) scale(1,-1)">Review and Feedback</text>
+			<text x="757" y="242" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,484) scale(1,-1)">com.realestate.review</text>
+			<text x="757" y="228" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,456) scale(1,-1)">Service -&gt; JdbcTemplate repository/DAO</text>
+			<path d="M 545,510 L 900,285 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="900 285, 897.3615 289.2472, 895.033 285.5733" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<rect x="360" y="35" width="370" height="75" rx="6" ry="6" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="372" y="86" style="font-family: Helvetica; font-size: 14px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,172) scale(1,-1)">MySQL: real_estate_portal_new</text>
+			<text x="372" y="67" style="font-family: Helvetica; font-size: 9px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,134) scale(1,-1)">users, properties, moving_companies, appointments, offers, reviews</text>
+			<path d="M 200,175 L 545,110 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="545 110, 540.9783 112.9708, 540.1729 108.6964" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<path d="M 550,175 L 545,110 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="545 110, 547.5137 114.3222, 543.1769 114.6558" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<path d="M 900,175 L 545,110 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="545 110, 549.8203 108.6716, 549.0369 112.9501" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+		</g>
+	</g>
+</svg>

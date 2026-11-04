@@ -1,0 +1,5068 @@
+{
+  "source_commit": "4aef4b56657c13fee5f19befe995195a378abe3a",
+  "classes": [
+    {
+      "name": "Appointment",
+      "kind": "class",
+      "package": "com.realestate.appointment",
+      "module": "appointment",
+      "path": "backend/src/main/java/com/realestate/appointment/Appointment.java",
+      "fields": [
+        [
+          "id",
+          "String"
+        ],
+        [
+          "buyerId",
+          "String"
+        ],
+        [
+          "propertyId",
+          "String"
+        ],
+        [
+          "viewingDate",
+          "LocalDate"
+        ],
+        [
+          "viewingTime",
+          "LocalTime"
+        ],
+        [
+          "status",
+          "String"
+        ],
+        [
+          "notes",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setId",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "getBuyerId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setBuyerId",
+          "return": "void",
+          "args": "String buyerId",
+          "visibility": "public"
+        },
+        {
+          "name": "getPropertyId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPropertyId",
+          "return": "void",
+          "args": "String propertyId",
+          "visibility": "public"
+        },
+        {
+          "name": "getViewingDate",
+          "return": "LocalDate",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setViewingDate",
+          "return": "void",
+          "args": "LocalDate viewingDate",
+          "visibility": "public"
+        },
+        {
+          "name": "getViewingTime",
+          "return": "LocalTime",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setViewingTime",
+          "return": "void",
+          "args": "LocalTime viewingTime",
+          "visibility": "public"
+        },
+        {
+          "name": "getStatus",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setStatus",
+          "return": "void",
+          "args": "String status",
+          "visibility": "public"
+        },
+        {
+          "name": "getNotes",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setNotes",
+          "return": "void",
+          "args": "String notes",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "AppointmentController",
+      "kind": "class",
+      "package": "com.realestate.appointment",
+      "module": "appointment",
+      "path": "backend/src/main/java/com/realestate/appointment/AppointmentController.java",
+      "fields": [
+        [
+          "service",
+          "AppointmentService"
+        ],
+        [
+          "currentUser",
+          "CurrentUser"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "detail",
+          "return": "AppointmentResponse",
+          "args": "@PathVariable String id, HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "create",
+          "return": "AppointmentResponse",
+          "args": "@RequestBody CreateAppointmentRequest request, HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "AppointmentResponse",
+          "args": "@PathVariable String id,@RequestBody UpdateAppointmentRequest request,HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "@PathVariable String id,HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "status",
+          "return": "AppointmentResponse",
+          "args": "@PathVariable String id,@RequestBody AppointmentStatusRequest request,HttpSession session",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "AppointmentService service, CurrentUser currentUser"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "AppointmentRepository",
+      "kind": "interface",
+      "package": "com.realestate.appointment",
+      "module": "appointment",
+      "path": "backend/src/main/java/com/realestate/appointment/AppointmentRepository.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "findAll",
+          "return": "List<Appointment>",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "findById",
+          "return": "Appointment",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "lockById",
+          "return": "Appointment",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "insert",
+          "return": "void",
+          "args": "Appointment record",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "void",
+          "args": "Appointment record",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "countConfirmedSlot",
+          "return": "int",
+          "args": "String propertyId, java.time.LocalDate date, java.time.LocalTime time, String excludedId",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "AppointmentRepositoryImpl",
+      "kind": "class",
+      "package": "com.realestate.appointment",
+      "module": "appointment",
+      "path": "backend/src/main/java/com/realestate/appointment/AppointmentRepositoryImpl.java",
+      "fields": [
+        [
+          "jdbc",
+          "JdbcTemplate"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "findAll",
+          "return": "List<Appointment>",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "findById",
+          "return": "Appointment",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "lockById",
+          "return": "Appointment",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "find",
+          "return": "Appointment",
+          "args": "String id, boolean locked",
+          "visibility": "private"
+        },
+        {
+          "name": "insert",
+          "return": "void",
+          "args": "Appointment record",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "void",
+          "args": "Appointment record",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "countConfirmedSlot",
+          "return": "int",
+          "args": "String propertyId, java.time.LocalDate date, java.time.LocalTime time, String excludedId",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "JdbcTemplate jdbc"
+      ],
+      "enum_values": [],
+      "nested": [
+        "Mapper"
+      ],
+      "implements": [
+        "AppointmentRepository"
+      ],
+      "extends": []
+    },
+    {
+      "name": "AppointmentService",
+      "kind": "interface",
+      "package": "com.realestate.appointment",
+      "module": "appointment",
+      "path": "backend/src/main/java/com/realestate/appointment/AppointmentService.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "create",
+          "return": "AppointmentResponse",
+          "args": "CreateAppointmentRequest request, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "detail",
+          "return": "AppointmentResponse",
+          "args": "String id, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "list",
+          "return": "List<AppointmentResponse>",
+          "args": "CurrentAccount actor, String q, String city",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "AppointmentResponse",
+          "args": "String id, UpdateAppointmentRequest request, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String id, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "changeStatus",
+          "return": "AppointmentResponse",
+          "args": "String id, String status, CurrentAccount actor",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "AppointmentServiceImpl",
+      "kind": "class",
+      "package": "com.realestate.appointment",
+      "module": "appointment",
+      "path": "backend/src/main/java/com/realestate/appointment/AppointmentServiceImpl.java",
+      "fields": [
+        [
+          "repository",
+          "AppointmentRepository"
+        ],
+        [
+          "properties",
+          "PropertyLookup"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "owns",
+          "return": "boolean",
+          "args": "String ownerId, CurrentAccount actor",
+          "visibility": "private"
+        },
+        {
+          "name": "response",
+          "return": "AppointmentResponse",
+          "args": "Appointment record",
+          "visibility": "private"
+        },
+        {
+          "name": "readable",
+          "return": "boolean",
+          "args": "Appointment record, CurrentAccount actor",
+          "visibility": "private"
+        },
+        {
+          "name": "detail",
+          "return": "AppointmentResponse",
+          "args": "String recordId, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "list",
+          "return": "List<AppointmentResponse>",
+          "args": "CurrentAccount actor, String q, String city",
+          "visibility": "public"
+        },
+        {
+          "name": "create",
+          "return": "AppointmentResponse",
+          "args": "CreateAppointmentRequest request, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "fill",
+          "return": "void",
+          "args": "Appointment record, CreateAppointmentRequest request",
+          "visibility": "private"
+        },
+        {
+          "name": "fill",
+          "return": "void",
+          "args": "Appointment record, UpdateAppointmentRequest request",
+          "visibility": "private"
+        },
+        {
+          "name": "update",
+          "return": "AppointmentResponse",
+          "args": "String recordId, UpdateAppointmentRequest request, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String recordId, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "changeStatus",
+          "return": "AppointmentResponse",
+          "args": "String recordId, String requested, CurrentAccount actor",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "AppointmentRepository repository, PropertyLookup properties"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [
+        "AppointmentService"
+      ],
+      "extends": []
+    },
+    {
+      "name": "AppointmentResponse",
+      "kind": "class",
+      "package": "com.realestate.appointment.dto",
+      "module": "appointment",
+      "path": "backend/src/main/java/com/realestate/appointment/dto/AppointmentResponse.java",
+      "fields": [
+        [
+          "id",
+          "String"
+        ],
+        [
+          "buyerId",
+          "String"
+        ],
+        [
+          "propertyId",
+          "String"
+        ],
+        [
+          "viewingDate",
+          "LocalDate"
+        ],
+        [
+          "viewingTime",
+          "LocalTime"
+        ],
+        [
+          "status",
+          "String"
+        ],
+        [
+          "notes",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setId",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "getBuyerId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setBuyerId",
+          "return": "void",
+          "args": "String buyerId",
+          "visibility": "public"
+        },
+        {
+          "name": "getPropertyId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPropertyId",
+          "return": "void",
+          "args": "String propertyId",
+          "visibility": "public"
+        },
+        {
+          "name": "getViewingDate",
+          "return": "LocalDate",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setViewingDate",
+          "return": "void",
+          "args": "LocalDate viewingDate",
+          "visibility": "public"
+        },
+        {
+          "name": "getViewingTime",
+          "return": "LocalTime",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setViewingTime",
+          "return": "void",
+          "args": "LocalTime viewingTime",
+          "visibility": "public"
+        },
+        {
+          "name": "getStatus",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setStatus",
+          "return": "void",
+          "args": "String status",
+          "visibility": "public"
+        },
+        {
+          "name": "getNotes",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setNotes",
+          "return": "void",
+          "args": "String notes",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "AppointmentStatusRequest",
+      "kind": "class",
+      "package": "com.realestate.appointment.dto",
+      "module": "appointment",
+      "path": "backend/src/main/java/com/realestate/appointment/dto/AppointmentStatusRequest.java",
+      "fields": [
+        [
+          "status",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getStatus",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setStatus",
+          "return": "void",
+          "args": "String status",
+          "visibility": "public"
+        },
+        {
+          "name": "rejectUnknown",
+          "return": "void",
+          "args": "String field, Object value",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "CreateAppointmentRequest",
+      "kind": "class",
+      "package": "com.realestate.appointment.dto",
+      "module": "appointment",
+      "path": "backend/src/main/java/com/realestate/appointment/dto/CreateAppointmentRequest.java",
+      "fields": [
+        [
+          "propertyId",
+          "String"
+        ],
+        [
+          "viewingDate",
+          "LocalDate"
+        ],
+        [
+          "viewingTime",
+          "LocalTime"
+        ],
+        [
+          "notes",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getPropertyId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPropertyId",
+          "return": "void",
+          "args": "String propertyId",
+          "visibility": "public"
+        },
+        {
+          "name": "getViewingDate",
+          "return": "LocalDate",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setViewingDate",
+          "return": "void",
+          "args": "LocalDate viewingDate",
+          "visibility": "public"
+        },
+        {
+          "name": "getViewingTime",
+          "return": "LocalTime",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setViewingTime",
+          "return": "void",
+          "args": "LocalTime viewingTime",
+          "visibility": "public"
+        },
+        {
+          "name": "getNotes",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setNotes",
+          "return": "void",
+          "args": "String notes",
+          "visibility": "public"
+        },
+        {
+          "name": "rejectUnknown",
+          "return": "void",
+          "args": "String field, Object value",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "UpdateAppointmentRequest",
+      "kind": "class",
+      "package": "com.realestate.appointment.dto",
+      "module": "appointment",
+      "path": "backend/src/main/java/com/realestate/appointment/dto/UpdateAppointmentRequest.java",
+      "fields": [
+        [
+          "viewingDate",
+          "LocalDate"
+        ],
+        [
+          "viewingTime",
+          "LocalTime"
+        ],
+        [
+          "notes",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getViewingDate",
+          "return": "LocalDate",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setViewingDate",
+          "return": "void",
+          "args": "LocalDate viewingDate",
+          "visibility": "public"
+        },
+        {
+          "name": "getViewingTime",
+          "return": "LocalTime",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setViewingTime",
+          "return": "void",
+          "args": "LocalTime viewingTime",
+          "visibility": "public"
+        },
+        {
+          "name": "getNotes",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setNotes",
+          "return": "void",
+          "args": "String notes",
+          "visibility": "public"
+        },
+        {
+          "name": "rejectUnknown",
+          "return": "void",
+          "args": "String field, Object value",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "CsrfTokens",
+      "kind": "class",
+      "package": "com.realestate.common",
+      "module": "common",
+      "path": "backend/src/main/java/com/realestate/common/CsrfTokens.java",
+      "fields": [
+        [
+          "ATTRIBUTE",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getOrCreate",
+          "return": "String",
+          "args": "HttpSession session",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "CurrentAccount",
+      "kind": "class",
+      "package": "com.realestate.common",
+      "module": "common",
+      "path": "backend/src/main/java/com/realestate/common/CurrentAccount.java",
+      "fields": [
+        [
+          "id",
+          "String"
+        ],
+        [
+          "role",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "getRole",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "isBuyer",
+          "return": "boolean",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "isSeller",
+          "return": "boolean",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "isAdmin",
+          "return": "boolean",
+          "args": "",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "String id, String role"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "CurrentUser",
+      "kind": "class",
+      "package": "com.realestate.common",
+      "module": "common",
+      "path": "backend/src/main/java/com/realestate/common/CurrentUser.java",
+      "fields": [
+        [
+          "SESSION_USER_ID",
+          "String"
+        ],
+        [
+          "jdbc",
+          "JdbcTemplate"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "optional",
+          "return": "CurrentAccount",
+          "args": "HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "required",
+          "return": "CurrentAccount",
+          "args": "HttpSession session",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "JdbcTemplate jdbc"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "InputRules",
+      "kind": "class",
+      "package": "com.realestate.common",
+      "module": "common",
+      "path": "backend/src/main/java/com/realestate/common/InputRules.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "invalid",
+          "return": "ModuleException",
+          "args": "String message",
+          "visibility": "public"
+        },
+        {
+          "name": "allow",
+          "return": "void",
+          "args": "boolean allowed",
+          "visibility": "public"
+        },
+        {
+          "name": "conflict",
+          "return": "void",
+          "args": "boolean condition, String message",
+          "visibility": "public"
+        },
+        {
+          "name": "text",
+          "return": "String",
+          "args": "String value, String field, int max",
+          "visibility": "public"
+        },
+        {
+          "name": "optional",
+          "return": "String",
+          "args": "String value, int max",
+          "visibility": "public"
+        },
+        {
+          "name": "id",
+          "return": "String",
+          "args": "String value",
+          "visibility": "public"
+        },
+        {
+          "name": "choice",
+          "return": "String",
+          "args": "String value, String... choices",
+          "visibility": "public"
+        },
+        {
+          "name": "email",
+          "return": "String",
+          "args": "String value",
+          "visibility": "public"
+        },
+        {
+          "name": "money",
+          "return": "BigDecimal",
+          "args": "String value",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [
+        "ID",
+        "ID"
+      ],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "ModuleCsrfConfig",
+      "kind": "class",
+      "package": "com.realestate.common",
+      "module": "common",
+      "path": "backend/src/main/java/com/realestate/common/ModuleCsrfConfig.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "addInterceptors",
+          "return": "void",
+          "args": "InterceptorRegistry registry",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [
+        "WebMvcConfigurer"
+      ],
+      "extends": []
+    },
+    {
+      "name": "ModuleErrors",
+      "kind": "class",
+      "package": "com.realestate.common",
+      "module": "common",
+      "path": "backend/src/main/java/com/realestate/common/ModuleErrors.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "expected",
+          "return": "ResponseEntity<Map<String, String>>",
+          "args": "ModuleException e",
+          "visibility": "public"
+        },
+        {
+          "name": "invalid",
+          "return": "ResponseEntity<Map<String, String>>",
+          "args": "Exception e",
+          "visibility": "public"
+        },
+        {
+          "name": "conflict",
+          "return": "ResponseEntity<Map<String, String>>",
+          "args": "DataIntegrityViolationException e",
+          "visibility": "public"
+        },
+        {
+          "name": "concurrent",
+          "return": "ResponseEntity<Map<String, String>>",
+          "args": "ConcurrencyFailureException e",
+          "visibility": "public"
+        },
+        {
+          "name": "response",
+          "return": "ResponseEntity<Map<String, String>>",
+          "args": "HttpStatus status, String code, String message",
+          "visibility": "private"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [
+        "or"
+      ],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "ModuleException",
+      "kind": "class",
+      "package": "com.realestate.common",
+      "module": "common",
+      "path": "backend/src/main/java/com/realestate/common/ModuleException.java",
+      "fields": [
+        [
+          "status",
+          "HttpStatus"
+        ],
+        [
+          "code",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getStatus",
+          "return": "HttpStatus",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "getCode",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "HttpStatus status, String code, String message"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": [
+        "RuntimeException "
+      ]
+    },
+    {
+      "name": "PropertyLookup",
+      "kind": "class",
+      "package": "com.realestate.common",
+      "module": "common",
+      "path": "backend/src/main/java/com/realestate/common/PropertyLookup.java",
+      "fields": [
+        [
+          "jdbc",
+          "JdbcTemplate"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "find",
+          "return": "PropertyReference",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "lock",
+          "return": "PropertyReference",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "query",
+          "return": "PropertyReference",
+          "args": "String id, boolean locked",
+          "visibility": "private"
+        }
+      ],
+      "constructors": [
+        "JdbcTemplate jdbc"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "PropertyReference",
+      "kind": "class",
+      "package": "com.realestate.common",
+      "module": "common",
+      "path": "backend/src/main/java/com/realestate/common/PropertyReference.java",
+      "fields": [
+        [
+          "id",
+          "String"
+        ],
+        [
+          "ownerId",
+          "String"
+        ],
+        [
+          "status",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "getOwnerId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "getStatus",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "String id, String ownerId, String status"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "MovingCompany",
+      "kind": "record",
+      "package": "com.realestate.moving",
+      "module": "moving",
+      "path": "backend/src/main/java/com/realestate/moving/MovingCompany.java",
+      "fields": [
+        [
+          "id",
+          "String"
+        ],
+        [
+          "companyName",
+          "String"
+        ],
+        [
+          "email",
+          "String"
+        ],
+        [
+          "phone",
+          "String"
+        ],
+        [
+          "serviceAreas",
+          "String"
+        ],
+        [
+          "description",
+          "String"
+        ],
+        [
+          "availability",
+          "String"
+        ]
+      ],
+      "methods": [],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "MovingCompanyController",
+      "kind": "class",
+      "package": "com.realestate.moving",
+      "module": "moving",
+      "path": "backend/src/main/java/com/realestate/moving/MovingCompanyController.java",
+      "fields": [
+        [
+          "service",
+          "MovingCompanyService"
+        ],
+        [
+          "currentUser",
+          "CurrentUser"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "list",
+          "return": "List<MovingCompany>",
+          "args": "HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "detail",
+          "return": "MovingCompany",
+          "args": "@PathVariable String id,HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "create",
+          "return": "MovingCompany",
+          "args": "@RequestBody MovingCompanyRequest request,HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "MovingCompany",
+          "args": "@PathVariable String id,@RequestBody MovingCompanyRequest request,HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "@PathVariable String id,HttpSession session",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "MovingCompanyService service,CurrentUser currentUser"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "MovingCompanyDAO",
+      "kind": "class",
+      "package": "com.realestate.moving",
+      "module": "moving",
+      "path": "backend/src/main/java/com/realestate/moving/MovingCompanyDAO.java",
+      "fields": [
+        [
+          "jdbc",
+          "JdbcTemplate"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "all",
+          "return": "List<MovingCompany>",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "find",
+          "return": "MovingCompany",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "lock",
+          "return": "MovingCompany",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "read",
+          "return": "MovingCompany",
+          "args": "String id,boolean locked",
+          "visibility": "private"
+        },
+        {
+          "name": "missing",
+          "return": "ModuleException",
+          "args": "",
+          "visibility": "private"
+        },
+        {
+          "name": "insert",
+          "return": "void",
+          "args": "MovingCompany record",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "void",
+          "args": "MovingCompany record",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "JdbcTemplate jdbc"
+      ],
+      "enum_values": [],
+      "nested": [
+        "CompanyMapper"
+      ],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "MovingCompanyRequest",
+      "kind": "class",
+      "package": "com.realestate.moving",
+      "module": "moving",
+      "path": "backend/src/main/java/com/realestate/moving/MovingCompanyRequest.java",
+      "fields": [
+        [
+          "companyName",
+          "String"
+        ],
+        [
+          "email",
+          "String"
+        ],
+        [
+          "phone",
+          "String"
+        ],
+        [
+          "serviceAreas",
+          "String"
+        ],
+        [
+          "description",
+          "String"
+        ],
+        [
+          "availability",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getCompanyName",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setCompanyName",
+          "return": "void",
+          "args": "String companyName",
+          "visibility": "public"
+        },
+        {
+          "name": "getEmail",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setEmail",
+          "return": "void",
+          "args": "String email",
+          "visibility": "public"
+        },
+        {
+          "name": "getPhone",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPhone",
+          "return": "void",
+          "args": "String phone",
+          "visibility": "public"
+        },
+        {
+          "name": "getServiceAreas",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setServiceAreas",
+          "return": "void",
+          "args": "String serviceAreas",
+          "visibility": "public"
+        },
+        {
+          "name": "getDescription",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setDescription",
+          "return": "void",
+          "args": "String description",
+          "visibility": "public"
+        },
+        {
+          "name": "getAvailability",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setAvailability",
+          "return": "void",
+          "args": "String availability",
+          "visibility": "public"
+        },
+        {
+          "name": "rejectUnknown",
+          "return": "void",
+          "args": "String name,Object value",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "MovingCompanyService",
+      "kind": "class",
+      "package": "com.realestate.moving",
+      "module": "moving",
+      "path": "backend/src/main/java/com/realestate/moving/MovingCompanyService.java",
+      "fields": [
+        [
+          "dao",
+          "MovingCompanyDAO"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "list",
+          "return": "List<MovingCompany>",
+          "args": "CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "detail",
+          "return": "MovingCompany",
+          "args": "String recordId,CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "requireAdmin",
+          "return": "void",
+          "args": "CurrentAccount actor",
+          "visibility": "private"
+        },
+        {
+          "name": "prepare",
+          "return": "MovingCompany",
+          "args": "String id,MovingCompanyRequest request",
+          "visibility": "private"
+        },
+        {
+          "name": "create",
+          "return": "MovingCompany",
+          "args": "MovingCompanyRequest request,CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "MovingCompany",
+          "args": "String recordId,MovingCompanyRequest request,CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String recordId,CurrentAccount actor",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "MovingCompanyDAO dao"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "CreateOfferRequest",
+      "kind": "class",
+      "package": "com.realestate.offer.dto",
+      "module": "offer",
+      "path": "backend/src/main/java/com/realestate/offer/dto/CreateOfferRequest.java",
+      "fields": [
+        [
+          "propertyId",
+          "String"
+        ],
+        [
+          "amount",
+          "String"
+        ],
+        [
+          "message",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getPropertyId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPropertyId",
+          "return": "void",
+          "args": "String propertyId",
+          "visibility": "public"
+        },
+        {
+          "name": "getAmount",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setAmount",
+          "return": "void",
+          "args": "String amount",
+          "visibility": "public"
+        },
+        {
+          "name": "getMessage",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setMessage",
+          "return": "void",
+          "args": "String message",
+          "visibility": "public"
+        },
+        {
+          "name": "rejectUnknown",
+          "return": "void",
+          "args": "String field, Object value",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "OfferResponse",
+      "kind": "class",
+      "package": "com.realestate.offer.dto",
+      "module": "offer",
+      "path": "backend/src/main/java/com/realestate/offer/dto/OfferResponse.java",
+      "fields": [
+        [
+          "id",
+          "String"
+        ],
+        [
+          "buyerId",
+          "String"
+        ],
+        [
+          "propertyId",
+          "String"
+        ],
+        [
+          "amount",
+          "String"
+        ],
+        [
+          "message",
+          "String"
+        ],
+        [
+          "status",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setId",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "getBuyerId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setBuyerId",
+          "return": "void",
+          "args": "String buyerId",
+          "visibility": "public"
+        },
+        {
+          "name": "getPropertyId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPropertyId",
+          "return": "void",
+          "args": "String propertyId",
+          "visibility": "public"
+        },
+        {
+          "name": "getAmount",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setAmount",
+          "return": "void",
+          "args": "String amount",
+          "visibility": "public"
+        },
+        {
+          "name": "getMessage",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setMessage",
+          "return": "void",
+          "args": "String message",
+          "visibility": "public"
+        },
+        {
+          "name": "getStatus",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setStatus",
+          "return": "void",
+          "args": "String status",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "OfferStatusRequest",
+      "kind": "class",
+      "package": "com.realestate.offer.dto",
+      "module": "offer",
+      "path": "backend/src/main/java/com/realestate/offer/dto/OfferStatusRequest.java",
+      "fields": [
+        [
+          "status",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getStatus",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setStatus",
+          "return": "void",
+          "args": "String status",
+          "visibility": "public"
+        },
+        {
+          "name": "rejectUnknown",
+          "return": "void",
+          "args": "String field, Object value",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "UpdateOfferRequest",
+      "kind": "class",
+      "package": "com.realestate.offer.dto",
+      "module": "offer",
+      "path": "backend/src/main/java/com/realestate/offer/dto/UpdateOfferRequest.java",
+      "fields": [
+        [
+          "amount",
+          "String"
+        ],
+        [
+          "message",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getAmount",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setAmount",
+          "return": "void",
+          "args": "String amount",
+          "visibility": "public"
+        },
+        {
+          "name": "getMessage",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setMessage",
+          "return": "void",
+          "args": "String message",
+          "visibility": "public"
+        },
+        {
+          "name": "rejectUnknown",
+          "return": "void",
+          "args": "String field, Object value",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "Offer",
+      "kind": "class",
+      "package": "com.realestate.offer",
+      "module": "offer",
+      "path": "backend/src/main/java/com/realestate/offer/Offer.java",
+      "fields": [
+        [
+          "id",
+          "String"
+        ],
+        [
+          "buyerId",
+          "String"
+        ],
+        [
+          "propertyId",
+          "String"
+        ],
+        [
+          "amount",
+          "BigDecimal"
+        ],
+        [
+          "message",
+          "String"
+        ],
+        [
+          "status",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setId",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "getBuyerId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setBuyerId",
+          "return": "void",
+          "args": "String buyerId",
+          "visibility": "public"
+        },
+        {
+          "name": "getPropertyId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPropertyId",
+          "return": "void",
+          "args": "String propertyId",
+          "visibility": "public"
+        },
+        {
+          "name": "getAmount",
+          "return": "BigDecimal",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setAmount",
+          "return": "void",
+          "args": "BigDecimal amount",
+          "visibility": "public"
+        },
+        {
+          "name": "getMessage",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setMessage",
+          "return": "void",
+          "args": "String message",
+          "visibility": "public"
+        },
+        {
+          "name": "getStatus",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setStatus",
+          "return": "void",
+          "args": "String status",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "OfferController",
+      "kind": "class",
+      "package": "com.realestate.offer",
+      "module": "offer",
+      "path": "backend/src/main/java/com/realestate/offer/OfferController.java",
+      "fields": [
+        [
+          "service",
+          "OfferService"
+        ],
+        [
+          "currentUser",
+          "CurrentUser"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "detail",
+          "return": "OfferResponse",
+          "args": "@PathVariable String id, HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "create",
+          "return": "OfferResponse",
+          "args": "@RequestBody CreateOfferRequest request, HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "OfferResponse",
+          "args": "@PathVariable String id,@RequestBody UpdateOfferRequest request,HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "@PathVariable String id,HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "status",
+          "return": "OfferResponse",
+          "args": "@PathVariable String id,@RequestBody OfferStatusRequest request,HttpSession session",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "OfferService service, CurrentUser currentUser"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "OfferRepository",
+      "kind": "interface",
+      "package": "com.realestate.offer",
+      "module": "offer",
+      "path": "backend/src/main/java/com/realestate/offer/OfferRepository.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "findAll",
+          "return": "List<Offer>",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "findById",
+          "return": "Offer",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "lockById",
+          "return": "Offer",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "insert",
+          "return": "void",
+          "args": "Offer record",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "void",
+          "args": "Offer record",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "OfferRepositoryImpl",
+      "kind": "class",
+      "package": "com.realestate.offer",
+      "module": "offer",
+      "path": "backend/src/main/java/com/realestate/offer/OfferRepositoryImpl.java",
+      "fields": [
+        [
+          "jdbc",
+          "JdbcTemplate"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "findAll",
+          "return": "List<Offer>",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "findById",
+          "return": "Offer",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "lockById",
+          "return": "Offer",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "find",
+          "return": "Offer",
+          "args": "String id, boolean locked",
+          "visibility": "private"
+        },
+        {
+          "name": "insert",
+          "return": "void",
+          "args": "Offer record",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "void",
+          "args": "Offer record",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "JdbcTemplate jdbc"
+      ],
+      "enum_values": [],
+      "nested": [
+        "Mapper"
+      ],
+      "implements": [
+        "OfferRepository"
+      ],
+      "extends": []
+    },
+    {
+      "name": "OfferService",
+      "kind": "interface",
+      "package": "com.realestate.offer",
+      "module": "offer",
+      "path": "backend/src/main/java/com/realestate/offer/OfferService.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "create",
+          "return": "OfferResponse",
+          "args": "CreateOfferRequest request, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "detail",
+          "return": "OfferResponse",
+          "args": "String id, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "list",
+          "return": "List<OfferResponse>",
+          "args": "CurrentAccount actor, String q, String city",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "OfferResponse",
+          "args": "String id, UpdateOfferRequest request, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String id, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "changeStatus",
+          "return": "OfferResponse",
+          "args": "String id, String status, CurrentAccount actor",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "OfferServiceImpl",
+      "kind": "class",
+      "package": "com.realestate.offer",
+      "module": "offer",
+      "path": "backend/src/main/java/com/realestate/offer/OfferServiceImpl.java",
+      "fields": [
+        [
+          "repository",
+          "OfferRepository"
+        ],
+        [
+          "properties",
+          "PropertyLookup"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "owns",
+          "return": "boolean",
+          "args": "String ownerId, CurrentAccount actor",
+          "visibility": "private"
+        },
+        {
+          "name": "response",
+          "return": "OfferResponse",
+          "args": "Offer record",
+          "visibility": "private"
+        },
+        {
+          "name": "readable",
+          "return": "boolean",
+          "args": "Offer record, CurrentAccount actor",
+          "visibility": "private"
+        },
+        {
+          "name": "detail",
+          "return": "OfferResponse",
+          "args": "String recordId, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "list",
+          "return": "List<OfferResponse>",
+          "args": "CurrentAccount actor, String q, String city",
+          "visibility": "public"
+        },
+        {
+          "name": "create",
+          "return": "OfferResponse",
+          "args": "CreateOfferRequest request, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "fill",
+          "return": "void",
+          "args": "Offer record, CreateOfferRequest request",
+          "visibility": "private"
+        },
+        {
+          "name": "fill",
+          "return": "void",
+          "args": "Offer record, UpdateOfferRequest request",
+          "visibility": "private"
+        },
+        {
+          "name": "update",
+          "return": "OfferResponse",
+          "args": "String recordId, UpdateOfferRequest request, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String recordId, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "changeStatus",
+          "return": "OfferResponse",
+          "args": "String recordId, String requested, CurrentAccount actor",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "OfferRepository repository, PropertyLookup properties"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [
+        "OfferService"
+      ],
+      "extends": []
+    },
+    {
+      "name": "PortalApplication",
+      "kind": "class",
+      "package": "com.realestate",
+      "module": "application",
+      "path": "backend/src/main/java/com/realestate/PortalApplication.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "main",
+          "return": "void",
+          "args": "String[] args",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "CreatePropertyRequest",
+      "kind": "class",
+      "package": "com.realestate.property.dto",
+      "module": "property",
+      "path": "backend/src/main/java/com/realestate/property/dto/CreatePropertyRequest.java",
+      "fields": [
+        [
+          "title",
+          "String"
+        ],
+        [
+          "description",
+          "String"
+        ],
+        [
+          "city",
+          "String"
+        ],
+        [
+          "address",
+          "String"
+        ],
+        [
+          "price",
+          "String"
+        ],
+        [
+          "propertyType",
+          "String"
+        ],
+        [
+          "status",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getTitle",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setTitle",
+          "return": "void",
+          "args": "String title",
+          "visibility": "public"
+        },
+        {
+          "name": "getDescription",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setDescription",
+          "return": "void",
+          "args": "String description",
+          "visibility": "public"
+        },
+        {
+          "name": "getCity",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setCity",
+          "return": "void",
+          "args": "String city",
+          "visibility": "public"
+        },
+        {
+          "name": "getAddress",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setAddress",
+          "return": "void",
+          "args": "String address",
+          "visibility": "public"
+        },
+        {
+          "name": "getPrice",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPrice",
+          "return": "void",
+          "args": "String price",
+          "visibility": "public"
+        },
+        {
+          "name": "getPropertyType",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPropertyType",
+          "return": "void",
+          "args": "String propertyType",
+          "visibility": "public"
+        },
+        {
+          "name": "getStatus",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setStatus",
+          "return": "void",
+          "args": "String status",
+          "visibility": "public"
+        },
+        {
+          "name": "rejectUnknown",
+          "return": "void",
+          "args": "String field, Object value",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "PropertyResponse",
+      "kind": "class",
+      "package": "com.realestate.property.dto",
+      "module": "property",
+      "path": "backend/src/main/java/com/realestate/property/dto/PropertyResponse.java",
+      "fields": [
+        [
+          "id",
+          "String"
+        ],
+        [
+          "ownerId",
+          "String"
+        ],
+        [
+          "title",
+          "String"
+        ],
+        [
+          "description",
+          "String"
+        ],
+        [
+          "city",
+          "String"
+        ],
+        [
+          "address",
+          "String"
+        ],
+        [
+          "price",
+          "String"
+        ],
+        [
+          "propertyType",
+          "String"
+        ],
+        [
+          "status",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setId",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "getOwnerId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setOwnerId",
+          "return": "void",
+          "args": "String ownerId",
+          "visibility": "public"
+        },
+        {
+          "name": "getTitle",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setTitle",
+          "return": "void",
+          "args": "String title",
+          "visibility": "public"
+        },
+        {
+          "name": "getDescription",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setDescription",
+          "return": "void",
+          "args": "String description",
+          "visibility": "public"
+        },
+        {
+          "name": "getCity",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setCity",
+          "return": "void",
+          "args": "String city",
+          "visibility": "public"
+        },
+        {
+          "name": "getAddress",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setAddress",
+          "return": "void",
+          "args": "String address",
+          "visibility": "public"
+        },
+        {
+          "name": "getPrice",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPrice",
+          "return": "void",
+          "args": "String price",
+          "visibility": "public"
+        },
+        {
+          "name": "getPropertyType",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPropertyType",
+          "return": "void",
+          "args": "String propertyType",
+          "visibility": "public"
+        },
+        {
+          "name": "getStatus",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setStatus",
+          "return": "void",
+          "args": "String status",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "UpdatePropertyRequest",
+      "kind": "class",
+      "package": "com.realestate.property.dto",
+      "module": "property",
+      "path": "backend/src/main/java/com/realestate/property/dto/UpdatePropertyRequest.java",
+      "fields": [
+        [
+          "title",
+          "String"
+        ],
+        [
+          "description",
+          "String"
+        ],
+        [
+          "city",
+          "String"
+        ],
+        [
+          "address",
+          "String"
+        ],
+        [
+          "price",
+          "String"
+        ],
+        [
+          "propertyType",
+          "String"
+        ],
+        [
+          "status",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getTitle",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setTitle",
+          "return": "void",
+          "args": "String title",
+          "visibility": "public"
+        },
+        {
+          "name": "getDescription",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setDescription",
+          "return": "void",
+          "args": "String description",
+          "visibility": "public"
+        },
+        {
+          "name": "getCity",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setCity",
+          "return": "void",
+          "args": "String city",
+          "visibility": "public"
+        },
+        {
+          "name": "getAddress",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setAddress",
+          "return": "void",
+          "args": "String address",
+          "visibility": "public"
+        },
+        {
+          "name": "getPrice",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPrice",
+          "return": "void",
+          "args": "String price",
+          "visibility": "public"
+        },
+        {
+          "name": "getPropertyType",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPropertyType",
+          "return": "void",
+          "args": "String propertyType",
+          "visibility": "public"
+        },
+        {
+          "name": "getStatus",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setStatus",
+          "return": "void",
+          "args": "String status",
+          "visibility": "public"
+        },
+        {
+          "name": "rejectUnknown",
+          "return": "void",
+          "args": "String field, Object value",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "Property",
+      "kind": "class",
+      "package": "com.realestate.property",
+      "module": "property",
+      "path": "backend/src/main/java/com/realestate/property/Property.java",
+      "fields": [
+        [
+          "id",
+          "String"
+        ],
+        [
+          "ownerId",
+          "String"
+        ],
+        [
+          "title",
+          "String"
+        ],
+        [
+          "description",
+          "String"
+        ],
+        [
+          "city",
+          "String"
+        ],
+        [
+          "address",
+          "String"
+        ],
+        [
+          "price",
+          "BigDecimal"
+        ],
+        [
+          "propertyType",
+          "String"
+        ],
+        [
+          "status",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setId",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "getOwnerId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setOwnerId",
+          "return": "void",
+          "args": "String ownerId",
+          "visibility": "public"
+        },
+        {
+          "name": "getTitle",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setTitle",
+          "return": "void",
+          "args": "String title",
+          "visibility": "public"
+        },
+        {
+          "name": "getDescription",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setDescription",
+          "return": "void",
+          "args": "String description",
+          "visibility": "public"
+        },
+        {
+          "name": "getCity",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setCity",
+          "return": "void",
+          "args": "String city",
+          "visibility": "public"
+        },
+        {
+          "name": "getAddress",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setAddress",
+          "return": "void",
+          "args": "String address",
+          "visibility": "public"
+        },
+        {
+          "name": "getPrice",
+          "return": "BigDecimal",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPrice",
+          "return": "void",
+          "args": "BigDecimal price",
+          "visibility": "public"
+        },
+        {
+          "name": "getPropertyType",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPropertyType",
+          "return": "void",
+          "args": "String propertyType",
+          "visibility": "public"
+        },
+        {
+          "name": "getStatus",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setStatus",
+          "return": "void",
+          "args": "String status",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "PropertyController",
+      "kind": "class",
+      "package": "com.realestate.property",
+      "module": "property",
+      "path": "backend/src/main/java/com/realestate/property/PropertyController.java",
+      "fields": [
+        [
+          "service",
+          "PropertyService"
+        ],
+        [
+          "currentUser",
+          "CurrentUser"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "detail",
+          "return": "PropertyResponse",
+          "args": "@PathVariable String id, HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "create",
+          "return": "PropertyResponse",
+          "args": "@RequestBody CreatePropertyRequest request, HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "PropertyResponse",
+          "args": "@PathVariable String id,@RequestBody UpdatePropertyRequest request,HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "@PathVariable String id,HttpSession session",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "PropertyService service, CurrentUser currentUser"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "PropertyRepository",
+      "kind": "interface",
+      "package": "com.realestate.property",
+      "module": "property",
+      "path": "backend/src/main/java/com/realestate/property/PropertyRepository.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "findAll",
+          "return": "List<Property>",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "findById",
+          "return": "Property",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "lockById",
+          "return": "Property",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "insert",
+          "return": "void",
+          "args": "Property record",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "void",
+          "args": "Property record",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "PropertyRepositoryImpl",
+      "kind": "class",
+      "package": "com.realestate.property",
+      "module": "property",
+      "path": "backend/src/main/java/com/realestate/property/PropertyRepositoryImpl.java",
+      "fields": [
+        [
+          "jdbc",
+          "JdbcTemplate"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "findAll",
+          "return": "List<Property>",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "findById",
+          "return": "Property",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "lockById",
+          "return": "Property",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "find",
+          "return": "Property",
+          "args": "String id, boolean locked",
+          "visibility": "private"
+        },
+        {
+          "name": "insert",
+          "return": "void",
+          "args": "Property record",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "void",
+          "args": "Property record",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "JdbcTemplate jdbc"
+      ],
+      "enum_values": [],
+      "nested": [
+        "Mapper"
+      ],
+      "implements": [
+        "PropertyRepository"
+      ],
+      "extends": []
+    },
+    {
+      "name": "PropertyService",
+      "kind": "interface",
+      "package": "com.realestate.property",
+      "module": "property",
+      "path": "backend/src/main/java/com/realestate/property/PropertyService.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "create",
+          "return": "PropertyResponse",
+          "args": "CreatePropertyRequest request, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "detail",
+          "return": "PropertyResponse",
+          "args": "String id, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "list",
+          "return": "List<PropertyResponse>",
+          "args": "CurrentAccount actor, String q, String city",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "PropertyResponse",
+          "args": "String id, UpdatePropertyRequest request, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String id, CurrentAccount actor",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "PropertyServiceImpl",
+      "kind": "class",
+      "package": "com.realestate.property",
+      "module": "property",
+      "path": "backend/src/main/java/com/realestate/property/PropertyServiceImpl.java",
+      "fields": [
+        [
+          "repository",
+          "PropertyRepository"
+        ],
+        [
+          "properties",
+          "PropertyLookup"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "owns",
+          "return": "boolean",
+          "args": "String ownerId, CurrentAccount actor",
+          "visibility": "private"
+        },
+        {
+          "name": "response",
+          "return": "PropertyResponse",
+          "args": "Property record",
+          "visibility": "private"
+        },
+        {
+          "name": "readable",
+          "return": "boolean",
+          "args": "Property record, CurrentAccount actor",
+          "visibility": "private"
+        },
+        {
+          "name": "detail",
+          "return": "PropertyResponse",
+          "args": "String recordId, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "list",
+          "return": "List<PropertyResponse>",
+          "args": "CurrentAccount actor, String q, String city",
+          "visibility": "public"
+        },
+        {
+          "name": "create",
+          "return": "PropertyResponse",
+          "args": "CreatePropertyRequest request, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "fill",
+          "return": "void",
+          "args": "Property record, CreatePropertyRequest request",
+          "visibility": "private"
+        },
+        {
+          "name": "fill",
+          "return": "void",
+          "args": "Property record, UpdatePropertyRequest request",
+          "visibility": "private"
+        },
+        {
+          "name": "update",
+          "return": "PropertyResponse",
+          "args": "String recordId, UpdatePropertyRequest request, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String recordId, CurrentAccount actor",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "PropertyRepository repository, PropertyLookup properties"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [
+        "PropertyService"
+      ],
+      "extends": []
+    },
+    {
+      "name": "CreateReviewRequest",
+      "kind": "class",
+      "package": "com.realestate.review.dto",
+      "module": "review",
+      "path": "backend/src/main/java/com/realestate/review/dto/CreateReviewRequest.java",
+      "fields": [
+        [
+          "propertyId",
+          "String"
+        ],
+        [
+          "rating",
+          "Integer"
+        ],
+        [
+          "comment",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getPropertyId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPropertyId",
+          "return": "void",
+          "args": "String propertyId",
+          "visibility": "public"
+        },
+        {
+          "name": "getRating",
+          "return": "Integer",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setRating",
+          "return": "void",
+          "args": "BigDecimal rating",
+          "visibility": "public"
+        },
+        {
+          "name": "getComment",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setComment",
+          "return": "void",
+          "args": "String comment",
+          "visibility": "public"
+        },
+        {
+          "name": "rejectUnknown",
+          "return": "void",
+          "args": "String field, Object value",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "ReviewResponse",
+      "kind": "class",
+      "package": "com.realestate.review.dto",
+      "module": "review",
+      "path": "backend/src/main/java/com/realestate/review/dto/ReviewResponse.java",
+      "fields": [
+        [
+          "id",
+          "String"
+        ],
+        [
+          "reviewerId",
+          "String"
+        ],
+        [
+          "propertyId",
+          "String"
+        ],
+        [
+          "rating",
+          "Integer"
+        ],
+        [
+          "comment",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setId",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "getReviewerId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setReviewerId",
+          "return": "void",
+          "args": "String reviewerId",
+          "visibility": "public"
+        },
+        {
+          "name": "getPropertyId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPropertyId",
+          "return": "void",
+          "args": "String propertyId",
+          "visibility": "public"
+        },
+        {
+          "name": "getRating",
+          "return": "Integer",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setRating",
+          "return": "void",
+          "args": "Integer rating",
+          "visibility": "public"
+        },
+        {
+          "name": "getComment",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setComment",
+          "return": "void",
+          "args": "String comment",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "UpdateReviewRequest",
+      "kind": "class",
+      "package": "com.realestate.review.dto",
+      "module": "review",
+      "path": "backend/src/main/java/com/realestate/review/dto/UpdateReviewRequest.java",
+      "fields": [
+        [
+          "rating",
+          "Integer"
+        ],
+        [
+          "comment",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getRating",
+          "return": "Integer",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setRating",
+          "return": "void",
+          "args": "BigDecimal rating",
+          "visibility": "public"
+        },
+        {
+          "name": "getComment",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setComment",
+          "return": "void",
+          "args": "String comment",
+          "visibility": "public"
+        },
+        {
+          "name": "rejectUnknown",
+          "return": "void",
+          "args": "String field, Object value",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "Review",
+      "kind": "class",
+      "package": "com.realestate.review",
+      "module": "review",
+      "path": "backend/src/main/java/com/realestate/review/Review.java",
+      "fields": [
+        [
+          "id",
+          "String"
+        ],
+        [
+          "reviewerId",
+          "String"
+        ],
+        [
+          "propertyId",
+          "String"
+        ],
+        [
+          "rating",
+          "Integer"
+        ],
+        [
+          "comment",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setId",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "getReviewerId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setReviewerId",
+          "return": "void",
+          "args": "String reviewerId",
+          "visibility": "public"
+        },
+        {
+          "name": "getPropertyId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPropertyId",
+          "return": "void",
+          "args": "String propertyId",
+          "visibility": "public"
+        },
+        {
+          "name": "getRating",
+          "return": "Integer",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setRating",
+          "return": "void",
+          "args": "Integer rating",
+          "visibility": "public"
+        },
+        {
+          "name": "getComment",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setComment",
+          "return": "void",
+          "args": "String comment",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "ReviewController",
+      "kind": "class",
+      "package": "com.realestate.review",
+      "module": "review",
+      "path": "backend/src/main/java/com/realestate/review/ReviewController.java",
+      "fields": [
+        [
+          "service",
+          "ReviewService"
+        ],
+        [
+          "currentUser",
+          "CurrentUser"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "detail",
+          "return": "ReviewResponse",
+          "args": "@PathVariable String id, HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "create",
+          "return": "ReviewResponse",
+          "args": "@RequestBody CreateReviewRequest request, HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "ReviewResponse",
+          "args": "@PathVariable String id,@RequestBody UpdateReviewRequest request,HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "@PathVariable String id,HttpSession session",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "ReviewService service, CurrentUser currentUser"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "ReviewRepository",
+      "kind": "interface",
+      "package": "com.realestate.review",
+      "module": "review",
+      "path": "backend/src/main/java/com/realestate/review/ReviewRepository.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "findAll",
+          "return": "List<Review>",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "findById",
+          "return": "Review",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "lockById",
+          "return": "Review",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "insert",
+          "return": "void",
+          "args": "Review record",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "void",
+          "args": "Review record",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "ReviewRepositoryImpl",
+      "kind": "class",
+      "package": "com.realestate.review",
+      "module": "review",
+      "path": "backend/src/main/java/com/realestate/review/ReviewRepositoryImpl.java",
+      "fields": [
+        [
+          "jdbc",
+          "JdbcTemplate"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "findAll",
+          "return": "List<Review>",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "findById",
+          "return": "Review",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "lockById",
+          "return": "Review",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "find",
+          "return": "Review",
+          "args": "String id, boolean locked",
+          "visibility": "private"
+        },
+        {
+          "name": "insert",
+          "return": "void",
+          "args": "Review record",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "void",
+          "args": "Review record",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "JdbcTemplate jdbc"
+      ],
+      "enum_values": [],
+      "nested": [
+        "Mapper"
+      ],
+      "implements": [
+        "ReviewRepository"
+      ],
+      "extends": []
+    },
+    {
+      "name": "ReviewService",
+      "kind": "interface",
+      "package": "com.realestate.review",
+      "module": "review",
+      "path": "backend/src/main/java/com/realestate/review/ReviewService.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "create",
+          "return": "ReviewResponse",
+          "args": "CreateReviewRequest request, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "detail",
+          "return": "ReviewResponse",
+          "args": "String id, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "list",
+          "return": "List<ReviewResponse>",
+          "args": "CurrentAccount actor, String q, String city",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "ReviewResponse",
+          "args": "String id, UpdateReviewRequest request, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String id, CurrentAccount actor",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "ReviewServiceImpl",
+      "kind": "class",
+      "package": "com.realestate.review",
+      "module": "review",
+      "path": "backend/src/main/java/com/realestate/review/ReviewServiceImpl.java",
+      "fields": [
+        [
+          "repository",
+          "ReviewRepository"
+        ],
+        [
+          "properties",
+          "PropertyLookup"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "owns",
+          "return": "boolean",
+          "args": "String ownerId, CurrentAccount actor",
+          "visibility": "private"
+        },
+        {
+          "name": "response",
+          "return": "ReviewResponse",
+          "args": "Review record",
+          "visibility": "private"
+        },
+        {
+          "name": "readable",
+          "return": "boolean",
+          "args": "Review record, CurrentAccount actor",
+          "visibility": "private"
+        },
+        {
+          "name": "detail",
+          "return": "ReviewResponse",
+          "args": "String recordId, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "list",
+          "return": "List<ReviewResponse>",
+          "args": "CurrentAccount actor, String q, String city",
+          "visibility": "public"
+        },
+        {
+          "name": "create",
+          "return": "ReviewResponse",
+          "args": "CreateReviewRequest request, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "fill",
+          "return": "void",
+          "args": "Review record, CreateReviewRequest request",
+          "visibility": "private"
+        },
+        {
+          "name": "fill",
+          "return": "void",
+          "args": "Review record, UpdateReviewRequest request",
+          "visibility": "private"
+        },
+        {
+          "name": "update",
+          "return": "ReviewResponse",
+          "args": "String recordId, UpdateReviewRequest request, CurrentAccount actor",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "String recordId, CurrentAccount actor",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "ReviewRepository repository, PropertyLookup properties"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [
+        "ReviewService"
+      ],
+      "extends": []
+    },
+    {
+      "name": "AuthController",
+      "kind": "class",
+      "package": "com.realestate.user",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/AuthController.java",
+      "fields": [
+        [
+          "users",
+          "UserService"
+        ],
+        [
+          "auth",
+          "AuthService"
+        ],
+        [
+          "currentUser",
+          "CurrentUser"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "me",
+          "return": "AuthResponse",
+          "args": "HttpServletRequest request,HttpServletResponse response",
+          "visibility": "public"
+        },
+        {
+          "name": "register",
+          "return": "UserResponse",
+          "args": "@RequestBody CreateUserRequest request",
+          "visibility": "public"
+        },
+        {
+          "name": "login",
+          "return": "AuthResponse",
+          "args": "@RequestBody LoginRequest request,HttpServletRequest httpRequest,HttpServletResponse response",
+          "visibility": "public"
+        },
+        {
+          "name": "logout",
+          "return": "void",
+          "args": "HttpServletRequest request",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "UserService users,AuthService auth,CurrentUser currentUser"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "AuthService",
+      "kind": "interface",
+      "package": "com.realestate.user",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/AuthService.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "login",
+          "return": "AuthResponse",
+          "args": "LoginRequest request,HttpServletRequest httpRequest",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "AuthServiceImpl",
+      "kind": "class",
+      "package": "com.realestate.user",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/AuthServiceImpl.java",
+      "fields": [
+        [
+          "repository",
+          "UserRepository"
+        ],
+        [
+          "encoder",
+          "PasswordEncoder"
+        ],
+        [
+          "sessions",
+          "UserSessions"
+        ],
+        [
+          "dummyHash",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "login",
+          "return": "AuthResponse",
+          "args": "LoginRequest request,HttpServletRequest httpRequest",
+          "visibility": "public"
+        },
+        {
+          "name": "failed",
+          "return": "ModuleException",
+          "args": "",
+          "visibility": "private"
+        }
+      ],
+      "constructors": [
+        "UserRepository repository,PasswordEncoder encoder,UserSessions sessions"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [
+        "AuthService"
+      ],
+      "extends": []
+    },
+    {
+      "name": "BootstrapAdminRunner",
+      "kind": "class",
+      "package": "com.realestate.user",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/BootstrapAdminRunner.java",
+      "fields": [
+        [
+          "service",
+          "BootstrapAdminService"
+        ],
+        [
+          "environment",
+          "Environment"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "run",
+          "return": "void",
+          "args": "ApplicationArguments args",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "BootstrapAdminService service,Environment environment"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [
+        "ApplicationRunner"
+      ],
+      "extends": []
+    },
+    {
+      "name": "BootstrapAdminService",
+      "kind": "class",
+      "package": "com.realestate.user",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/BootstrapAdminService.java",
+      "fields": [
+        [
+          "repository",
+          "UserRepository"
+        ],
+        [
+          "encoder",
+          "PasswordEncoder"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "createFirstAdmin",
+          "return": "void",
+          "args": "String username,String password,String email,String phone",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "UserRepository repository,PasswordEncoder encoder"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "AuthResponse",
+      "kind": "class",
+      "package": "com.realestate.user.dto",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/dto/AuthResponse.java",
+      "fields": [
+        [
+          "user",
+          "UserResponse"
+        ],
+        [
+          "csrfToken",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getUser",
+          "return": "UserResponse",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "getCsrfToken",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "UserResponse user,String csrfToken"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "ChangePasswordRequest",
+      "kind": "class",
+      "package": "com.realestate.user.dto",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/dto/ChangePasswordRequest.java",
+      "fields": [
+        [
+          "currentPassword",
+          "String"
+        ],
+        [
+          "newPassword",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getCurrentPassword",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setCurrentPassword",
+          "return": "void",
+          "args": "String currentPassword",
+          "visibility": "public"
+        },
+        {
+          "name": "getNewPassword",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setNewPassword",
+          "return": "void",
+          "args": "String newPassword",
+          "visibility": "public"
+        },
+        {
+          "name": "rejectUnknown",
+          "return": "void",
+          "args": "String field, Object value",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "ChangeRoleRequest",
+      "kind": "class",
+      "package": "com.realestate.user.dto",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/dto/ChangeRoleRequest.java",
+      "fields": [
+        [
+          "role",
+          "Role"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getRole",
+          "return": "Role",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setRole",
+          "return": "void",
+          "args": "Role role",
+          "visibility": "public"
+        },
+        {
+          "name": "rejectUnknown",
+          "return": "void",
+          "args": "String field, Object value",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "CreateUserRequest",
+      "kind": "class",
+      "package": "com.realestate.user.dto",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/dto/CreateUserRequest.java",
+      "fields": [
+        [
+          "username",
+          "String"
+        ],
+        [
+          "password",
+          "String"
+        ],
+        [
+          "email",
+          "String"
+        ],
+        [
+          "phone",
+          "String"
+        ],
+        [
+          "role",
+          "Role"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getUsername",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setUsername",
+          "return": "void",
+          "args": "String username",
+          "visibility": "public"
+        },
+        {
+          "name": "getPassword",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPassword",
+          "return": "void",
+          "args": "String password",
+          "visibility": "public"
+        },
+        {
+          "name": "getEmail",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setEmail",
+          "return": "void",
+          "args": "String email",
+          "visibility": "public"
+        },
+        {
+          "name": "getPhone",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPhone",
+          "return": "void",
+          "args": "String phone",
+          "visibility": "public"
+        },
+        {
+          "name": "getRole",
+          "return": "Role",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setRole",
+          "return": "void",
+          "args": "Role role",
+          "visibility": "public"
+        },
+        {
+          "name": "rejectUnknown",
+          "return": "void",
+          "args": "String field, Object value",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "LoginRequest",
+      "kind": "class",
+      "package": "com.realestate.user.dto",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/dto/LoginRequest.java",
+      "fields": [
+        [
+          "username",
+          "String"
+        ],
+        [
+          "password",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getUsername",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setUsername",
+          "return": "void",
+          "args": "String username",
+          "visibility": "public"
+        },
+        {
+          "name": "getPassword",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPassword",
+          "return": "void",
+          "args": "String password",
+          "visibility": "public"
+        },
+        {
+          "name": "rejectUnknown",
+          "return": "void",
+          "args": "String field, Object value",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "UpdateUserRequest",
+      "kind": "class",
+      "package": "com.realestate.user.dto",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/dto/UpdateUserRequest.java",
+      "fields": [
+        [
+          "username",
+          "String"
+        ],
+        [
+          "email",
+          "String"
+        ],
+        [
+          "phone",
+          "String"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getUsername",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setUsername",
+          "return": "void",
+          "args": "String username",
+          "visibility": "public"
+        },
+        {
+          "name": "getEmail",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setEmail",
+          "return": "void",
+          "args": "String email",
+          "visibility": "public"
+        },
+        {
+          "name": "getPhone",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPhone",
+          "return": "void",
+          "args": "String phone",
+          "visibility": "public"
+        },
+        {
+          "name": "rejectUnknown",
+          "return": "void",
+          "args": "String field, Object value",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "UserResponse",
+      "kind": "class",
+      "package": "com.realestate.user.dto",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/dto/UserResponse.java",
+      "fields": [
+        [
+          "id",
+          "String"
+        ],
+        [
+          "username",
+          "String"
+        ],
+        [
+          "email",
+          "String"
+        ],
+        [
+          "phone",
+          "String"
+        ],
+        [
+          "role",
+          "Role"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setId",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "getUsername",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setUsername",
+          "return": "void",
+          "args": "String username",
+          "visibility": "public"
+        },
+        {
+          "name": "getEmail",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setEmail",
+          "return": "void",
+          "args": "String email",
+          "visibility": "public"
+        },
+        {
+          "name": "getPhone",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPhone",
+          "return": "void",
+          "args": "String phone",
+          "visibility": "public"
+        },
+        {
+          "name": "getRole",
+          "return": "Role",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setRole",
+          "return": "void",
+          "args": "Role role",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "PasswordConfig",
+      "kind": "class",
+      "package": "com.realestate.user",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/PasswordConfig.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "passwordEncoder",
+          "return": "PasswordEncoder",
+          "args": "",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "Role",
+      "kind": "enum",
+      "package": "com.realestate.user",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/Role.java",
+      "fields": [],
+      "methods": [],
+      "constructors": [],
+      "enum_values": [
+        "BUYER",
+        "SELLER",
+        "ADMIN"
+      ],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "User",
+      "kind": "class",
+      "package": "com.realestate.user",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/User.java",
+      "fields": [
+        [
+          "id",
+          "String"
+        ],
+        [
+          "username",
+          "String"
+        ],
+        [
+          "passwordHash",
+          "String"
+        ],
+        [
+          "email",
+          "String"
+        ],
+        [
+          "phone",
+          "String"
+        ],
+        [
+          "role",
+          "Role"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "getId",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setId",
+          "return": "void",
+          "args": "String id",
+          "visibility": "public"
+        },
+        {
+          "name": "getUsername",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setUsername",
+          "return": "void",
+          "args": "String username",
+          "visibility": "public"
+        },
+        {
+          "name": "getPasswordHash",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPasswordHash",
+          "return": "void",
+          "args": "String passwordHash",
+          "visibility": "public"
+        },
+        {
+          "name": "getEmail",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setEmail",
+          "return": "void",
+          "args": "String email",
+          "visibility": "public"
+        },
+        {
+          "name": "getPhone",
+          "return": "String",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setPhone",
+          "return": "void",
+          "args": "String phone",
+          "visibility": "public"
+        },
+        {
+          "name": "getRole",
+          "return": "Role",
+          "args": "",
+          "visibility": "public"
+        },
+        {
+          "name": "setRole",
+          "return": "void",
+          "args": "Role role",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "UserApiExceptionHandler",
+      "kind": "class",
+      "package": "com.realestate.user",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/UserApiExceptionHandler.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "expected",
+          "return": "ResponseEntity<Map<String,String>>",
+          "args": "ModuleException e",
+          "visibility": "public"
+        },
+        {
+          "name": "invalid",
+          "return": "ResponseEntity<Map<String,String>>",
+          "args": "HttpMessageNotReadableException e",
+          "visibility": "public"
+        },
+        {
+          "name": "conflict",
+          "return": "ResponseEntity<Map<String,String>>",
+          "args": "DataIntegrityViolationException e",
+          "visibility": "public"
+        },
+        {
+          "name": "concurrent",
+          "return": "ResponseEntity<Map<String,String>>",
+          "args": "ConcurrencyFailureException e",
+          "visibility": "public"
+        },
+        {
+          "name": "response",
+          "return": "ResponseEntity<Map<String,String>>",
+          "args": "HttpStatus status,String code,String message",
+          "visibility": "private"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "UserController",
+      "kind": "class",
+      "package": "com.realestate.user",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/UserController.java",
+      "fields": [
+        [
+          "service",
+          "UserService"
+        ],
+        [
+          "currentUser",
+          "CurrentUser"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "list",
+          "return": "List<UserResponse>",
+          "args": "HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "detail",
+          "return": "UserResponse",
+          "args": "@PathVariable String id,HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "create",
+          "return": "UserResponse",
+          "args": "@RequestBody CreateUserRequest request,HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "update",
+          "return": "UserResponse",
+          "args": "@PathVariable String id,@RequestBody UpdateUserRequest request,HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "role",
+          "return": "UserResponse",
+          "args": "@PathVariable String id,@RequestBody ChangeRoleRequest request,HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "password",
+          "return": "void",
+          "args": "@PathVariable String id,@RequestBody ChangePasswordRequest request,HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "delete",
+          "return": "void",
+          "args": "@PathVariable String id,HttpSession session",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "UserService service,CurrentUser currentUser"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "UserRepository",
+      "kind": "interface",
+      "package": "com.realestate.user",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/UserRepository.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "findByUsernameIgnoreCase",
+          "return": "Optional<User>",
+          "args": "String username",
+          "visibility": "public"
+        },
+        {
+          "name": "existsByUsernameIgnoreCase",
+          "return": "boolean",
+          "args": "String username",
+          "visibility": "public"
+        },
+        {
+          "name": "countByRole",
+          "return": "long",
+          "args": "Role role",
+          "visibility": "public"
+        },
+        {
+          "name": "lockAllUsers",
+          "return": "List<User>",
+          "args": "",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": [
+        "JpaRepository<User, String> "
+      ]
+    },
+    {
+      "name": "UserService",
+      "kind": "interface",
+      "package": "com.realestate.user",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/UserService.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "register",
+          "return": "UserResponse",
+          "args": "CreateUserRequest request",
+          "visibility": "public"
+        },
+        {
+          "name": "createUser",
+          "return": "UserResponse",
+          "args": "String currentUserId, CreateUserRequest request",
+          "visibility": "public"
+        },
+        {
+          "name": "getAllUsers",
+          "return": "List<UserResponse>",
+          "args": "String currentUserId",
+          "visibility": "public"
+        },
+        {
+          "name": "getUserById",
+          "return": "UserResponse",
+          "args": "String currentUserId, String userId",
+          "visibility": "public"
+        },
+        {
+          "name": "updateUser",
+          "return": "UserResponse",
+          "args": "String currentUserId, String userId, UpdateUserRequest request",
+          "visibility": "public"
+        },
+        {
+          "name": "changePassword",
+          "return": "void",
+          "args": "String currentUserId, String userId, ChangePasswordRequest request",
+          "visibility": "public"
+        },
+        {
+          "name": "changeRole",
+          "return": "UserResponse",
+          "args": "String currentUserId, String userId, ChangeRoleRequest request",
+          "visibility": "public"
+        },
+        {
+          "name": "deleteUser",
+          "return": "void",
+          "args": "String currentUserId, String userId",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "UserServiceImpl",
+      "kind": "class",
+      "package": "com.realestate.user",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/UserServiceImpl.java",
+      "fields": [
+        [
+          "repository",
+          "UserRepository"
+        ],
+        [
+          "encoder",
+          "PasswordEncoder"
+        ],
+        [
+          "jdbc",
+          "JdbcTemplate"
+        ],
+        [
+          "sessions",
+          "UserSessions"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "missing",
+          "return": "ModuleException",
+          "args": "",
+          "visibility": "private"
+        },
+        {
+          "name": "find",
+          "return": "User",
+          "args": "String userId",
+          "visibility": "private"
+        },
+        {
+          "name": "findIn",
+          "return": "User",
+          "args": "List<User> users,String userId",
+          "visibility": "private"
+        },
+        {
+          "name": "actor",
+          "return": "User",
+          "args": "String userId",
+          "visibility": "private"
+        },
+        {
+          "name": "actorIn",
+          "return": "User",
+          "args": "List<User> users,String userId",
+          "visibility": "private"
+        },
+        {
+          "name": "admin",
+          "return": "void",
+          "args": "User user",
+          "visibility": "private"
+        },
+        {
+          "name": "unique",
+          "return": "void",
+          "args": "String name,String excludedId",
+          "visibility": "private"
+        },
+        {
+          "name": "password",
+          "return": "String",
+          "args": "String value",
+          "visibility": "private"
+        },
+        {
+          "name": "newUser",
+          "return": "User",
+          "args": "CreateUserRequest request",
+          "visibility": "private"
+        },
+        {
+          "name": "references",
+          "return": "int",
+          "args": "String userId",
+          "visibility": "private"
+        },
+        {
+          "name": "admins",
+          "return": "long",
+          "args": "List<User> users",
+          "visibility": "private"
+        },
+        {
+          "name": "register",
+          "return": "UserResponse",
+          "args": "CreateUserRequest request",
+          "visibility": "public"
+        },
+        {
+          "name": "createUser",
+          "return": "UserResponse",
+          "args": "String currentUserId,CreateUserRequest request",
+          "visibility": "public"
+        },
+        {
+          "name": "getAllUsers",
+          "return": "List<UserResponse>",
+          "args": "String currentUserId",
+          "visibility": "public"
+        },
+        {
+          "name": "getUserById",
+          "return": "UserResponse",
+          "args": "String currentUserId,String userId",
+          "visibility": "public"
+        },
+        {
+          "name": "updateUser",
+          "return": "UserResponse",
+          "args": "String currentUserId,String userId,UpdateUserRequest request",
+          "visibility": "public"
+        },
+        {
+          "name": "changePassword",
+          "return": "void",
+          "args": "String currentUserId,String userId,ChangePasswordRequest request",
+          "visibility": "public"
+        },
+        {
+          "name": "changeRole",
+          "return": "UserResponse",
+          "args": "String currentUserId,String userId,ChangeRoleRequest request",
+          "visibility": "public"
+        },
+        {
+          "name": "deleteUser",
+          "return": "void",
+          "args": "String currentUserId,String userId",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        "UserRepository repository,PasswordEncoder encoder,JdbcTemplate jdbc,UserSessions sessions"
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [
+        "UserService"
+      ],
+      "extends": []
+    },
+    {
+      "name": "UserSessionListenerConfig",
+      "kind": "class",
+      "package": "com.realestate.user",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/UserSessionListenerConfig.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "userSessionListener",
+          "return": "ServletListenerRegistrationBean<HttpSessionListener>",
+          "args": "final UserSessions sessions",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "UserSessions",
+      "kind": "class",
+      "package": "com.realestate.user",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/UserSessions.java",
+      "fields": [
+        [
+          "sessions",
+          "Map<String,Set<HttpSession>>"
+        ]
+      ],
+      "methods": [
+        {
+          "name": "track",
+          "return": "void",
+          "args": "String userId,HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "remove",
+          "return": "void",
+          "args": "HttpSession session",
+          "visibility": "public"
+        },
+        {
+          "name": "invalidate",
+          "return": "void",
+          "args": "String userId",
+          "visibility": "public"
+        },
+        {
+          "name": "invalidateAfterCommit",
+          "return": "void",
+          "args": "final String userId",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    },
+    {
+      "name": "UserViews",
+      "kind": "class",
+      "package": "com.realestate.user",
+      "module": "user",
+      "path": "backend/src/main/java/com/realestate/user/UserViews.java",
+      "fields": [],
+      "methods": [
+        {
+          "name": "response",
+          "return": "UserResponse",
+          "args": "User user",
+          "visibility": "public"
+        }
+      ],
+      "constructors": [
+        ""
+      ],
+      "enum_values": [],
+      "nested": [],
+      "implements": [],
+      "extends": []
+    }
+  ]
+}

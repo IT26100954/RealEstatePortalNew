@@ -1,0 +1,1009 @@
+classDiagram
+direction LR
+  class Appointment {
+    -String id
+    -String buyerId
+    -String propertyId
+    -LocalDate viewingDate
+    -LocalTime viewingTime
+    -String status
+    -String notes
+    +getId() String
+    +setId(String) void
+    +getBuyerId() String
+    +setBuyerId(String) void
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getViewingDate() LocalDate
+    +setViewingDate(LocalDate) void
+    +getViewingTime() LocalTime
+    +setViewingTime(LocalTime) void
+    +getStatus() String
+    +setStatus(String) void
+    +getNotes() String
+    +setNotes(String) void
+  }
+  class AppointmentController {
+    -AppointmentService service
+    -CurrentUser currentUser
+    +detail(String; HttpSession) AppointmentResponse
+    +create(CreateAppointmentRequest; HttpSession) AppointmentResponse
+    +update(String; UpdateAppointmentRequest; HttpSession) AppointmentResponse
+    +delete(String; HttpSession) void
+    +status(String; AppointmentStatusRequest; HttpSession) AppointmentResponse
+  }
+  class AppointmentRepository {
+    <<interface>>
+    +findAll() ListAppointment
+    +findById(String) Appointment
+    +lockById(String) Appointment
+    +insert(Appointment) void
+    +update(Appointment) void
+    +delete(String) void
+    +countConfirmedSlot(String; java.time.LocalDate; java.time.LocalTime; String) int
+  }
+  class AppointmentRepositoryImpl {
+    -JdbcTemplate jdbc
+    +findAll() ListAppointment
+    +findById(String) Appointment
+    +lockById(String) Appointment
+    -find(String; boolean) Appointment
+    +insert(Appointment) void
+    +update(Appointment) void
+    +delete(String) void
+    +countConfirmedSlot(String; java.time.LocalDate; java.time.LocalTime; String) int
+  }
+  class AppointmentService {
+    <<interface>>
+    +create(CreateAppointmentRequest; CurrentAccount) AppointmentResponse
+    +detail(String; CurrentAccount) AppointmentResponse
+    +list(CurrentAccount; String; String) ListAppointmentResponse
+    +update(String; UpdateAppointmentRequest; CurrentAccount) AppointmentResponse
+    +delete(String; CurrentAccount) void
+    +changeStatus(String; String; CurrentAccount) AppointmentResponse
+  }
+  class AppointmentServiceImpl {
+    -AppointmentRepository repository
+    -PropertyLookup properties
+    -owns(String; CurrentAccount) boolean
+    -response(Appointment) AppointmentResponse
+    -readable(Appointment; CurrentAccount) boolean
+    +detail(String; CurrentAccount) AppointmentResponse
+    +list(CurrentAccount; String; String) ListAppointmentResponse
+    +create(CreateAppointmentRequest; CurrentAccount) AppointmentResponse
+    -fill(Appointment; CreateAppointmentRequest) void
+    -fill(Appointment; UpdateAppointmentRequest) void
+    +update(String; UpdateAppointmentRequest; CurrentAccount) AppointmentResponse
+    +delete(String; CurrentAccount) void
+    +changeStatus(String; String; CurrentAccount) AppointmentResponse
+  }
+  class AppointmentResponse {
+    -String id
+    -String buyerId
+    -String propertyId
+    -LocalDate viewingDate
+    -LocalTime viewingTime
+    -String status
+    -String notes
+    +getId() String
+    +setId(String) void
+    +getBuyerId() String
+    +setBuyerId(String) void
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getViewingDate() LocalDate
+    +setViewingDate(LocalDate) void
+    +getViewingTime() LocalTime
+    +setViewingTime(LocalTime) void
+    +getStatus() String
+    +setStatus(String) void
+    +getNotes() String
+    +setNotes(String) void
+  }
+  class AppointmentStatusRequest {
+    -String status
+    +getStatus() String
+    +setStatus(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class CreateAppointmentRequest {
+    -String propertyId
+    -LocalDate viewingDate
+    -LocalTime viewingTime
+    -String notes
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getViewingDate() LocalDate
+    +setViewingDate(LocalDate) void
+    +getViewingTime() LocalTime
+    +setViewingTime(LocalTime) void
+    +getNotes() String
+    +setNotes(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class UpdateAppointmentRequest {
+    -LocalDate viewingDate
+    -LocalTime viewingTime
+    -String notes
+    +getViewingDate() LocalDate
+    +setViewingDate(LocalDate) void
+    +getViewingTime() LocalTime
+    +setViewingTime(LocalTime) void
+    +getNotes() String
+    +setNotes(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class CsrfTokens {
+    -String ATTRIBUTE
+    +getOrCreate(HttpSession) String
+  }
+  class CurrentAccount {
+    -String id
+    -String role
+    +getId() String
+    +getRole() String
+    +isBuyer() boolean
+    +isSeller() boolean
+    +isAdmin() boolean
+  }
+  class CurrentUser {
+    -String SESSION_USER_ID
+    -JdbcTemplate jdbc
+    +optional(HttpSession) CurrentAccount
+    +required(HttpSession) CurrentAccount
+  }
+  class InputRules {
+    +invalid(String) ModuleException
+    +allow(boolean) void
+    +conflict(boolean; String) void
+    +text(String; String; int) String
+    +optional(String; int) String
+    +id(String) String
+    +choice(String; String...) String
+    +email(String) String
+    +money(String) BigDecimal
+  }
+  class ModuleCsrfConfig {
+    +addInterceptors(InterceptorRegistry) void
+  }
+  class ModuleErrors {
+    +expected(ModuleException) ResponseEntityMapString, String
+    +invalid(Exception) ResponseEntityMapString, String
+    +conflict(DataIntegrityViolationException) ResponseEntityMapString, String
+    +concurrent(ConcurrencyFailureException) ResponseEntityMapString, String
+    -response(HttpStatus; String; String) ResponseEntityMapString, String
+  }
+  class ModuleException {
+    -HttpStatus status
+    -String code
+    +getStatus() HttpStatus
+    +getCode() String
+  }
+  class PropertyLookup {
+    -JdbcTemplate jdbc
+    +find(String) PropertyReference
+    +lock(String) PropertyReference
+    -query(String; boolean) PropertyReference
+  }
+  class PropertyReference {
+    -String id
+    -String ownerId
+    -String status
+    +getId() String
+    +getOwnerId() String
+    +getStatus() String
+  }
+  class MovingCompany {
+    <<record>>
+    -String id
+    -String companyName
+    -String email
+    -String phone
+    -String serviceAreas
+    -String description
+    -String availability
+  }
+  class MovingCompanyController {
+    -MovingCompanyService service
+    -CurrentUser currentUser
+    +list(HttpSession) ListMovingCompany
+    +detail(String; HttpSession) MovingCompany
+    +create(MovingCompanyRequest; HttpSession) MovingCompany
+    +update(String; MovingCompanyRequest; HttpSession) MovingCompany
+    +delete(String; HttpSession) void
+  }
+  class MovingCompanyDAO {
+    -JdbcTemplate jdbc
+    +all() ListMovingCompany
+    +find(String) MovingCompany
+    +lock(String) MovingCompany
+    -read(String; boolean) MovingCompany
+    -missing() ModuleException
+    +insert(MovingCompany) void
+    +update(MovingCompany) void
+    +delete(String) void
+  }
+  class MovingCompanyRequest {
+    -String companyName
+    -String email
+    -String phone
+    -String serviceAreas
+    -String description
+    -String availability
+    +getCompanyName() String
+    +setCompanyName(String) void
+    +getEmail() String
+    +setEmail(String) void
+    +getPhone() String
+    +setPhone(String) void
+    +getServiceAreas() String
+    +setServiceAreas(String) void
+    +getDescription() String
+    +setDescription(String) void
+    +getAvailability() String
+    +setAvailability(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class MovingCompanyService {
+    -MovingCompanyDAO dao
+    +list(CurrentAccount) ListMovingCompany
+    +detail(String; CurrentAccount) MovingCompany
+    -requireAdmin(CurrentAccount) void
+    -prepare(String; MovingCompanyRequest) MovingCompany
+    +create(MovingCompanyRequest; CurrentAccount) MovingCompany
+    +update(String; MovingCompanyRequest; CurrentAccount) MovingCompany
+    +delete(String; CurrentAccount) void
+  }
+  class CreateOfferRequest {
+    -String propertyId
+    -String amount
+    -String message
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getAmount() String
+    +setAmount(String) void
+    +getMessage() String
+    +setMessage(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class OfferResponse {
+    -String id
+    -String buyerId
+    -String propertyId
+    -String amount
+    -String message
+    -String status
+    +getId() String
+    +setId(String) void
+    +getBuyerId() String
+    +setBuyerId(String) void
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getAmount() String
+    +setAmount(String) void
+    +getMessage() String
+    +setMessage(String) void
+    +getStatus() String
+    +setStatus(String) void
+  }
+  class OfferStatusRequest {
+    -String status
+    +getStatus() String
+    +setStatus(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class UpdateOfferRequest {
+    -String amount
+    -String message
+    +getAmount() String
+    +setAmount(String) void
+    +getMessage() String
+    +setMessage(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class Offer {
+    -String id
+    -String buyerId
+    -String propertyId
+    -BigDecimal amount
+    -String message
+    -String status
+    +getId() String
+    +setId(String) void
+    +getBuyerId() String
+    +setBuyerId(String) void
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getAmount() BigDecimal
+    +setAmount(BigDecimal) void
+    +getMessage() String
+    +setMessage(String) void
+    +getStatus() String
+    +setStatus(String) void
+  }
+  class OfferController {
+    -OfferService service
+    -CurrentUser currentUser
+    +detail(String; HttpSession) OfferResponse
+    +create(CreateOfferRequest; HttpSession) OfferResponse
+    +update(String; UpdateOfferRequest; HttpSession) OfferResponse
+    +delete(String; HttpSession) void
+    +status(String; OfferStatusRequest; HttpSession) OfferResponse
+  }
+  class OfferRepository {
+    <<interface>>
+    +findAll() ListOffer
+    +findById(String) Offer
+    +lockById(String) Offer
+    +insert(Offer) void
+    +update(Offer) void
+    +delete(String) void
+  }
+  class OfferRepositoryImpl {
+    -JdbcTemplate jdbc
+    +findAll() ListOffer
+    +findById(String) Offer
+    +lockById(String) Offer
+    -find(String; boolean) Offer
+    +insert(Offer) void
+    +update(Offer) void
+    +delete(String) void
+  }
+  class OfferService {
+    <<interface>>
+    +create(CreateOfferRequest; CurrentAccount) OfferResponse
+    +detail(String; CurrentAccount) OfferResponse
+    +list(CurrentAccount; String; String) ListOfferResponse
+    +update(String; UpdateOfferRequest; CurrentAccount) OfferResponse
+    +delete(String; CurrentAccount) void
+    +changeStatus(String; String; CurrentAccount) OfferResponse
+  }
+  class OfferServiceImpl {
+    -OfferRepository repository
+    -PropertyLookup properties
+    -owns(String; CurrentAccount) boolean
+    -response(Offer) OfferResponse
+    -readable(Offer; CurrentAccount) boolean
+    +detail(String; CurrentAccount) OfferResponse
+    +list(CurrentAccount; String; String) ListOfferResponse
+    +create(CreateOfferRequest; CurrentAccount) OfferResponse
+    -fill(Offer; CreateOfferRequest) void
+    -fill(Offer; UpdateOfferRequest) void
+    +update(String; UpdateOfferRequest; CurrentAccount) OfferResponse
+    +delete(String; CurrentAccount) void
+    +changeStatus(String; String; CurrentAccount) OfferResponse
+  }
+  class PortalApplication {
+    +main(String[]) void
+  }
+  class CreatePropertyRequest {
+    -String title
+    -String description
+    -String city
+    -String address
+    -String price
+    -String propertyType
+    -String status
+    +getTitle() String
+    +setTitle(String) void
+    +getDescription() String
+    +setDescription(String) void
+    +getCity() String
+    +setCity(String) void
+    +getAddress() String
+    +setAddress(String) void
+    +getPrice() String
+    +setPrice(String) void
+    +getPropertyType() String
+    +setPropertyType(String) void
+    +getStatus() String
+    +setStatus(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class PropertyResponse {
+    -String id
+    -String ownerId
+    -String title
+    -String description
+    -String city
+    -String address
+    -String price
+    -String propertyType
+    -String status
+    +getId() String
+    +setId(String) void
+    +getOwnerId() String
+    +setOwnerId(String) void
+    +getTitle() String
+    +setTitle(String) void
+    +getDescription() String
+    +setDescription(String) void
+    +getCity() String
+    +setCity(String) void
+    +getAddress() String
+    +setAddress(String) void
+    +getPrice() String
+    +setPrice(String) void
+    +getPropertyType() String
+    +setPropertyType(String) void
+    +getStatus() String
+    +setStatus(String) void
+  }
+  class UpdatePropertyRequest {
+    -String title
+    -String description
+    -String city
+    -String address
+    -String price
+    -String propertyType
+    -String status
+    +getTitle() String
+    +setTitle(String) void
+    +getDescription() String
+    +setDescription(String) void
+    +getCity() String
+    +setCity(String) void
+    +getAddress() String
+    +setAddress(String) void
+    +getPrice() String
+    +setPrice(String) void
+    +getPropertyType() String
+    +setPropertyType(String) void
+    +getStatus() String
+    +setStatus(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class Property {
+    -String id
+    -String ownerId
+    -String title
+    -String description
+    -String city
+    -String address
+    -BigDecimal price
+    -String propertyType
+    -String status
+    +getId() String
+    +setId(String) void
+    +getOwnerId() String
+    +setOwnerId(String) void
+    +getTitle() String
+    +setTitle(String) void
+    +getDescription() String
+    +setDescription(String) void
+    +getCity() String
+    +setCity(String) void
+    +getAddress() String
+    +setAddress(String) void
+    +getPrice() BigDecimal
+    +setPrice(BigDecimal) void
+    +getPropertyType() String
+    +setPropertyType(String) void
+    +getStatus() String
+    +setStatus(String) void
+  }
+  class PropertyController {
+    -PropertyService service
+    -CurrentUser currentUser
+    +detail(String; HttpSession) PropertyResponse
+    +create(CreatePropertyRequest; HttpSession) PropertyResponse
+    +update(String; UpdatePropertyRequest; HttpSession) PropertyResponse
+    +delete(String; HttpSession) void
+  }
+  class PropertyRepository {
+    <<interface>>
+    +findAll() ListProperty
+    +findById(String) Property
+    +lockById(String) Property
+    +insert(Property) void
+    +update(Property) void
+    +delete(String) void
+  }
+  class PropertyRepositoryImpl {
+    -JdbcTemplate jdbc
+    +findAll() ListProperty
+    +findById(String) Property
+    +lockById(String) Property
+    -find(String; boolean) Property
+    +insert(Property) void
+    +update(Property) void
+    +delete(String) void
+  }
+  class PropertyService {
+    <<interface>>
+    +create(CreatePropertyRequest; CurrentAccount) PropertyResponse
+    +detail(String; CurrentAccount) PropertyResponse
+    +list(CurrentAccount; String; String) ListPropertyResponse
+    +update(String; UpdatePropertyRequest; CurrentAccount) PropertyResponse
+    +delete(String; CurrentAccount) void
+  }
+  class PropertyServiceImpl {
+    -PropertyRepository repository
+    -PropertyLookup properties
+    -owns(String; CurrentAccount) boolean
+    -response(Property) PropertyResponse
+    -readable(Property; CurrentAccount) boolean
+    +detail(String; CurrentAccount) PropertyResponse
+    +list(CurrentAccount; String; String) ListPropertyResponse
+    +create(CreatePropertyRequest; CurrentAccount) PropertyResponse
+    -fill(Property; CreatePropertyRequest) void
+    -fill(Property; UpdatePropertyRequest) void
+    +update(String; UpdatePropertyRequest; CurrentAccount) PropertyResponse
+    +delete(String; CurrentAccount) void
+  }
+  class CreateReviewRequest {
+    -String propertyId
+    -Integer rating
+    -String comment
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getRating() Integer
+    +setRating(BigDecimal) void
+    +getComment() String
+    +setComment(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class ReviewResponse {
+    -String id
+    -String reviewerId
+    -String propertyId
+    -Integer rating
+    -String comment
+    +getId() String
+    +setId(String) void
+    +getReviewerId() String
+    +setReviewerId(String) void
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getRating() Integer
+    +setRating(Integer) void
+    +getComment() String
+    +setComment(String) void
+  }
+  class UpdateReviewRequest {
+    -Integer rating
+    -String comment
+    +getRating() Integer
+    +setRating(BigDecimal) void
+    +getComment() String
+    +setComment(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class Review {
+    -String id
+    -String reviewerId
+    -String propertyId
+    -Integer rating
+    -String comment
+    +getId() String
+    +setId(String) void
+    +getReviewerId() String
+    +setReviewerId(String) void
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getRating() Integer
+    +setRating(Integer) void
+    +getComment() String
+    +setComment(String) void
+  }
+  class ReviewController {
+    -ReviewService service
+    -CurrentUser currentUser
+    +detail(String; HttpSession) ReviewResponse
+    +create(CreateReviewRequest; HttpSession) ReviewResponse
+    +update(String; UpdateReviewRequest; HttpSession) ReviewResponse
+    +delete(String; HttpSession) void
+  }
+  class ReviewRepository {
+    <<interface>>
+    +findAll() ListReview
+    +findById(String) Review
+    +lockById(String) Review
+    +insert(Review) void
+    +update(Review) void
+    +delete(String) void
+  }
+  class ReviewRepositoryImpl {
+    -JdbcTemplate jdbc
+    +findAll() ListReview
+    +findById(String) Review
+    +lockById(String) Review
+    -find(String; boolean) Review
+    +insert(Review) void
+    +update(Review) void
+    +delete(String) void
+  }
+  class ReviewService {
+    <<interface>>
+    +create(CreateReviewRequest; CurrentAccount) ReviewResponse
+    +detail(String; CurrentAccount) ReviewResponse
+    +list(CurrentAccount; String; String) ListReviewResponse
+    +update(String; UpdateReviewRequest; CurrentAccount) ReviewResponse
+    +delete(String; CurrentAccount) void
+  }
+  class ReviewServiceImpl {
+    -ReviewRepository repository
+    -PropertyLookup properties
+    -owns(String; CurrentAccount) boolean
+    -response(Review) ReviewResponse
+    -readable(Review; CurrentAccount) boolean
+    +detail(String; CurrentAccount) ReviewResponse
+    +list(CurrentAccount; String; String) ListReviewResponse
+    +create(CreateReviewRequest; CurrentAccount) ReviewResponse
+    -fill(Review; CreateReviewRequest) void
+    -fill(Review; UpdateReviewRequest) void
+    +update(String; UpdateReviewRequest; CurrentAccount) ReviewResponse
+    +delete(String; CurrentAccount) void
+  }
+  class AuthController {
+    -UserService users
+    -AuthService auth
+    -CurrentUser currentUser
+    +me(HttpServletRequest; HttpServletResponse) AuthResponse
+    +register(CreateUserRequest) UserResponse
+    +login(LoginRequest; HttpServletRequest; HttpServletResponse) AuthResponse
+    +logout(HttpServletRequest) void
+  }
+  class AuthService {
+    <<interface>>
+    +login(LoginRequest; HttpServletRequest) AuthResponse
+  }
+  class AuthServiceImpl {
+    -UserRepository repository
+    -PasswordEncoder encoder
+    -UserSessions sessions
+    -String dummyHash
+    +login(LoginRequest; HttpServletRequest) AuthResponse
+    -failed() ModuleException
+  }
+  class BootstrapAdminRunner {
+    -BootstrapAdminService service
+    -Environment environment
+    +run(ApplicationArguments) void
+  }
+  class BootstrapAdminService {
+    -UserRepository repository
+    -PasswordEncoder encoder
+    +createFirstAdmin(String; String; String; String) void
+  }
+  class AuthResponse {
+    -UserResponse user
+    -String csrfToken
+    +getUser() UserResponse
+    +getCsrfToken() String
+  }
+  class ChangePasswordRequest {
+    -String currentPassword
+    -String newPassword
+    +getCurrentPassword() String
+    +setCurrentPassword(String) void
+    +getNewPassword() String
+    +setNewPassword(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class ChangeRoleRequest {
+    -Role role
+    +getRole() Role
+    +setRole(Role) void
+    +rejectUnknown(String; Object) void
+  }
+  class CreateUserRequest {
+    -String username
+    -String password
+    -String email
+    -String phone
+    -Role role
+    +getUsername() String
+    +setUsername(String) void
+    +getPassword() String
+    +setPassword(String) void
+    +getEmail() String
+    +setEmail(String) void
+    +getPhone() String
+    +setPhone(String) void
+    +getRole() Role
+    +setRole(Role) void
+    +rejectUnknown(String; Object) void
+  }
+  class LoginRequest {
+    -String username
+    -String password
+    +getUsername() String
+    +setUsername(String) void
+    +getPassword() String
+    +setPassword(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class UpdateUserRequest {
+    -String username
+    -String email
+    -String phone
+    +getUsername() String
+    +setUsername(String) void
+    +getEmail() String
+    +setEmail(String) void
+    +getPhone() String
+    +setPhone(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class UserResponse {
+    -String id
+    -String username
+    -String email
+    -String phone
+    -Role role
+    +getId() String
+    +setId(String) void
+    +getUsername() String
+    +setUsername(String) void
+    +getEmail() String
+    +setEmail(String) void
+    +getPhone() String
+    +setPhone(String) void
+    +getRole() Role
+    +setRole(Role) void
+  }
+  class PasswordConfig {
+    +passwordEncoder() PasswordEncoder
+  }
+  class Role {
+    <<enum>>
+    BUYER
+    SELLER
+    ADMIN
+  }
+  class User {
+    -String id
+    -String username
+    -String passwordHash
+    -String email
+    -String phone
+    -Role role
+    +getId() String
+    +setId(String) void
+    +getUsername() String
+    +setUsername(String) void
+    +getPasswordHash() String
+    +setPasswordHash(String) void
+    +getEmail() String
+    +setEmail(String) void
+    +getPhone() String
+    +setPhone(String) void
+    +getRole() Role
+    +setRole(Role) void
+  }
+  class UserApiExceptionHandler {
+    +expected(ModuleException) ResponseEntityMapString,String
+    +invalid(HttpMessageNotReadableException) ResponseEntityMapString,String
+    +conflict(DataIntegrityViolationException) ResponseEntityMapString,String
+    +concurrent(ConcurrencyFailureException) ResponseEntityMapString,String
+    -response(HttpStatus; String; String) ResponseEntityMapString,String
+  }
+  class UserController {
+    -UserService service
+    -CurrentUser currentUser
+    +list(HttpSession) ListUserResponse
+    +detail(String; HttpSession) UserResponse
+    +create(CreateUserRequest; HttpSession) UserResponse
+    +update(String; UpdateUserRequest; HttpSession) UserResponse
+    +role(String; ChangeRoleRequest; HttpSession) UserResponse
+    +password(String; ChangePasswordRequest; HttpSession) void
+    +delete(String; HttpSession) void
+  }
+  class UserRepository {
+    <<interface>>
+    +findByUsernameIgnoreCase(String) OptionalUser
+    +existsByUsernameIgnoreCase(String) boolean
+    +countByRole(Role) long
+    +lockAllUsers() ListUser
+  }
+  class UserService {
+    <<interface>>
+    +register(CreateUserRequest) UserResponse
+    +createUser(String; CreateUserRequest) UserResponse
+    +getAllUsers(String) ListUserResponse
+    +getUserById(String; String) UserResponse
+    +updateUser(String; String; UpdateUserRequest) UserResponse
+    +changePassword(String; String; ChangePasswordRequest) void
+    +changeRole(String; String; ChangeRoleRequest) UserResponse
+    +deleteUser(String; String) void
+  }
+  class UserServiceImpl {
+    -UserRepository repository
+    -PasswordEncoder encoder
+    -JdbcTemplate jdbc
+    -UserSessions sessions
+    -missing() ModuleException
+    -find(String) User
+    -findIn(ListUser; String) User
+    -actor(String) User
+    -actorIn(ListUser; String) User
+    -admin(User) void
+    -unique(String; String) void
+    -password(String) String
+    -newUser(CreateUserRequest) User
+    -references(String) int
+    -admins(ListUser) long
+    +register(CreateUserRequest) UserResponse
+    +createUser(String; CreateUserRequest) UserResponse
+    +getAllUsers(String) ListUserResponse
+    +getUserById(String; String) UserResponse
+    +updateUser(String; String; UpdateUserRequest) UserResponse
+    +changePassword(String; String; ChangePasswordRequest) void
+    +changeRole(String; String; ChangeRoleRequest) UserResponse
+    +deleteUser(String; String) void
+  }
+  class UserSessionListenerConfig {
+    +userSessionListener(final UserSessions) ServletListenerRegistrationBeanHttpSessionListener
+  }
+  class UserSessions {
+    -MapString,SetHttpSession sessions
+    +track(String; HttpSession) void
+    +remove(HttpSession) void
+    +invalidate(String) void
+    +invalidateAfterCommit(final String) void
+  }
+  class UserViews {
+    +response(User) UserResponse
+  }
+  class JpaRepository {
+    <<external interface>>
+  }
+  class RuntimeException {
+    <<external class>>
+  }
+  JpaRepository <|-- UserRepository : extends User String
+  RuntimeException <|-- ModuleException : extends
+  AppointmentController --> AppointmentService : uses service
+  AppointmentController --> CurrentUser : uses currentUser
+  AppointmentController ..> AppointmentResponse : input/output
+  AppointmentController ..> CreateAppointmentRequest : input/output
+  AppointmentController ..> UpdateAppointmentRequest : input/output
+  AppointmentController ..> AppointmentStatusRequest : input/output
+  AppointmentRepository ..> Appointment : input/output
+  AppointmentRepository <|.. AppointmentRepositoryImpl : implements
+  AppointmentRepositoryImpl ..> Appointment : input/output
+  AppointmentService ..> AppointmentResponse : input/output
+  AppointmentService ..> CurrentAccount : input/output
+  AppointmentService ..> CreateAppointmentRequest : input/output
+  AppointmentService ..> UpdateAppointmentRequest : input/output
+  AppointmentServiceImpl --> AppointmentRepository : uses repository
+  AppointmentServiceImpl --> PropertyLookup : uses properties
+  AppointmentService <|.. AppointmentServiceImpl : implements
+  AppointmentServiceImpl ..> CurrentAccount : input/output
+  AppointmentServiceImpl ..> Appointment : input/output
+  AppointmentServiceImpl ..> AppointmentResponse : input/output
+  AppointmentServiceImpl ..> CreateAppointmentRequest : input/output
+  AppointmentServiceImpl ..> UpdateAppointmentRequest : input/output
+  CurrentUser ..> CurrentAccount : input/output
+  InputRules ..> ModuleException : input/output
+  ModuleErrors ..> ModuleException : input/output
+  PropertyLookup ..> PropertyReference : input/output
+  MovingCompanyController --> MovingCompanyService : uses service
+  MovingCompanyController --> CurrentUser : uses currentUser
+  MovingCompanyController ..> MovingCompany : input/output
+  MovingCompanyController ..> MovingCompanyRequest : input/output
+  MovingCompanyDAO ..> MovingCompany : input/output
+  MovingCompanyDAO ..> ModuleException : input/output
+  MovingCompanyService --> MovingCompanyDAO : uses dao
+  MovingCompanyService ..> MovingCompany : input/output
+  MovingCompanyService ..> CurrentAccount : input/output
+  MovingCompanyService ..> MovingCompanyRequest : input/output
+  OfferController --> OfferService : uses service
+  OfferController --> CurrentUser : uses currentUser
+  OfferController ..> OfferResponse : input/output
+  OfferController ..> CreateOfferRequest : input/output
+  OfferController ..> UpdateOfferRequest : input/output
+  OfferController ..> OfferStatusRequest : input/output
+  OfferRepository ..> Offer : input/output
+  OfferRepository <|.. OfferRepositoryImpl : implements
+  OfferRepositoryImpl ..> Offer : input/output
+  OfferService ..> CreateOfferRequest : input/output
+  OfferService ..> CurrentAccount : input/output
+  OfferService ..> OfferResponse : input/output
+  OfferService ..> UpdateOfferRequest : input/output
+  OfferServiceImpl --> OfferRepository : uses repository
+  OfferServiceImpl --> PropertyLookup : uses properties
+  OfferService <|.. OfferServiceImpl : implements
+  OfferServiceImpl ..> CurrentAccount : input/output
+  OfferServiceImpl ..> Offer : input/output
+  OfferServiceImpl ..> OfferResponse : input/output
+  OfferServiceImpl ..> CreateOfferRequest : input/output
+  OfferServiceImpl ..> UpdateOfferRequest : input/output
+  PropertyController --> PropertyService : uses service
+  PropertyController --> CurrentUser : uses currentUser
+  PropertyController ..> PropertyResponse : input/output
+  PropertyController ..> CreatePropertyRequest : input/output
+  PropertyController ..> UpdatePropertyRequest : input/output
+  PropertyRepository ..> Property : input/output
+  PropertyRepository <|.. PropertyRepositoryImpl : implements
+  PropertyRepositoryImpl ..> Property : input/output
+  PropertyService ..> CreatePropertyRequest : input/output
+  PropertyService ..> CurrentAccount : input/output
+  PropertyService ..> PropertyResponse : input/output
+  PropertyService ..> UpdatePropertyRequest : input/output
+  PropertyServiceImpl --> PropertyRepository : uses repository
+  PropertyServiceImpl --> PropertyLookup : uses properties
+  PropertyService <|.. PropertyServiceImpl : implements
+  PropertyServiceImpl ..> CurrentAccount : input/output
+  PropertyServiceImpl ..> PropertyResponse : input/output
+  PropertyServiceImpl ..> Property : input/output
+  PropertyServiceImpl ..> CreatePropertyRequest : input/output
+  PropertyServiceImpl ..> UpdatePropertyRequest : input/output
+  ReviewController --> ReviewService : uses service
+  ReviewController --> CurrentUser : uses currentUser
+  ReviewController ..> ReviewResponse : input/output
+  ReviewController ..> CreateReviewRequest : input/output
+  ReviewController ..> UpdateReviewRequest : input/output
+  ReviewRepository ..> Review : input/output
+  ReviewRepository <|.. ReviewRepositoryImpl : implements
+  ReviewRepositoryImpl ..> Review : input/output
+  ReviewService ..> CreateReviewRequest : input/output
+  ReviewService ..> CurrentAccount : input/output
+  ReviewService ..> ReviewResponse : input/output
+  ReviewService ..> UpdateReviewRequest : input/output
+  ReviewServiceImpl --> ReviewRepository : uses repository
+  ReviewServiceImpl --> PropertyLookup : uses properties
+  ReviewService <|.. ReviewServiceImpl : implements
+  ReviewServiceImpl ..> CurrentAccount : input/output
+  ReviewServiceImpl ..> Review : input/output
+  ReviewServiceImpl ..> ReviewResponse : input/output
+  ReviewServiceImpl ..> CreateReviewRequest : input/output
+  ReviewServiceImpl ..> UpdateReviewRequest : input/output
+  AuthController --> UserService : uses users
+  AuthController --> AuthService : uses auth
+  AuthController --> CurrentUser : uses currentUser
+  AuthController ..> AuthResponse : input/output
+  AuthController ..> CreateUserRequest : input/output
+  AuthController ..> UserResponse : input/output
+  AuthController ..> LoginRequest : input/output
+  AuthService ..> AuthResponse : input/output
+  AuthService ..> LoginRequest : input/output
+  AuthServiceImpl --> UserRepository : uses repository
+  AuthServiceImpl --> UserSessions : uses sessions
+  AuthService <|.. AuthServiceImpl : implements
+  AuthServiceImpl ..> AuthResponse : input/output
+  AuthServiceImpl ..> LoginRequest : input/output
+  AuthServiceImpl ..> ModuleException : input/output
+  BootstrapAdminRunner --> BootstrapAdminService : uses service
+  BootstrapAdminService --> UserRepository : uses repository
+  AuthResponse --> UserResponse : uses user
+  ChangeRoleRequest --> Role : uses role
+  CreateUserRequest --> Role : uses role
+  UserResponse --> Role : uses role
+  User --> Role : uses role
+  UserApiExceptionHandler ..> ModuleException : input/output
+  UserController --> UserService : uses service
+  UserController --> CurrentUser : uses currentUser
+  UserController ..> UserResponse : input/output
+  UserController ..> CreateUserRequest : input/output
+  UserController ..> UpdateUserRequest : input/output
+  UserController ..> ChangeRoleRequest : input/output
+  UserController ..> ChangePasswordRequest : input/output
+  UserRepository ..> User : input/output
+  UserRepository ..> Role : input/output
+  UserService ..> CreateUserRequest : input/output
+  UserService ..> UserResponse : input/output
+  UserService ..> UpdateUserRequest : input/output
+  UserService ..> ChangePasswordRequest : input/output
+  UserService ..> ChangeRoleRequest : input/output
+  UserServiceImpl --> UserRepository : uses repository
+  UserServiceImpl --> UserSessions : uses sessions
+  UserService <|.. UserServiceImpl : implements
+  UserServiceImpl ..> ModuleException : input/output
+  UserServiceImpl ..> User : input/output
+  UserServiceImpl ..> CreateUserRequest : input/output
+  UserServiceImpl ..> UserResponse : input/output
+  UserServiceImpl ..> UpdateUserRequest : input/output
+  UserServiceImpl ..> ChangePasswordRequest : input/output
+  UserServiceImpl ..> ChangeRoleRequest : input/output
+  UserSessionListenerConfig ..> UserSessions : input/output
+  UserViews ..> User : input/output
+  UserViews ..> UserResponse : input/output
+  User "1" ..> "0..*" Property : owner_id database FK
+  User "1" ..> "0..*" Appointment : buyer_id database FK
+  User "1" ..> "0..*" Offer : buyer_id database FK
+  User "1" ..> "0..*" Review : reviewer_id database FK
+  Property "1" ..> "0..*" Appointment : property_id database FK
+  Property "1" ..> "0..*" Offer : property_id database FK
+  Property "1" ..> "0..*" Review : property_id database FK

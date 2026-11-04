@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1684" height="1191" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1684 1191" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1684" height="1191"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-1191)" style="clip-path: url(#clip)">
+		<g transform="">
+			<text x="35" y="1149" style="font-family: Helvetica; font-size: 24px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2298) scale(1,-1)">Shared helpers / application entry | Complete production type map</text>
+			<text x="35" y="1129" style="font-family: Helvetica; font-size: 10px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,2258) scale(1,-1)">10 types | fields and business method names | full signatures in class inventory | 4aef4b5</text>
+			<rect x="40.0" y="849.5" width="516.0" height="231.5" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="40.0" y="1046.0" width="516.0" height="35.0" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="48.0" y="1066.0" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2132) scale(1,-1)">CsrfTokens</text>
+			<text x="48.0" y="1053.0" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,2106) scale(1,-1)">&lt;&lt;class&gt;&gt;</text>
+			<text x="48.0" y="1033.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2066) scale(1,-1)">- ATTRIBUTE: String</text>
+			<text x="48.0" y="1024.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2048) scale(1,-1)">--------------------</text>
+			<text x="48.0" y="1015.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2030) scale(1,-1)">+ getOrCreate()</text>
+			<rect x="584.0" y="849.5" width="516.0" height="231.5" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="584.0" y="1046.0" width="516.0" height="35.0" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="592.0" y="1066.0" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2132) scale(1,-1)">CurrentAccount</text>
+			<text x="592.0" y="1053.0" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,2106) scale(1,-1)">&lt;&lt;class&gt;&gt;</text>
+			<text x="592.0" y="1033.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2066) scale(1,-1)">- id: String</text>
+			<text x="592.0" y="1024.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2048) scale(1,-1)">- role: String</text>
+			<text x="592.0" y="1015.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2030) scale(1,-1)">--------------------</text>
+			<text x="592.0" y="1006.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2012) scale(1,-1)">+ isBuyer()</text>
+			<text x="592.0" y="997.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1994) scale(1,-1)">+ isSeller()</text>
+			<text x="592.0" y="988.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1976) scale(1,-1)">+ isAdmin()</text>
+			<rect x="1128.0" y="849.5" width="516.0" height="231.5" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="1128.0" y="1046.0" width="516.0" height="35.0" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="1136.0" y="1066.0" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2132) scale(1,-1)">CurrentUser</text>
+			<text x="1136.0" y="1053.0" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,2106) scale(1,-1)">&lt;&lt;class&gt;&gt;</text>
+			<text x="1136.0" y="1033.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2066) scale(1,-1)">- SESSION_USER_ID: String</text>
+			<text x="1136.0" y="1024.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2048) scale(1,-1)">- jdbc: JdbcTemplate</text>
+			<text x="1136.0" y="1015.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2030) scale(1,-1)">--------------------</text>
+			<text x="1136.0" y="1006.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2012) scale(1,-1)">+ optional()</text>
+			<text x="1136.0" y="997.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1994) scale(1,-1)">+ required()</text>
+			<rect x="40.0" y="588.0" width="516.0" height="231.5" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="40.0" y="784.5" width="516.0" height="35.0" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="48.0" y="804.5" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1609) scale(1,-1)">InputRules</text>
+			<text x="48.0" y="791.5" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,1583) scale(1,-1)">&lt;&lt;class&gt;&gt;</text>
+			<text x="48.0" y="771.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1543) scale(1,-1)">+ invalid()</text>
+			<text x="48.0" y="762.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1525) scale(1,-1)">+ allow()</text>
+			<text x="48.0" y="753.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1507) scale(1,-1)">+ conflict()</text>
+			<text x="48.0" y="744.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1489) scale(1,-1)">+ text()</text>
+			<text x="48.0" y="735.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1471) scale(1,-1)">+ optional()</text>
+			<text x="48.0" y="726.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1453) scale(1,-1)">+ id()</text>
+			<text x="48.0" y="717.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1435) scale(1,-1)">+ choice()</text>
+			<text x="48.0" y="708.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1417) scale(1,-1)">+ email()</text>
+			<text x="48.0" y="699.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1399) scale(1,-1)">+ money()</text>
+			<rect x="584.0" y="588.0" width="516.0" height="231.5" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="584.0" y="784.5" width="516.0" height="35.0" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="592.0" y="804.5" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1609) scale(1,-1)">ModuleCsrfConfig</text>
+			<text x="592.0" y="791.5" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,1583) scale(1,-1)">&lt;&lt;class&gt;&gt;</text>
+			<text x="592.0" y="771.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1543) scale(1,-1)">+ addInterceptors()</text>
+			<rect x="1128.0" y="588.0" width="516.0" height="231.5" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="1128.0" y="784.5" width="516.0" height="35.0" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="1136.0" y="804.5" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1609) scale(1,-1)">ModuleErrors</text>
+			<text x="1136.0" y="791.5" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,1583) scale(1,-1)">&lt;&lt;class&gt;&gt;</text>
+			<text x="1136.0" y="771.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1543) scale(1,-1)">+ expected()</text>
+			<text x="1136.0" y="762.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1525) scale(1,-1)">+ invalid()</text>
+			<text x="1136.0" y="753.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1507) scale(1,-1)">+ conflict()</text>
+			<text x="1136.0" y="744.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1489) scale(1,-1)">+ concurrent()</text>
+			<rect x="40.0" y="326.5" width="516.0" height="231.5" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="40.0" y="523.0" width="516.0" height="35.0" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="48.0" y="543.0" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1086) scale(1,-1)">ModuleException</text>
+			<text x="48.0" y="530.0" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,1060) scale(1,-1)">&lt;&lt;class&gt;&gt;</text>
+			<text x="48.0" y="510.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1020) scale(1,-1)">- status: HttpStatus</text>
+			<text x="48.0" y="501.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1002) scale(1,-1)">- code: String</text>
+			<text x="48.0" y="492.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,984) scale(1,-1)">--------------------</text>
+			<text x="48.0" y="483.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,966) scale(1,-1)">extends RuntimeException</text>
+			<rect x="584.0" y="326.5" width="516.0" height="231.5" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="584.0" y="523.0" width="516.0" height="35.0" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="592.0" y="543.0" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1086) scale(1,-1)">PortalApplication</text>
+			<text x="592.0" y="530.0" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,1060) scale(1,-1)">&lt;&lt;class&gt;&gt;</text>
+			<text x="592.0" y="510.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1020) scale(1,-1)">+ main()</text>
+			<rect x="1128.0" y="326.5" width="516.0" height="231.5" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="1128.0" y="523.0" width="516.0" height="35.0" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="1136.0" y="543.0" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1086) scale(1,-1)">PropertyLookup</text>
+			<text x="1136.0" y="530.0" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,1060) scale(1,-1)">&lt;&lt;class&gt;&gt;</text>
+			<text x="1136.0" y="510.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1020) scale(1,-1)">- jdbc: JdbcTemplate</text>
+			<text x="1136.0" y="501.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1002) scale(1,-1)">--------------------</text>
+			<text x="1136.0" y="492.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,984) scale(1,-1)">+ find()</text>
+			<text x="1136.0" y="483.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,966) scale(1,-1)">+ lock()</text>
+			<rect x="40.0" y="65.0" width="516.0" height="231.5" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="40.0" y="261.5" width="516.0" height="35.0" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="48.0" y="281.5" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,563) scale(1,-1)">PropertyReference</text>
+			<text x="48.0" y="268.5" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,537) scale(1,-1)">&lt;&lt;class&gt;&gt;</text>
+			<text x="48.0" y="248.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,497) scale(1,-1)">- id: String</text>
+			<text x="48.0" y="239.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,479) scale(1,-1)">- ownerId: String</text>
+			<text x="48.0" y="230.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,461) scale(1,-1)">- status: String</text>
+			<text x="40" y="25" style="font-family: Helvetica; font-size: 8px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,50) scale(1,-1)">Atlas shows neighbouring dependencies only to keep text clear. All dependencies and interface realizations appear in complete-class-diagram.mmd.</text>
+			<text x="40" y="13" style="font-family: Helvetica; font-size: 8px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,26) scale(1,-1)">Solid arrow = direct field dependency. Dashed arrow = interface/contract link. Full method signatures and accessors are in CLASS-INVENTORY.md.</text>
+		</g>
+	</g>
+</svg>

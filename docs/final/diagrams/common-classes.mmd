@@ -1,0 +1,66 @@
+classDiagram
+direction TB
+  class CsrfTokens {
+    -String ATTRIBUTE
+    +getOrCreate(HttpSession) String
+  }
+  class CurrentAccount {
+    -String id
+    -String role
+    +getId() String
+    +getRole() String
+    +isBuyer() boolean
+    +isSeller() boolean
+    +isAdmin() boolean
+  }
+  class CurrentUser {
+    -String SESSION_USER_ID
+    -JdbcTemplate jdbc
+    +optional(HttpSession) CurrentAccount
+    +required(HttpSession) CurrentAccount
+  }
+  class InputRules {
+    +invalid(String) ModuleException
+    +allow(boolean) void
+    +conflict(boolean; String) void
+    +text(String; String; int) String
+    +optional(String; int) String
+    +id(String) String
+    +choice(String; String...) String
+    +email(String) String
+    +money(String) BigDecimal
+  }
+  class ModuleCsrfConfig {
+    +addInterceptors(InterceptorRegistry) void
+  }
+  class ModuleErrors {
+    +expected(ModuleException) ResponseEntityMapString, String
+    +invalid(Exception) ResponseEntityMapString, String
+    +conflict(DataIntegrityViolationException) ResponseEntityMapString, String
+    +concurrent(ConcurrencyFailureException) ResponseEntityMapString, String
+    -response(HttpStatus; String; String) ResponseEntityMapString, String
+  }
+  class ModuleException {
+    -HttpStatus status
+    -String code
+    +getStatus() HttpStatus
+    +getCode() String
+  }
+  class PropertyLookup {
+    -JdbcTemplate jdbc
+    +find(String) PropertyReference
+    +lock(String) PropertyReference
+    -query(String; boolean) PropertyReference
+  }
+  class PropertyReference {
+    -String id
+    -String ownerId
+    -String status
+    +getId() String
+    +getOwnerId() String
+    +getStatus() String
+  }
+  CurrentUser ..> CurrentAccount : input/output
+  InputRules ..> ModuleException : input/output
+  ModuleErrors ..> ModuleException : input/output
+  PropertyLookup ..> PropertyReference : input/output

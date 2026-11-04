@@ -1,0 +1,23 @@
+{
+  "checks": [
+    "Public reads allowed; guests ADMIN and property owner cannot create review",
+    "Reviewer identity derived from session; integer rating returned",
+    "Review persisted correctly in real MySQL",
+    "Public review list includes saved review",
+    "Public review detail works",
+    "Author updates rating and comment",
+    "Other users and ADMIN cannot edit author review",
+    "Unrelated users cannot delete review",
+    "Out-of-range fractional missing and overflowing ratings rejected",
+    "Blank comment identity spoofing and invalid CSRF rejected",
+    "Invalid or missing property rejected",
+    "User/Admin and MySQL protect referenced reviewer and property",
+    "SELLER may review another owner property",
+    "ADMIN moderation deletes review and subsequent read returns 404",
+    "Author deletes own review",
+    "Role changes immediately affect Review permissions",
+    "Deleted account cannot create review with old session",
+    "All six tables restored; real ADMIN and original records unchanged"
+  ],
+  "error": null
+}
