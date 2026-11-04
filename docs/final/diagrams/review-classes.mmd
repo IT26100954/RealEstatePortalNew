@@ -1,0 +1,122 @@
+classDiagram
+direction TB
+  class CreateReviewRequest {
+    -String propertyId
+    -Integer rating
+    -String comment
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getRating() Integer
+    +setRating(BigDecimal) void
+    +getComment() String
+    +setComment(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class ReviewResponse {
+    -String id
+    -String reviewerId
+    -String propertyId
+    -Integer rating
+    -String comment
+    +getId() String
+    +setId(String) void
+    +getReviewerId() String
+    +setReviewerId(String) void
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getRating() Integer
+    +setRating(Integer) void
+    +getComment() String
+    +setComment(String) void
+  }
+  class UpdateReviewRequest {
+    -Integer rating
+    -String comment
+    +getRating() Integer
+    +setRating(BigDecimal) void
+    +getComment() String
+    +setComment(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class Review {
+    -String id
+    -String reviewerId
+    -String propertyId
+    -Integer rating
+    -String comment
+    +getId() String
+    +setId(String) void
+    +getReviewerId() String
+    +setReviewerId(String) void
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getRating() Integer
+    +setRating(Integer) void
+    +getComment() String
+    +setComment(String) void
+  }
+  class ReviewController {
+    -ReviewService service
+    -CurrentUser currentUser
+    +detail(String; HttpSession) ReviewResponse
+    +create(CreateReviewRequest; HttpSession) ReviewResponse
+    +update(String; UpdateReviewRequest; HttpSession) ReviewResponse
+    +delete(String; HttpSession) void
+  }
+  class ReviewRepository {
+    <<interface>>
+    +findAll() ListReview
+    +findById(String) Review
+    +lockById(String) Review
+    +insert(Review) void
+    +update(Review) void
+    +delete(String) void
+  }
+  class ReviewRepositoryImpl {
+    -JdbcTemplate jdbc
+    +findAll() ListReview
+    +findById(String) Review
+    +lockById(String) Review
+    -find(String; boolean) Review
+    +insert(Review) void
+    +update(Review) void
+    +delete(String) void
+  }
+  class ReviewService {
+    <<interface>>
+    +create(CreateReviewRequest; CurrentAccount) ReviewResponse
+    +detail(String; CurrentAccount) ReviewResponse
+    +list(CurrentAccount; String; String) ListReviewResponse
+    +update(String; UpdateReviewRequest; CurrentAccount) ReviewResponse
+    +delete(String; CurrentAccount) void
+  }
+  class ReviewServiceImpl {
+    -ReviewRepository repository
+    -PropertyLookup properties
+    -owns(String; CurrentAccount) boolean
+    -response(Review) ReviewResponse
+    -readable(Review; CurrentAccount) boolean
+    +detail(String; CurrentAccount) ReviewResponse
+    +list(CurrentAccount; String; String) ListReviewResponse
+    +create(CreateReviewRequest; CurrentAccount) ReviewResponse
+    -fill(Review; CreateReviewRequest) void
+    -fill(Review; UpdateReviewRequest) void
+    +update(String; UpdateReviewRequest; CurrentAccount) ReviewResponse
+    +delete(String; CurrentAccount) void
+  }
+  ReviewController --> ReviewService : uses service
+  ReviewController ..> ReviewResponse : input/output
+  ReviewController ..> CreateReviewRequest : input/output
+  ReviewController ..> UpdateReviewRequest : input/output
+  ReviewRepository ..> Review : input/output
+  ReviewRepository <|.. ReviewRepositoryImpl : implements
+  ReviewRepositoryImpl ..> Review : input/output
+  ReviewService ..> CreateReviewRequest : input/output
+  ReviewService ..> ReviewResponse : input/output
+  ReviewService ..> UpdateReviewRequest : input/output
+  ReviewServiceImpl --> ReviewRepository : uses repository
+  ReviewService <|.. ReviewServiceImpl : implements
+  ReviewServiceImpl ..> Review : input/output
+  ReviewServiceImpl ..> ReviewResponse : input/output
+  ReviewServiceImpl ..> CreateReviewRequest : input/output
+  ReviewServiceImpl ..> UpdateReviewRequest : input/output

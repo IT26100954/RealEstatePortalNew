@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1684" height="1191" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1684 1191" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1684" height="1191"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-1191)" style="clip-path: url(#clip)">
+		<g transform="">
+			<text x="35" y="1149" style="font-family: Helvetica; font-size: 24px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2298) scale(1,-1)">Property | Complete production type map</text>
+			<text x="35" y="1129" style="font-family: Helvetica; font-size: 10px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,2258) scale(1,-1)">9 types | fields and business method names | full signatures in class inventory | 4aef4b5</text>
+			<rect x="40.0" y="821" width="516.0" height="260" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="40.0" y="1046" width="516.0" height="35" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="48.0" y="1066" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2132) scale(1,-1)">Property</text>
+			<text x="48.0" y="1053" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,2106) scale(1,-1)">&lt;&lt;class&gt;&gt;</text>
+			<text x="48.0" y="1033" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2066) scale(1,-1)">- id: String</text>
+			<text x="48.0" y="1024" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2048) scale(1,-1)">- ownerId: String</text>
+			<text x="48.0" y="1015" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2030) scale(1,-1)">- title: String</text>
+			<text x="48.0" y="1006" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2012) scale(1,-1)">- description: String</text>
+			<text x="48.0" y="997" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1994) scale(1,-1)">- city: String</text>
+			<text x="48.0" y="988" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1976) scale(1,-1)">- address: String</text>
+			<text x="48.0" y="979" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1958) scale(1,-1)">- price: BigDecimal</text>
+			<text x="48.0" y="970" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1940) scale(1,-1)">- propertyType: String</text>
+			<text x="48.0" y="961" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1922) scale(1,-1)">- status: String</text>
+			<rect x="584.0" y="821" width="516.0" height="260" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="584.0" y="1046" width="516.0" height="35" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="592.0" y="1066" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2132) scale(1,-1)">PropertyController</text>
+			<text x="592.0" y="1053" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,2106) scale(1,-1)">&lt;&lt;class&gt;&gt;</text>
+			<text x="592.0" y="1033" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2066) scale(1,-1)">- service: PropertyService</text>
+			<text x="592.0" y="1024" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2048) scale(1,-1)">- currentUser: CurrentUser</text>
+			<text x="592.0" y="1015" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2030) scale(1,-1)">--------------------</text>
+			<text x="592.0" y="1006" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2012) scale(1,-1)">+ detail()</text>
+			<text x="592.0" y="997" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1994) scale(1,-1)">+ create()</text>
+			<text x="592.0" y="988" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1976) scale(1,-1)">+ update()</text>
+			<text x="592.0" y="979" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1958) scale(1,-1)">+ delete()</text>
+			<rect x="1128.0" y="821" width="516.0" height="260" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="1128.0" y="1046" width="516.0" height="35" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="1136.0" y="1066" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2132) scale(1,-1)">PropertyRepository</text>
+			<text x="1136.0" y="1053" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,2106) scale(1,-1)">&lt;&lt;interface&gt;&gt;</text>
+			<text x="1136.0" y="1033" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2066) scale(1,-1)">+ findAll()</text>
+			<text x="1136.0" y="1024" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2048) scale(1,-1)">+ findById()</text>
+			<text x="1136.0" y="1015" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2030) scale(1,-1)">+ lockById()</text>
+			<text x="1136.0" y="1006" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,2012) scale(1,-1)">+ insert()</text>
+			<text x="1136.0" y="997" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1994) scale(1,-1)">+ update()</text>
+			<text x="1136.0" y="988" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1976) scale(1,-1)">+ delete()</text>
+			<rect x="40.0" y="531" width="516.0" height="260" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="40.0" y="756" width="516.0" height="35" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="48.0" y="776" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1552) scale(1,-1)">PropertyRepositoryImpl</text>
+			<text x="48.0" y="763" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,1526) scale(1,-1)">&lt;&lt;class&gt;&gt;</text>
+			<text x="48.0" y="743" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1486) scale(1,-1)">- jdbc: JdbcTemplate</text>
+			<text x="48.0" y="734" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1468) scale(1,-1)">--------------------</text>
+			<text x="48.0" y="725" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1450) scale(1,-1)">+ findAll()</text>
+			<text x="48.0" y="716" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1432) scale(1,-1)">+ findById()</text>
+			<text x="48.0" y="707" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1414) scale(1,-1)">+ lockById()</text>
+			<text x="48.0" y="698" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1396) scale(1,-1)">+ insert()</text>
+			<text x="48.0" y="689" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1378) scale(1,-1)">+ update()</text>
+			<text x="48.0" y="680" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1360) scale(1,-1)">+ delete()</text>
+			<rect x="584.0" y="531" width="516.0" height="260" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="584.0" y="756" width="516.0" height="35" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="592.0" y="776" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1552) scale(1,-1)">PropertyService</text>
+			<text x="592.0" y="763" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,1526) scale(1,-1)">&lt;&lt;interface&gt;&gt;</text>
+			<text x="592.0" y="743" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1486) scale(1,-1)">+ create()</text>
+			<text x="592.0" y="734" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1468) scale(1,-1)">+ detail()</text>
+			<text x="592.0" y="725" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1450) scale(1,-1)">+ list()</text>
+			<text x="592.0" y="716" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1432) scale(1,-1)">+ update()</text>
+			<text x="592.0" y="707" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1414) scale(1,-1)">+ delete()</text>
+			<rect x="1128.0" y="531" width="516.0" height="260" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="1128.0" y="756" width="516.0" height="35" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="1136.0" y="776" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1552) scale(1,-1)">PropertyServiceImpl</text>
+			<text x="1136.0" y="763" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,1526) scale(1,-1)">&lt;&lt;class&gt;&gt;</text>
+			<text x="1136.0" y="743" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1486) scale(1,-1)">- repository: PropertyRepository</text>
+			<text x="1136.0" y="734" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1468) scale(1,-1)">- properties: PropertyLookup</text>
+			<text x="1136.0" y="725" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1450) scale(1,-1)">--------------------</text>
+			<text x="1136.0" y="716" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1432) scale(1,-1)">+ detail()</text>
+			<text x="1136.0" y="707" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1414) scale(1,-1)">+ list()</text>
+			<text x="1136.0" y="698" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1396) scale(1,-1)">+ create()</text>
+			<text x="1136.0" y="689" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1378) scale(1,-1)">+ update()</text>
+			<text x="1136.0" y="680" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,1360) scale(1,-1)">+ delete()</text>
+			<rect x="40.0" y="241" width="516.0" height="260" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="40.0" y="466" width="516.0" height="35" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="48.0" y="486" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,972) scale(1,-1)">CreatePropertyRequest</text>
+			<text x="48.0" y="473" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,946) scale(1,-1)">&lt;&lt;class&gt;&gt; DTO</text>
+			<text x="48.0" y="453" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,906) scale(1,-1)">- title: String</text>
+			<text x="48.0" y="444" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,888) scale(1,-1)">- description: String</text>
+			<text x="48.0" y="435" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,870) scale(1,-1)">- city: String</text>
+			<text x="48.0" y="426" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,852) scale(1,-1)">- address: String</text>
+			<text x="48.0" y="417" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,834) scale(1,-1)">- price: String</text>
+			<text x="48.0" y="408" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,816) scale(1,-1)">- propertyType: String</text>
+			<text x="48.0" y="399" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,798) scale(1,-1)">- status: String</text>
+			<text x="48.0" y="390" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,780) scale(1,-1)">--------------------</text>
+			<text x="48.0" y="381" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,762) scale(1,-1)">+ rejectUnknown()</text>
+			<rect x="584.0" y="241" width="516.0" height="260" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="584.0" y="466" width="516.0" height="35" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="592.0" y="486" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,972) scale(1,-1)">PropertyResponse</text>
+			<text x="592.0" y="473" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,946) scale(1,-1)">&lt;&lt;class&gt;&gt; DTO</text>
+			<text x="592.0" y="453" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,906) scale(1,-1)">- id: String</text>
+			<text x="592.0" y="444" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,888) scale(1,-1)">- ownerId: String</text>
+			<text x="592.0" y="435" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,870) scale(1,-1)">- title: String</text>
+			<text x="592.0" y="426" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,852) scale(1,-1)">- description: String</text>
+			<text x="592.0" y="417" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,834) scale(1,-1)">- city: String</text>
+			<text x="592.0" y="408" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,816) scale(1,-1)">- address: String</text>
+			<text x="592.0" y="399" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,798) scale(1,-1)">- price: String</text>
+			<text x="592.0" y="390" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,780) scale(1,-1)">- propertyType: String</text>
+			<text x="592.0" y="381" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,762) scale(1,-1)">- status: String</text>
+			<rect x="1128.0" y="241" width="516.0" height="260" rx="4" ry="4" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<rect x="1128.0" y="466" width="516.0" height="35" style="stroke: rgb(15%,45%,40%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="1136.0" y="486" style="font-family: Helvetica; font-size: 11px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,972) scale(1,-1)">UpdatePropertyRequest</text>
+			<text x="1136.0" y="473" style="font-family: Helvetica; font-size: 7px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,946) scale(1,-1)">&lt;&lt;class&gt;&gt; DTO</text>
+			<text x="1136.0" y="453" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,906) scale(1,-1)">- title: String</text>
+			<text x="1136.0" y="444" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,888) scale(1,-1)">- description: String</text>
+			<text x="1136.0" y="435" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,870) scale(1,-1)">- city: String</text>
+			<text x="1136.0" y="426" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,852) scale(1,-1)">- address: String</text>
+			<text x="1136.0" y="417" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,834) scale(1,-1)">- price: String</text>
+			<text x="1136.0" y="408" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,816) scale(1,-1)">- propertyType: String</text>
+			<text x="1136.0" y="399" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,798) scale(1,-1)">- status: String</text>
+			<text x="1136.0" y="390" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,780) scale(1,-1)">--------------------</text>
+			<text x="1136.0" y="381" style="font-family: Helvetica; font-size: 8px;fill: rgb(8%,20%,18%); stroke:none;" transform="translate(0,762) scale(1,-1)">+ rejectUnknown()</text>
+			<path d="M 842,821 L 842,791 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="842 791, 844.1748 795.5022, 839.8252 795.5022" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<path d="M 1386,791 L 1386,821 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="1386 821, 1383.825 816.4978, 1388.175 816.4978" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<path d="M 1100,661 L 1128,661 Z" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 0.8; stroke-dasharray: 3, 2;"/>
+			<polygon points="1128 661, 1123.498 663.1748, 1123.498 658.8252" style="stroke: rgb(33%,43%,41%); stroke-linecap: butt; stroke-width: 1; fill: rgb(33%,43%,41%); fill-rule: evenodd;"/>
+			<text x="40" y="25" style="font-family: Helvetica; font-size: 8px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,50) scale(1,-1)">Atlas shows neighbouring dependencies only to keep text clear. All dependencies and interface realizations appear in complete-class-diagram.mmd.</text>
+			<text x="40" y="13" style="font-family: Helvetica; font-size: 8px;fill: rgb(33%,43%,41%); stroke:none;" transform="translate(0,26) scale(1,-1)">Solid arrow = direct field dependency. Dashed arrow = interface/contract link. Full method signatures and accessors are in CLASS-INVENTORY.md.</text>
+		</g>
+	</g>
+</svg>

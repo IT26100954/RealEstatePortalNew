@@ -1,0 +1,26 @@
+{
+  "database": "MySQL",
+  "pr": 14,
+  "checks": [
+    "Offer endpoints require login; only BUYER creates",
+    "Create derives BUYER, sets PENDING and returns decimal amount",
+    "Offer stored correctly in real MySQL",
+    "Only buyer, property owner and ADMIN can read offer",
+    "Buyer updates pending offer and optional message",
+    "Other users and ADMIN cannot revise buyer offer",
+    "Invalid money, spoofed identity/status, UUID and CSRF rejected",
+    "Only relevant property owner can accept or reject",
+    "Accepted offer cannot be edited, deleted or reopened",
+    "Acceptance does not automatically mark property unavailable",
+    "Seller rejection retained as history",
+    "Buyer withdrawal is final",
+    "Buyer deletes own pending offer; other users blocked",
+    "ADMIN deletes pending offer",
+    "User/Admin and MySQL protect referenced buyer and property",
+    "Unavailable property rejects new offers",
+    "Changed role immediately removes offer creation permission",
+    "Concurrent acceptance and withdrawal produce one terminal outcome",
+    "All six tables restored exactly; real ADMIN and original data unchanged"
+  ],
+  "error": null
+}

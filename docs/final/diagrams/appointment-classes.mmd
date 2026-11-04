@@ -1,0 +1,152 @@
+classDiagram
+direction TB
+  class Appointment {
+    -String id
+    -String buyerId
+    -String propertyId
+    -LocalDate viewingDate
+    -LocalTime viewingTime
+    -String status
+    -String notes
+    +getId() String
+    +setId(String) void
+    +getBuyerId() String
+    +setBuyerId(String) void
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getViewingDate() LocalDate
+    +setViewingDate(LocalDate) void
+    +getViewingTime() LocalTime
+    +setViewingTime(LocalTime) void
+    +getStatus() String
+    +setStatus(String) void
+    +getNotes() String
+    +setNotes(String) void
+  }
+  class AppointmentController {
+    -AppointmentService service
+    -CurrentUser currentUser
+    +detail(String; HttpSession) AppointmentResponse
+    +create(CreateAppointmentRequest; HttpSession) AppointmentResponse
+    +update(String; UpdateAppointmentRequest; HttpSession) AppointmentResponse
+    +delete(String; HttpSession) void
+    +status(String; AppointmentStatusRequest; HttpSession) AppointmentResponse
+  }
+  class AppointmentRepository {
+    <<interface>>
+    +findAll() ListAppointment
+    +findById(String) Appointment
+    +lockById(String) Appointment
+    +insert(Appointment) void
+    +update(Appointment) void
+    +delete(String) void
+    +countConfirmedSlot(String; java.time.LocalDate; java.time.LocalTime; String) int
+  }
+  class AppointmentRepositoryImpl {
+    -JdbcTemplate jdbc
+    +findAll() ListAppointment
+    +findById(String) Appointment
+    +lockById(String) Appointment
+    -find(String; boolean) Appointment
+    +insert(Appointment) void
+    +update(Appointment) void
+    +delete(String) void
+    +countConfirmedSlot(String; java.time.LocalDate; java.time.LocalTime; String) int
+  }
+  class AppointmentService {
+    <<interface>>
+    +create(CreateAppointmentRequest; CurrentAccount) AppointmentResponse
+    +detail(String; CurrentAccount) AppointmentResponse
+    +list(CurrentAccount; String; String) ListAppointmentResponse
+    +update(String; UpdateAppointmentRequest; CurrentAccount) AppointmentResponse
+    +delete(String; CurrentAccount) void
+    +changeStatus(String; String; CurrentAccount) AppointmentResponse
+  }
+  class AppointmentServiceImpl {
+    -AppointmentRepository repository
+    -PropertyLookup properties
+    -owns(String; CurrentAccount) boolean
+    -response(Appointment) AppointmentResponse
+    -readable(Appointment; CurrentAccount) boolean
+    +detail(String; CurrentAccount) AppointmentResponse
+    +list(CurrentAccount; String; String) ListAppointmentResponse
+    +create(CreateAppointmentRequest; CurrentAccount) AppointmentResponse
+    -fill(Appointment; CreateAppointmentRequest) void
+    -fill(Appointment; UpdateAppointmentRequest) void
+    +update(String; UpdateAppointmentRequest; CurrentAccount) AppointmentResponse
+    +delete(String; CurrentAccount) void
+    +changeStatus(String; String; CurrentAccount) AppointmentResponse
+  }
+  class AppointmentResponse {
+    -String id
+    -String buyerId
+    -String propertyId
+    -LocalDate viewingDate
+    -LocalTime viewingTime
+    -String status
+    -String notes
+    +getId() String
+    +setId(String) void
+    +getBuyerId() String
+    +setBuyerId(String) void
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getViewingDate() LocalDate
+    +setViewingDate(LocalDate) void
+    +getViewingTime() LocalTime
+    +setViewingTime(LocalTime) void
+    +getStatus() String
+    +setStatus(String) void
+    +getNotes() String
+    +setNotes(String) void
+  }
+  class AppointmentStatusRequest {
+    -String status
+    +getStatus() String
+    +setStatus(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class CreateAppointmentRequest {
+    -String propertyId
+    -LocalDate viewingDate
+    -LocalTime viewingTime
+    -String notes
+    +getPropertyId() String
+    +setPropertyId(String) void
+    +getViewingDate() LocalDate
+    +setViewingDate(LocalDate) void
+    +getViewingTime() LocalTime
+    +setViewingTime(LocalTime) void
+    +getNotes() String
+    +setNotes(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class UpdateAppointmentRequest {
+    -LocalDate viewingDate
+    -LocalTime viewingTime
+    -String notes
+    +getViewingDate() LocalDate
+    +setViewingDate(LocalDate) void
+    +getViewingTime() LocalTime
+    +setViewingTime(LocalTime) void
+    +getNotes() String
+    +setNotes(String) void
+    +rejectUnknown(String; Object) void
+  }
+  AppointmentController --> AppointmentService : uses service
+  AppointmentController ..> AppointmentResponse : input/output
+  AppointmentController ..> CreateAppointmentRequest : input/output
+  AppointmentController ..> UpdateAppointmentRequest : input/output
+  AppointmentController ..> AppointmentStatusRequest : input/output
+  AppointmentRepository ..> Appointment : input/output
+  AppointmentRepository <|.. AppointmentRepositoryImpl : implements
+  AppointmentRepositoryImpl ..> Appointment : input/output
+  AppointmentService ..> AppointmentResponse : input/output
+  AppointmentService ..> CreateAppointmentRequest : input/output
+  AppointmentService ..> UpdateAppointmentRequest : input/output
+  AppointmentServiceImpl --> AppointmentRepository : uses repository
+  AppointmentService <|.. AppointmentServiceImpl : implements
+  AppointmentServiceImpl ..> Appointment : input/output
+  AppointmentServiceImpl ..> AppointmentResponse : input/output
+  AppointmentServiceImpl ..> CreateAppointmentRequest : input/output
+  AppointmentServiceImpl ..> UpdateAppointmentRequest : input/output

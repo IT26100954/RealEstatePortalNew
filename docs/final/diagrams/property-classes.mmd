@@ -1,0 +1,173 @@
+classDiagram
+direction TB
+  class CreatePropertyRequest {
+    -String title
+    -String description
+    -String city
+    -String address
+    -String price
+    -String propertyType
+    -String status
+    +getTitle() String
+    +setTitle(String) void
+    +getDescription() String
+    +setDescription(String) void
+    +getCity() String
+    +setCity(String) void
+    +getAddress() String
+    +setAddress(String) void
+    +getPrice() String
+    +setPrice(String) void
+    +getPropertyType() String
+    +setPropertyType(String) void
+    +getStatus() String
+    +setStatus(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class PropertyResponse {
+    -String id
+    -String ownerId
+    -String title
+    -String description
+    -String city
+    -String address
+    -String price
+    -String propertyType
+    -String status
+    +getId() String
+    +setId(String) void
+    +getOwnerId() String
+    +setOwnerId(String) void
+    +getTitle() String
+    +setTitle(String) void
+    +getDescription() String
+    +setDescription(String) void
+    +getCity() String
+    +setCity(String) void
+    +getAddress() String
+    +setAddress(String) void
+    +getPrice() String
+    +setPrice(String) void
+    +getPropertyType() String
+    +setPropertyType(String) void
+    +getStatus() String
+    +setStatus(String) void
+  }
+  class UpdatePropertyRequest {
+    -String title
+    -String description
+    -String city
+    -String address
+    -String price
+    -String propertyType
+    -String status
+    +getTitle() String
+    +setTitle(String) void
+    +getDescription() String
+    +setDescription(String) void
+    +getCity() String
+    +setCity(String) void
+    +getAddress() String
+    +setAddress(String) void
+    +getPrice() String
+    +setPrice(String) void
+    +getPropertyType() String
+    +setPropertyType(String) void
+    +getStatus() String
+    +setStatus(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class Property {
+    -String id
+    -String ownerId
+    -String title
+    -String description
+    -String city
+    -String address
+    -BigDecimal price
+    -String propertyType
+    -String status
+    +getId() String
+    +setId(String) void
+    +getOwnerId() String
+    +setOwnerId(String) void
+    +getTitle() String
+    +setTitle(String) void
+    +getDescription() String
+    +setDescription(String) void
+    +getCity() String
+    +setCity(String) void
+    +getAddress() String
+    +setAddress(String) void
+    +getPrice() BigDecimal
+    +setPrice(BigDecimal) void
+    +getPropertyType() String
+    +setPropertyType(String) void
+    +getStatus() String
+    +setStatus(String) void
+  }
+  class PropertyController {
+    -PropertyService service
+    -CurrentUser currentUser
+    +detail(String; HttpSession) PropertyResponse
+    +create(CreatePropertyRequest; HttpSession) PropertyResponse
+    +update(String; UpdatePropertyRequest; HttpSession) PropertyResponse
+    +delete(String; HttpSession) void
+  }
+  class PropertyRepository {
+    <<interface>>
+    +findAll() ListProperty
+    +findById(String) Property
+    +lockById(String) Property
+    +insert(Property) void
+    +update(Property) void
+    +delete(String) void
+  }
+  class PropertyRepositoryImpl {
+    -JdbcTemplate jdbc
+    +findAll() ListProperty
+    +findById(String) Property
+    +lockById(String) Property
+    -find(String; boolean) Property
+    +insert(Property) void
+    +update(Property) void
+    +delete(String) void
+  }
+  class PropertyService {
+    <<interface>>
+    +create(CreatePropertyRequest; CurrentAccount) PropertyResponse
+    +detail(String; CurrentAccount) PropertyResponse
+    +list(CurrentAccount; String; String) ListPropertyResponse
+    +update(String; UpdatePropertyRequest; CurrentAccount) PropertyResponse
+    +delete(String; CurrentAccount) void
+  }
+  class PropertyServiceImpl {
+    -PropertyRepository repository
+    -PropertyLookup properties
+    -owns(String; CurrentAccount) boolean
+    -response(Property) PropertyResponse
+    -readable(Property; CurrentAccount) boolean
+    +detail(String; CurrentAccount) PropertyResponse
+    +list(CurrentAccount; String; String) ListPropertyResponse
+    +create(CreatePropertyRequest; CurrentAccount) PropertyResponse
+    -fill(Property; CreatePropertyRequest) void
+    -fill(Property; UpdatePropertyRequest) void
+    +update(String; UpdatePropertyRequest; CurrentAccount) PropertyResponse
+    +delete(String; CurrentAccount) void
+  }
+  PropertyController --> PropertyService : uses service
+  PropertyController ..> PropertyResponse : input/output
+  PropertyController ..> CreatePropertyRequest : input/output
+  PropertyController ..> UpdatePropertyRequest : input/output
+  PropertyRepository ..> Property : input/output
+  PropertyRepository <|.. PropertyRepositoryImpl : implements
+  PropertyRepositoryImpl ..> Property : input/output
+  PropertyService ..> CreatePropertyRequest : input/output
+  PropertyService ..> PropertyResponse : input/output
+  PropertyService ..> UpdatePropertyRequest : input/output
+  PropertyServiceImpl --> PropertyRepository : uses repository
+  PropertyService <|.. PropertyServiceImpl : implements
+  PropertyServiceImpl ..> PropertyResponse : input/output
+  PropertyServiceImpl ..> Property : input/output
+  PropertyServiceImpl ..> CreatePropertyRequest : input/output
+  PropertyServiceImpl ..> UpdatePropertyRequest : input/output

@@ -1,0 +1,24 @@
+{
+  "database": "MySQL",
+  "checks": [
+    "Disposable ADMIN fixture; real ADMIN unused",
+    "Only authenticated SELLER creates properties",
+    "Create derives owner from login and preserves decimal price",
+    "Created property persisted in real MySQL",
+    "Unavailable property visible only to owner and ADMIN",
+    "Other users cannot edit or delete property",
+    "Owner update makes property publicly readable",
+    "City and text search return matching property",
+    "City filter excludes nonmatching property",
+    "ADMIN property update persists",
+    "Validation, ownership spoofing and invalid CSRF blocked",
+    "User/Admin protects accounts referenced by properties",
+    "Real MySQL foreign key blocks deleting referenced property",
+    "ADMIN deletes unreferenced property; subsequent read is 404",
+    "SELLER deletes own unreferenced property",
+    "Changed role immediately removes property creation permission",
+    "Account deletion invalidates existing login session",
+    "All six tables restored exactly; original users and real ADMIN unchanged"
+  ],
+  "error": null
+}

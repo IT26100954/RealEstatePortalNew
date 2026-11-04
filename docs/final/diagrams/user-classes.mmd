@@ -1,0 +1,258 @@
+classDiagram
+direction TB
+  class AuthController {
+    -UserService users
+    -AuthService auth
+    -CurrentUser currentUser
+    +me(HttpServletRequest; HttpServletResponse) AuthResponse
+    +register(CreateUserRequest) UserResponse
+    +login(LoginRequest; HttpServletRequest; HttpServletResponse) AuthResponse
+    +logout(HttpServletRequest) void
+  }
+  class AuthService {
+    <<interface>>
+    +login(LoginRequest; HttpServletRequest) AuthResponse
+  }
+  class AuthServiceImpl {
+    -UserRepository repository
+    -PasswordEncoder encoder
+    -UserSessions sessions
+    -String dummyHash
+    +login(LoginRequest; HttpServletRequest) AuthResponse
+    -failed() ModuleException
+  }
+  class BootstrapAdminRunner {
+    -BootstrapAdminService service
+    -Environment environment
+    +run(ApplicationArguments) void
+  }
+  class BootstrapAdminService {
+    -UserRepository repository
+    -PasswordEncoder encoder
+    +createFirstAdmin(String; String; String; String) void
+  }
+  class AuthResponse {
+    -UserResponse user
+    -String csrfToken
+    +getUser() UserResponse
+    +getCsrfToken() String
+  }
+  class ChangePasswordRequest {
+    -String currentPassword
+    -String newPassword
+    +getCurrentPassword() String
+    +setCurrentPassword(String) void
+    +getNewPassword() String
+    +setNewPassword(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class ChangeRoleRequest {
+    -Role role
+    +getRole() Role
+    +setRole(Role) void
+    +rejectUnknown(String; Object) void
+  }
+  class CreateUserRequest {
+    -String username
+    -String password
+    -String email
+    -String phone
+    -Role role
+    +getUsername() String
+    +setUsername(String) void
+    +getPassword() String
+    +setPassword(String) void
+    +getEmail() String
+    +setEmail(String) void
+    +getPhone() String
+    +setPhone(String) void
+    +getRole() Role
+    +setRole(Role) void
+    +rejectUnknown(String; Object) void
+  }
+  class LoginRequest {
+    -String username
+    -String password
+    +getUsername() String
+    +setUsername(String) void
+    +getPassword() String
+    +setPassword(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class UpdateUserRequest {
+    -String username
+    -String email
+    -String phone
+    +getUsername() String
+    +setUsername(String) void
+    +getEmail() String
+    +setEmail(String) void
+    +getPhone() String
+    +setPhone(String) void
+    +rejectUnknown(String; Object) void
+  }
+  class UserResponse {
+    -String id
+    -String username
+    -String email
+    -String phone
+    -Role role
+    +getId() String
+    +setId(String) void
+    +getUsername() String
+    +setUsername(String) void
+    +getEmail() String
+    +setEmail(String) void
+    +getPhone() String
+    +setPhone(String) void
+    +getRole() Role
+    +setRole(Role) void
+  }
+  class PasswordConfig {
+    +passwordEncoder() PasswordEncoder
+  }
+  class Role {
+    <<enum>>
+    BUYER
+    SELLER
+    ADMIN
+  }
+  class User {
+    -String id
+    -String username
+    -String passwordHash
+    -String email
+    -String phone
+    -Role role
+    +getId() String
+    +setId(String) void
+    +getUsername() String
+    +setUsername(String) void
+    +getPasswordHash() String
+    +setPasswordHash(String) void
+    +getEmail() String
+    +setEmail(String) void
+    +getPhone() String
+    +setPhone(String) void
+    +getRole() Role
+    +setRole(Role) void
+  }
+  class UserApiExceptionHandler {
+    +expected(ModuleException) ResponseEntityMapString,String
+    +invalid(HttpMessageNotReadableException) ResponseEntityMapString,String
+    +conflict(DataIntegrityViolationException) ResponseEntityMapString,String
+    +concurrent(ConcurrencyFailureException) ResponseEntityMapString,String
+    -response(HttpStatus; String; String) ResponseEntityMapString,String
+  }
+  class UserController {
+    -UserService service
+    -CurrentUser currentUser
+    +list(HttpSession) ListUserResponse
+    +detail(String; HttpSession) UserResponse
+    +create(CreateUserRequest; HttpSession) UserResponse
+    +update(String; UpdateUserRequest; HttpSession) UserResponse
+    +role(String; ChangeRoleRequest; HttpSession) UserResponse
+    +password(String; ChangePasswordRequest; HttpSession) void
+    +delete(String; HttpSession) void
+  }
+  class UserRepository {
+    <<interface>>
+    +findByUsernameIgnoreCase(String) OptionalUser
+    +existsByUsernameIgnoreCase(String) boolean
+    +countByRole(Role) long
+    +lockAllUsers() ListUser
+  }
+  class UserService {
+    <<interface>>
+    +register(CreateUserRequest) UserResponse
+    +createUser(String; CreateUserRequest) UserResponse
+    +getAllUsers(String) ListUserResponse
+    +getUserById(String; String) UserResponse
+    +updateUser(String; String; UpdateUserRequest) UserResponse
+    +changePassword(String; String; ChangePasswordRequest) void
+    +changeRole(String; String; ChangeRoleRequest) UserResponse
+    +deleteUser(String; String) void
+  }
+  class UserServiceImpl {
+    -UserRepository repository
+    -PasswordEncoder encoder
+    -JdbcTemplate jdbc
+    -UserSessions sessions
+    -missing() ModuleException
+    -find(String) User
+    -findIn(ListUser; String) User
+    -actor(String) User
+    -actorIn(ListUser; String) User
+    -admin(User) void
+    -unique(String; String) void
+    -password(String) String
+    -newUser(CreateUserRequest) User
+    -references(String) int
+    -admins(ListUser) long
+    +register(CreateUserRequest) UserResponse
+    +createUser(String; CreateUserRequest) UserResponse
+    +getAllUsers(String) ListUserResponse
+    +getUserById(String; String) UserResponse
+    +updateUser(String; String; UpdateUserRequest) UserResponse
+    +changePassword(String; String; ChangePasswordRequest) void
+    +changeRole(String; String; ChangeRoleRequest) UserResponse
+    +deleteUser(String; String) void
+  }
+  class UserSessionListenerConfig {
+    +userSessionListener(final UserSessions) ServletListenerRegistrationBeanHttpSessionListener
+  }
+  class UserSessions {
+    -MapString,SetHttpSession sessions
+    +track(String; HttpSession) void
+    +remove(HttpSession) void
+    +invalidate(String) void
+    +invalidateAfterCommit(final String) void
+  }
+  class UserViews {
+    +response(User) UserResponse
+  }
+  AuthController --> UserService : uses users
+  AuthController --> AuthService : uses auth
+  AuthController ..> AuthResponse : input/output
+  AuthController ..> CreateUserRequest : input/output
+  AuthController ..> UserResponse : input/output
+  AuthController ..> LoginRequest : input/output
+  AuthService ..> AuthResponse : input/output
+  AuthService ..> LoginRequest : input/output
+  AuthServiceImpl --> UserRepository : uses repository
+  AuthServiceImpl --> UserSessions : uses sessions
+  AuthService <|.. AuthServiceImpl : implements
+  AuthServiceImpl ..> AuthResponse : input/output
+  AuthServiceImpl ..> LoginRequest : input/output
+  BootstrapAdminRunner --> BootstrapAdminService : uses service
+  BootstrapAdminService --> UserRepository : uses repository
+  AuthResponse --> UserResponse : uses user
+  ChangeRoleRequest --> Role : uses role
+  CreateUserRequest --> Role : uses role
+  UserResponse --> Role : uses role
+  User --> Role : uses role
+  UserController --> UserService : uses service
+  UserController ..> UserResponse : input/output
+  UserController ..> CreateUserRequest : input/output
+  UserController ..> UpdateUserRequest : input/output
+  UserController ..> ChangeRoleRequest : input/output
+  UserController ..> ChangePasswordRequest : input/output
+  UserRepository ..> User : input/output
+  UserRepository ..> Role : input/output
+  UserService ..> CreateUserRequest : input/output
+  UserService ..> UserResponse : input/output
+  UserService ..> UpdateUserRequest : input/output
+  UserService ..> ChangePasswordRequest : input/output
+  UserService ..> ChangeRoleRequest : input/output
+  UserServiceImpl --> UserRepository : uses repository
+  UserServiceImpl --> UserSessions : uses sessions
+  UserService <|.. UserServiceImpl : implements
+  UserServiceImpl ..> User : input/output
+  UserServiceImpl ..> CreateUserRequest : input/output
+  UserServiceImpl ..> UserResponse : input/output
+  UserServiceImpl ..> UpdateUserRequest : input/output
+  UserServiceImpl ..> ChangePasswordRequest : input/output
+  UserServiceImpl ..> ChangeRoleRequest : input/output
+  UserSessionListenerConfig ..> UserSessions : input/output
+  UserViews ..> User : input/output
+  UserViews ..> UserResponse : input/output
