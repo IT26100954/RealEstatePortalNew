@@ -61,14 +61,20 @@ if ($null -ne $managed) {
     if ($Build) { throw 'Use STOP-LOCAL.cmd before rebuilding the running application.' }
     $savedMode = Get-Content -LiteralPath $stateFile -Raw | ConvertFrom-Json
     if ($savedMode.Url -ne $site) {
-        throw 'A different local/Wi-Fi mode is running. Use STOP-LOCAL.cmd, then the desired START launcher.'
-    }
-    if (Test-LocalWebsite) {
+        Write-Host "Switching this website from $($savedMode.Url) to $site. Existing sessions will sign out."
+        # Get-ManagedProcess verified both our JVM marker and the exact project JAR.
+        # Never stop an unrecognised application just because it occupies port 8081.
+        $previous = Get-Process -Id $managed.ProcessId
+        Stop-Process -InputObject $previous
+        if (-not $previous.WaitForExit(15000)) { throw 'The previous website process did not stop in time.' }
+        Remove-Item -LiteralPath $stateFile
+    } elseif (Test-LocalWebsite) {
         Write-Host "Already running: $site"
         if (-not $NoBrowser) { Start-Process $site }
         exit 0
+    } else {
+        throw 'The local process exists but is not ready. Check .local/local-evaluation-error.log, or use STOP-LOCAL.cmd and start again.'
     }
-    throw 'The local process exists but is not ready. Check .local/local-evaluation-error.log, or use STOP-LOCAL.cmd and start again.'
 }
 
 if (-not (Test-Path -LiteralPath (Join-Path $backend '.env'))) {
