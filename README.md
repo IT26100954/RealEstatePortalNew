@@ -1,9 +1,9 @@
 # Real Estate Portal
 
 A six-member project built with Java 21, Spring Boot, Maven, MySQL and React.
-All six modules are integrated and deployed.
+All six modules are integrated. Local evaluation mode works without cloud hosting.
 
-Live demonstration: [https://real-estate-portal-production-3d7d.up.railway.app](https://real-estate-portal-production-3d7d.up.railway.app)
+Previously deployed demonstration (subject to free hosting limits): [https://real-estate-portal-production-3d7d.up.railway.app](https://real-estate-portal-production-3d7d.up.railway.app)
 
 [Hosted access instructions and free-credit limits](docs/final/HOSTED-DEPLOYMENT.md).
 
@@ -27,6 +27,13 @@ Live demonstration: [https://real-estate-portal-production-3d7d.up.railway.app](
 6. Review and Feedback Management.
 
 ## Run locally
+For evaluation, double-click **START-LOCAL.cmd** and open **http://127.0.0.1:8081**.
+It serves React and the backend together, using existing local MySQL. Stop it with **STOP-LOCAL.cmd**.
+See [local evaluation instructions](docs/final/LOCAL-EVALUATION.md).
+For a second device on the same Wi-Fi, use **START-WIFI.cmd** and its printed network URL.
+See [same-Wi-Fi instructions](docs/final/SAME-WIFI.md).
+
+For the existing IntelliJ/Vite developer workflow:
 Ensure MySQL is running and private backend/.env settings are configured.
 Open this entire repository in IntelliJ, load backend/pom.xml, select Java 21,
 and run com.realestate.PortalApplication normally without bootstrap-admin.
@@ -39,7 +46,7 @@ Members work on feature branches and submit PRs targeting development.
 Main release promotion is a separate reviewed action. Local credentials and build output stay ignored.
 Preserve actual authorship and describe generated assistance accurately.
 The final documentation is based on source commit 4aef4b56657c13fee5f19befe995195a378abe3a.
-Deployment is pending; no public hosted link is claimed.
+For the evaluation, use the tested local launcher; hosted availability depends on the external provider.
 
 ## Release and hosting
 See [release status](docs/RELEASE-STATUS.md), [demo guide](docs/DEMO-GUIDE.md) and [free deployment](docs/DEPLOYMENT.md).
