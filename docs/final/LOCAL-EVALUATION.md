@@ -2,7 +2,7 @@
 
 The completed React frontend can be built into the Spring Boot JAR. A single local Java process then serves the whole website and its API at **http://127.0.0.1:8081**. The existing local MySQL Server must remain running. This mode does not use Railway or Aiven and is separate from the disposable practice pack on 8082.
 
-For sharing with another device on the same Wi-Fi, use **START-WIFI.cmd** and the detected Wi-Fi URL instead. See [same-Wi-Fi setup](SAME-WIFI.md). Stop the current mode before switching.
+For sharing with another device on the same Wi-Fi, use **START-WIFI.cmd** and the detected Wi-Fi URL instead. See [same-Wi-Fi setup](SAME-WIFI.md). The START launchers automatically restart their own application when switching modes; existing login sessions sign out.
 
 ## Existing owner computer
 
