@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param([switch]$Build, [switch]$NoBrowser, [switch]$Stop)
+param([switch]$Build, [switch]$NoBrowser, [switch]$Stop, [switch]$WiFi)
 $ErrorActionPreference = 'Stop'
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $backend = Join-Path $projectRoot 'backend'
@@ -11,6 +11,21 @@ $errLog = Join-Path $localDirectory 'local-evaluation-error.log'
 $jar = Join-Path $backend 'target/real-estate-portal-0.0.1-SNAPSHOT.jar'
 $site = 'http://127.0.0.1:8081'
 $marker = '-Dportal.local.evaluation=1'
+$bindAddress = '127.0.0.1'
+$wifiAddress = $null
+if ($WiFi -and -not $Stop) {
+    $wireless = @(Get-NetAdapter -Physical | Where-Object {
+        $_.Status -eq 'Up' -and $_.PhysicalMediaType -eq 'Native 802.11'
+    })
+    if ($wireless.Count -ne 1) { throw 'Connect one Wi-Fi adapter before using START-WIFI.cmd.' }
+    $wifiAddress = Get-NetIPAddress -InterfaceIndex $wireless[0].ifIndex -AddressFamily IPv4 |
+        Where-Object { $_.AddressState -eq 'Preferred' -and $_.IPAddress -notlike '169.254.*' } |
+        Select-Object -First 1
+    if (-not $wifiAddress) { throw 'Wi-Fi does not have an IPv4 address yet.' }
+    # Listen on this Wi-Fi address only, not every network adapter.
+    $bindAddress = $wifiAddress.IPAddress
+    $site = "http://${bindAddress}:8081"
+}
 
 function Get-ManagedProcess {
     if (-not (Test-Path -LiteralPath $stateFile)) { return $null }
@@ -44,6 +59,10 @@ if ($Stop) {
 $managed = Get-ManagedProcess
 if ($null -ne $managed) {
     if ($Build) { throw 'Use STOP-LOCAL.cmd before rebuilding the running application.' }
+    $savedMode = Get-Content -LiteralPath $stateFile -Raw | ConvertFrom-Json
+    if ($savedMode.Url -ne $site) {
+        throw 'A different local/Wi-Fi mode is running. Use STOP-LOCAL.cmd, then the desired START launcher.'
+    }
     if (Test-LocalWebsite) {
         Write-Host "Already running: $site"
         if (-not $NoBrowser) { Start-Process $site }
@@ -83,6 +102,11 @@ foreach ($candidateHome in ($homes | Select-Object -Unique)) {
     }
 }
 if (-not $java) { throw 'JDK 21 was not found. Select/install JDK 21 and set JAVA_HOME for this terminal.' }
+
+if ($WiFi) {
+    # The helper requests Windows administrator approval only if its narrow rule needs updating.
+    & (Join-Path $PSScriptRoot 'configure-wifi-access.ps1') -InterfaceIndex $wifiAddress.InterfaceIndex -JavaPath $java
+}
 
 $needBuild = $Build -or -not (Test-Path -LiteralPath $jar)
 if (-not $needBuild) {
@@ -146,7 +170,7 @@ try {
         '--spring.profiles.active=local-evaluation',
         '--spring.config.import=file:./.env[.properties]',
         '--spring.datasource.url=jdbc:mysql://127.0.0.1:3306/real_estate_portal_new',
-        '--server.address=127.0.0.1','--server.port=8081',
+        "--server.address=$bindAddress",'--server.port=8081',
         '--server.servlet.session.cookie.secure=false',
         '--spring.sql.init.mode=never','--spring.jpa.hibernate.ddl-auto=none')
     $process = Start-Process -FilePath $java -ArgumentList $arguments -WorkingDirectory $backend `
@@ -166,6 +190,11 @@ while ((Get-Date) -lt $deadline) {
         $page = Invoke-WebRequest -UseBasicParsing -Uri $site -TimeoutSec 5
         if ($page.Content -notmatch 'id="root"') { throw 'Backend is running but the frontend is missing. Stop and run START-LOCAL.cmd -Build.' }
         Write-Host "Ready: $site"
+        if ($WiFi) {
+            Write-Host "On a second device connected to the same Wi-Fi, open: $site"
+            Write-Host 'This is local network access, not public internet hosting. Keep the laptop awake.'
+            $site | Set-Content -LiteralPath (Join-Path $localDirectory 'wifi-website-address.txt') -Encoding UTF8
+        }
         Write-Host 'All six modules use the existing LOCAL MySQL database. Use your LOCAL login.'
         Write-Host 'Use STOP-LOCAL.cmd to stop this website. No IntelliJ or Vite terminal is needed.'
         if (-not $NoBrowser) { Start-Process $site }

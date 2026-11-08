@@ -30,6 +30,8 @@ Previously deployed demonstration (subject to free hosting limits): [https://rea
 For evaluation, double-click **START-LOCAL.cmd** and open **http://127.0.0.1:8081**.
 It serves React and the backend together, using existing local MySQL. Stop it with **STOP-LOCAL.cmd**.
 See [local evaluation instructions](docs/final/LOCAL-EVALUATION.md).
+For a second device on the same Wi-Fi, use **START-WIFI.cmd** and its printed network URL.
+See [same-Wi-Fi instructions](docs/final/SAME-WIFI.md).
 
 For the existing IntelliJ/Vite developer workflow:
 Ensure MySQL is running and private backend/.env settings are configured.
