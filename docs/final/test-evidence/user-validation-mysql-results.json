@@ -1,0 +1,167 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "Disposable ADMIN login works",
+      "passed": true
+    },
+    {
+      "check": "API registration rejects invalid phone",
+      "passed": true
+    },
+    {
+      "check": "API registration rejects invalid phone",
+      "passed": true
+    },
+    {
+      "check": "API registration rejects invalid phone",
+      "passed": true
+    },
+    {
+      "check": "API registration rejects invalid phone",
+      "passed": true
+    },
+    {
+      "check": "API registration rejects malformed email",
+      "passed": true
+    },
+    {
+      "check": "API registration rejects malformed email",
+      "passed": true
+    },
+    {
+      "check": "API registration rejects malformed email",
+      "passed": true
+    },
+    {
+      "check": "API registration rejects malformed email",
+      "passed": true
+    },
+    {
+      "check": "API registration rejects whitespace-only password",
+      "passed": true
+    },
+    {
+      "check": "API registration rejects whitespace-only password",
+      "passed": true
+    },
+    {
+      "check": "ADMIN API creation rejects invalid input",
+      "passed": true
+    },
+    {
+      "check": "ADMIN API creation rejects invalid input",
+      "passed": true
+    },
+    {
+      "check": "ADMIN API creation rejects invalid input",
+      "passed": true
+    },
+    {
+      "check": "Invalid creation leaves no row",
+      "passed": true
+    },
+    {
+      "check": "Valid international phone registration",
+      "passed": true
+    },
+    {
+      "check": "Profile rejects letters in phone",
+      "passed": true
+    },
+    {
+      "check": "Profile rejects invalid domain",
+      "passed": true
+    },
+    {
+      "check": "Password change rejects whitespace only",
+      "passed": true
+    },
+    {
+      "check": "Rejected edits leave user fields and password hash unchanged",
+      "passed": true
+    },
+    {
+      "check": "Rejected password change keeps valid session",
+      "passed": true
+    },
+    {
+      "check": "Valid local phone preserves leading zero",
+      "passed": true
+    },
+    {
+      "check": "Nonblank password with spaces accepted unchanged",
+      "passed": true
+    },
+    {
+      "check": "Login verifies password with significant spaces",
+      "passed": true
+    },
+    {
+      "check": "Trimmed version does not authenticate",
+      "passed": true
+    },
+    {
+      "check": "Disposable API account deletion",
+      "passed": true
+    },
+    {
+      "check": "Browser rejects phone digits before saving",
+      "passed": true
+    },
+    {
+      "check": "Browser rejects malformed email before saving",
+      "passed": true
+    },
+    {
+      "check": "Browser rejects only whitespace before saving",
+      "passed": true
+    },
+    {
+      "check": "Browser valid registration persists in real MySQL",
+      "passed": true
+    },
+    {
+      "check": "Browser profile blocks invalid phone with no saved change",
+      "passed": true
+    },
+    {
+      "check": "Browser accepts valid international profile phone",
+      "passed": true
+    },
+    {
+      "check": "Browser change-password blocks whitespace",
+      "passed": true
+    },
+    {
+      "check": "Browser rejects phone digits before saving",
+      "passed": true
+    },
+    {
+      "check": "Browser rejects only whitespace before saving",
+      "passed": true
+    },
+    {
+      "check": "Browser ADMIN creates valid disposable user",
+      "passed": true
+    },
+    {
+      "check": "Browser ADMIN edit rejects malformed local email part",
+      "passed": true
+    },
+    {
+      "check": "Browser ADMIN valid edit persists",
+      "passed": true
+    },
+    {
+      "check": "Browser ADMIN deletes only disposable account",
+      "passed": true
+    },
+    {
+      "check": "No browser JavaScript errors",
+      "passed": true
+    }
+  ],
+  "temporaryAccountsRemoved": true,
+  "existingUserAndAdminRecordsUnchanged": true
+}

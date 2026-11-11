@@ -1,0 +1,65 @@
+{
+  "phone": {
+    "valid": [
+      "0771234567",
+      "+94771234567",
+      "1234567",
+      "123456789012345"
+    ],
+    "invalid": [
+      "abcdef",
+      "077abc4567",
+      "123456",
+      "1234567890123456",
+      "++94771234567",
+      "077-1234567",
+      "077 1234567",
+      "\uff11\uff12\uff13\uff14\uff15\uff16\uff17",
+      ""
+    ]
+  },
+  "email": {
+    "valid": [
+      "user@example.com",
+      "a.b+tag@sub.example.co.uk",
+      "USER@EXAMPLE.COM",
+      "a@b.co"
+    ],
+    "invalid": [
+      "a@b..com",
+      "a..b@example.com",
+      ".a@example.com",
+      "a.@example.com",
+      "a@-example.com",
+      "a@example-.com",
+      "a@example.com.",
+      "a@b",
+      "a b@example.com",
+      "a@@example.com",
+      "a@exa_mple.com",
+      "a@example.c",
+      "a@example.12",
+      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com",
+      "a@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com",
+      ""
+    ]
+  },
+  "password": {
+    "valid": [
+      "ExamplePass123!",
+      " pass word ",
+      "xxxxxxxx",
+      "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    ],
+    "invalid": [
+      "        ",
+      "\t\t\t\t\t\t\t\t",
+      "\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0",
+      "\u2003\u2003\u2003\u2003\u2003\u2003\u2003\u2003",
+      "\ufeff\ufeff\ufeff\ufeff\ufeff\ufeff\ufeff\ufeff",
+      "short",
+      "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      ""
+    ]
+  }
+}

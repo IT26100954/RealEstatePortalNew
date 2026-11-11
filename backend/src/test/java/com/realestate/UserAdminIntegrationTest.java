@@ -188,4 +188,29 @@ class UserAdminIntegrationTest {
       c.token="invalid";call(c,"POST","/api/properties",propertyBody("AVAILABLE"),403);
     }
 
+
+    @Test void invalidContactAndBlankPasswordsCannotBeSaved() throws Exception {
+        Client guest=new Client();guest.refresh();
+        String base=create("validationnew","BUYER");
+        for (String bad:new String[]{"abcdef","077abc4567","123456","1234567890123456"}) {
+            call(guest,"POST","/api/auth/register",base.replace("0771234567",bad),400);
+        }
+        for (String bad:new String[]{"a@b..com","a..b@example.com","a@-example.com","a@example.com."}) {
+            call(guest,"POST","/api/auth/register",base.replace("validationnew@example.com",bad),400);
+        }
+        call(guest,"POST","/api/auth/register",base.replace(PASSWORD,"        "),400);
+        assertEquals(0,jdbc.queryForObject("SELECT COUNT(*) FROM users WHERE username='validationnew'",Integer.class));
+        Client admin=new Client();admin.login("admin");
+        call(admin,"POST","/api/users",base.replace("0771234567","letters"),400);
+        call(admin,"POST","/api/users",base.replace("validationnew@example.com","a@b..com"),400);
+        call(admin,"POST","/api/users",base.replace(PASSWORD,"        "),400);
+        Client buyer=new Client();buyer.login("buyer");
+        call(buyer,"PUT","/api/users/"+BUYER,profile("buyer").replace("0711234567","letters"),400);
+        call(buyer,"PUT","/api/users/"+BUYER,profile("buyer").replace("changed@example.com","a@b..com"),400);
+        call(buyer,"PUT","/api/users/"+BUYER+"/password","{\"currentPassword\":\""+PASSWORD+"\",\"newPassword\":\"        \"}",400);
+        assertEquals("0771234567",jdbc.queryForObject("SELECT phone FROM users WHERE id=?",String.class,BUYER));
+        assertEquals("buyer@example.com",jdbc.queryForObject("SELECT email FROM users WHERE id=?",String.class,BUYER));
+        assertEquals(seedHash,jdbc.queryForObject("SELECT password_hash FROM users WHERE id=?",String.class,BUYER));
+        call(buyer,"GET","/api/users/"+BUYER,null,200);
+    }
 }
