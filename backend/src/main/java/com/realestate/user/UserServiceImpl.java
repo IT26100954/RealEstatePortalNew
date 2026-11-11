@@ -55,8 +55,7 @@ public class UserServiceImpl implements UserService {
         conflict(existing.isPresent() && !existing.get().getId().equals(excludedId),"Username is already taken.");
     }
     private String password(String value) {
-        if (value==null || value.length()<8 || value.length()>128) throw invalid("Password must contain 8 to 128 characters.");
-        return value;
+        return com.realestate.common.InputRules.password(value);
     }
     private User newUser(CreateUserRequest request) {
         if (request==null) throw invalid("Request body is required.");
@@ -68,7 +67,7 @@ public class UserServiceImpl implements UserService {
         user.setUsername(username);
         user.setPasswordHash(encoder.encode(password(request.getPassword())));
         user.setEmail(email(request.getEmail()));
-        user.setPhone(text(request.getPhone(),"Phone",20));
+        user.setPhone(phone(request.getPhone()));
         user.setRole(request.getRole());
         return user;
     }
@@ -125,7 +124,7 @@ public class UserServiceImpl implements UserService {
         unique(username,target.getId());
         target.setUsername(username);
         target.setEmail(email(request.getEmail()));
-        target.setPhone(text(request.getPhone(),"Phone",20));
+        target.setPhone(phone(request.getPhone()));
         return UserViews.response(repository.saveAndFlush(target));
     }
     @Override

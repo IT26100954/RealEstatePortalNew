@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { validateEmail, validatePhone, validatePassword } from './validation.js';
 export function Notice({ error, children }) { return <p className={error ? 'notice error' : 'notice success'} role={error ? 'alert' : 'status'}>{children}</p>; }
 export function Field({ field, value, onChange }) {
   const props = { id: field.name, name: field.name, 'aria-label': field.label, value: value ?? '', required: !field.optional,
@@ -27,7 +28,9 @@ export function RecordForm({ fields, initial = {}, submit, label = 'Save', cance
         if (f.type !== 'password' && typeof v === 'string') v = v.trim();
         if (!f.optional && v === '') throw new Error(f.label + ' is required.');
         if (f.money && (!/^\d+(\.\d{1,2})?$/.test(v) || Number(v) <= 0 || Number(v) >= 10000000000000)) throw new Error('Enter a positive amount with at most two decimal places.');
-        if (f.type === 'password' && (v.length < 8 || v.length > 128)) throw new Error('Passwords must contain 8 to 128 characters.');
+        if (f.type === 'email' && v !== '') validateEmail(v);
+        if (f.type === 'tel' && v !== '') validatePhone(v);
+        if (f.type === 'password') validatePassword(v);
         if (f.name === 'viewingTime' && v.length === 5) v += ':00';
         body[f.name] = f.numeric ? Number(v) : v;
       });
