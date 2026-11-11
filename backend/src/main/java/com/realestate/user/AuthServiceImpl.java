@@ -30,7 +30,7 @@ public class AuthServiceImpl implements AuthService {
     public AuthResponse login(LoginRequest request,HttpServletRequest httpRequest) {
         String username=request==null ? null : request.getUsername();
         String password=request==null ? null : request.getPassword();
-        if (username==null || username.trim().isEmpty() || username.trim().length()>40 || password==null || password.length()>128) throw failed();
+        if (username==null || username.trim().isEmpty() || username.trim().length()>40 || password==null || password.length()>128 || password.matches("[\\s\\p{Z}\\u0085\\uFEFF]*")) throw failed();
         // Same lock order as password/role changes; verify current credentials.
         List<User> users=repository.lockAllUsers();
         User found=null;

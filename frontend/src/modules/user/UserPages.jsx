@@ -6,9 +6,9 @@ import { Notice, RecordForm } from '../../shared/Forms.jsx';
 const profile = [
  { name:'username', label:'Username', max:40 },
  { name:'email', label:'Email', type:'email', max:254 },
- { name:'phone', label:'Phone', type:'tel', max:20 }
+ { name:'phone', label:'Phone', type:'tel', max:16, help:'7-15 digits; optional leading +. Example: 0771234567 or +94771234567.' }
 ];
-const password = { name:'password', label:'Password', type:'password', max:128, help:'8–128 characters', autoComplete:'new-password' };
+const password = { name:'password', label:'Password', type:'password', max:128, help:'8–128 characters; not only whitespace', autoComplete:'new-password' };
 const role = { name:'role', label:'Role', options:['BUYER','SELLER','ADMIN'] };
 
 export default function UserPages({ segments }) {

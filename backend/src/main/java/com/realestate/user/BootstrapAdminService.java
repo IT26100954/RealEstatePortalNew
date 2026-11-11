@@ -20,13 +20,13 @@ public class BootstrapAdminService {
         for (User user:users) {
             if (user.getRole()==Role.ADMIN) throw new ModuleException(HttpStatus.CONFLICT,"ADMIN_EXISTS","An ADMIN already exists. Disable the bootstrap profile.");
         }
-        if (password==null || password.length()<8 || password.length()>128) throw invalid("Bootstrap password must contain 8 to 128 characters.");
+        com.realestate.common.InputRules.password(password);
         String name=text(username,"Bootstrap username",40);
         conflict(repository.existsByUsernameIgnoreCase(name),"Bootstrap username is taken.");
         User admin=new User();
         admin.setId(UUID.randomUUID().toString());admin.setUsername(name);
         admin.setPasswordHash(encoder.encode(password));admin.setEmail(email(email));
-        admin.setPhone(text(phone,"Phone",20));admin.setRole(Role.ADMIN);
+        admin.setPhone(phone(phone));admin.setRole(Role.ADMIN);
         repository.saveAndFlush(admin);
     }
 }
