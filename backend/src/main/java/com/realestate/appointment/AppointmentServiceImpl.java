@@ -37,6 +37,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     private boolean readable(Appointment record, CurrentAccount actor) { return actor != null && (actor.isAdmin() || owns(record.getBuyerId(),actor) || (actor.isSeller() && properties.find(record.getPropertyId()).getOwnerId().equals(actor.getId()))); }
     @Override
     @Transactional(readOnly=true)
+    // Detail
     public AppointmentResponse detail(String recordId, CurrentAccount actor) {
         Appointment record=repository.findById(id(recordId));
         allow(readable(record,actor));
@@ -44,6 +45,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
     @Override
     @Transactional(readOnly=true)
+    // Read
     public List<AppointmentResponse> list(CurrentAccount actor, String q, String city) {
         allow(actor != null);
         List<AppointmentResponse> result=new ArrayList<>();
@@ -53,6 +55,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
         return result;
     }
+    // Create
     @Override
     public AppointmentResponse create(CreateAppointmentRequest request, CurrentAccount actor) {
         allow(actor != null && actor.isBuyer());
@@ -87,6 +90,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         record.setNotes(optional(request.getNotes(),10000));
     }
     @Override
+    // Update
     public AppointmentResponse update(String recordId, UpdateAppointmentRequest request, CurrentAccount actor) {
         Appointment record=repository.lockById(id(recordId));
         allow(actor != null && actor.isBuyer() && owns(record.getBuyerId(),actor));
@@ -97,6 +101,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         return response(record);
     }
     @Override
+    // Delete
     public void delete(String recordId, CurrentAccount actor) {
         Appointment record=repository.lockById(id(recordId));
         allow(actor != null && (actor.isAdmin() || (actor.isBuyer() && owns(record.getBuyerId(),actor))));
@@ -104,6 +109,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         repository.delete(record.getId());
     }
     @Override
+    // Status change
     public AppointmentResponse changeStatus(String recordId, String requested, CurrentAccount actor) {
         String status=choice(requested,"PENDING","CONFIRMED","REJECTED","CANCELLED","COMPLETED");
         // Lock the property first for all decisions to serialize slot checks.

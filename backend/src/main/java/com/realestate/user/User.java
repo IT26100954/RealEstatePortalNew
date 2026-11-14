@@ -37,7 +37,7 @@ public class User {
     //store BUYER , SELLER , ADMIN as a text
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false , length = 20)
-    private Role role;
+    private Role role;          // Association: each account stores a Role value.
 
     //default constructor
     public User(){

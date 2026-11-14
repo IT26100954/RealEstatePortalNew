@@ -1,6 +1,6 @@
 package com.realestate.user;
 
-    //define the allowed account roles
+    // An enum defines the supported account roles.
     public enum Role{
 
         BUYER,SELLER,ADMIN

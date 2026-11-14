@@ -27,7 +27,7 @@ public class AuthServiceImpl implements AuthService {
     }
     @Override
     @Transactional
-    public AuthResponse login(LoginRequest request,HttpServletRequest httpRequest) {
+    public AuthResponse login(LoginRequest request,HttpServletRequest httpRequest) { // Implements the login operation declared by AuthService.
         String username=request==null ? null : request.getUsername();
         String password=request==null ? null : request.getPassword();
         if (username==null || username.trim().isEmpty() || username.trim().length()>40 || password==null || password.length()>128 || password.matches("[\\s\\p{Z}\\u0085\\uFEFF]*")) throw failed();

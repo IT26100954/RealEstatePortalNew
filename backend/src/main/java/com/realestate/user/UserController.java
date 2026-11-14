@@ -10,7 +10,7 @@ import com.realestate.user.dto.*;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-    private final UserService service;
+    private final UserService service;                           // Association: the controller stores and uses the service.
     private final CurrentUser currentUser;
     public UserController(UserService service,CurrentUser currentUser) { this.service=service; this.currentUser=currentUser; }
     @GetMapping
