@@ -26,7 +26,7 @@ public class AppointmentController {
     public AppointmentResponse detail(@PathVariable String id, HttpSession session) {
         return service.detail(id,currentUser.required(session));
     }
-    // Createe
+    // Create
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public AppointmentResponse create(@RequestBody CreateAppointmentRequest request, HttpSession session) {
