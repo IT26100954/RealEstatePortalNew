@@ -6,8 +6,10 @@ public interface AppointmentRepository {
     List<Appointment> findAll();
     Appointment findById(String id);
     Appointment lockById(String id);
-    void insert(Appointment record);
+    void insert(Appointment record);// Create
+    //Update
     void update(Appointment record);
+    // Delete
     void delete(String id);
     int countConfirmedSlot(String propertyId, java.time.LocalDate date, java.time.LocalTime time, String excludedId);
 }

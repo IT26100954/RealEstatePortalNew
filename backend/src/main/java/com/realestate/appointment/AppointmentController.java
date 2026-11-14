@@ -17,25 +17,31 @@ public class AppointmentController {
         this.currentUser=currentUser;
     }
     @GetMapping
+    // Read
     public List<AppointmentResponse> list(HttpSession session, @RequestParam(required=false) String q, @RequestParam(required=false) String city) {
         return service.list(currentUser.required(session),q,city);
     }
     @GetMapping("/{id}")
+    // Detail
     public AppointmentResponse detail(@PathVariable String id, HttpSession session) {
         return service.detail(id,currentUser.required(session));
     }
+    // Create
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public AppointmentResponse create(@RequestBody CreateAppointmentRequest request, HttpSession session) {
         return service.create(request,currentUser.required(session));
     }
     @PutMapping("/{id}")
+    // Update
     public AppointmentResponse update(@PathVariable String id,@RequestBody UpdateAppointmentRequest request,HttpSession session) {
         return service.update(id,request,currentUser.required(session));
     }
+    // Delete
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable String id,HttpSession session) { service.delete(id,currentUser.required(session)); }
+    // Status change
     @PatchMapping("/{id}/status")
     public AppointmentResponse status(@PathVariable String id,@RequestBody AppointmentStatusRequest request,HttpSession session) {
         return service.changeStatus(id,request.getStatus(),currentUser.required(session));
