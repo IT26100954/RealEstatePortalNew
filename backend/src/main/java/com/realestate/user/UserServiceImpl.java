@@ -15,7 +15,7 @@ import static com.realestate.common.InputRules.*;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService {           // Interface implementation (UML realization).
     private final UserRepository repository;
     private final PasswordEncoder encoder;
     private final JdbcTemplate jdbc;
@@ -92,15 +92,15 @@ public class UserServiceImpl implements UserService {
         return UserViews.response(repository.saveAndFlush(newUser(request)));
     }
     @Override
-    public UserResponse createUser(String currentUserId,CreateUserRequest request) {
+    public UserResponse createUser(String currentUserId,CreateUserRequest request) { // ADMIN account creation.
         List<User> users=repository.lockAllUsers();
         admin(actorIn(users,currentUserId));
-        return UserViews.response(repository.saveAndFlush(newUser(request)));
+        return UserViews.response(repository.saveAndFlush(newUser(request)));  // Validate, save, and return safe account details.
     }
     @Override
     @Transactional(readOnly=true)
     public List<UserResponse> getAllUsers(String currentUserId) {
-        admin(actor(currentUserId));
+        admin(actor(currentUserId));                               // Only an ADMIN can list every account.
         List<UserResponse> responses=new ArrayList<>();
         for (User user:repository.findAll(Sort.by("id"))) responses.add(UserViews.response(user));
         return responses;
@@ -115,7 +115,7 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public UserResponse updateUser(String currentUserId,String userId,UpdateUserRequest request) {
-        List<User> users=repository.lockAllUsers();
+        List<User> users=repository.lockAllUsers();                       // Lock account records during this change.
         User current=actorIn(users,currentUserId);
         User target=findIn(users,userId);
         allow(current.getRole()==Role.ADMIN || current.getId().equals(target.getId()));
@@ -142,7 +142,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponse changeRole(String currentUserId,String userId,ChangeRoleRequest request) {
         List<User> users=repository.lockAllUsers();
-        admin(actorIn(users,currentUserId));
+        admin(actorIn(users,currentUserId));                // Only an ADMIN can change account roles.
         User target=findIn(users,userId);
         if (request==null || request.getRole()==null) throw invalid("Role is required.");
         if (target.getRole()==request.getRole()) return UserViews.response(target);
